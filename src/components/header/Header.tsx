@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
   const [favoriteCounter, setFavoriteCounter] = useState(5);
   const location = useLocation();
 
-  const { favorites, cart, selectedNavItem, setSelectedNavItem, selectedMenu, setSelectedMenu } = useAppContext();
+  const { favorites, cart, setSelectedNavItem, selectedMenu, setSelectedMenu } = useAppContext();
 
   const logo = 'img/icons/logo.svg';
 
@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
       pathname === '/' ? 'Home' : pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
     setSelected(page);
     setSelectedNavItem(selected);
-  }, [location, selectedMenu]);
+  }, [location, selectedMenu, selected, setSelectedNavItem]);
 
   const handleExitMenu = () => {
     setSelectedMenu(false);

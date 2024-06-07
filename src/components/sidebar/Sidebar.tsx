@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 export const Sidebar: React.FC = () => {
   const { favorites, cart, selectedNavItem, setSelectedNavItem, selectedMenu } = useAppContext();
   const [selected, setSelected] = useState('Home');
-  const [cartCounter, setCartCounter] = useState(3);
-  const [favoriteCounter, setFavoriteCounter] = useState(5);
+  const [, setCartCounter] = useState(3);
+  const [, setFavoriteCounter] = useState(5);
   const location = useLocation();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export const Sidebar: React.FC = () => {
       pathname === '/' ? 'Home' : pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
     setSelected(page);
     setSelectedNavItem(selected);
-  }, [location]);
+  }, [location, selected, setSelectedNavItem]);
 
   useEffect(() => {
     if (selectedMenu) {
@@ -38,16 +38,36 @@ export const Sidebar: React.FC = () => {
           <nav className="menu-nav menu__nav">
             <ul className="menu-nav__list">
               <li className="menu-nav_item">
-                <Link className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Home' ? 'is-active' : ''}`} to="/">Home</Link>
+                <Link
+                  className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Home' ? 'is-active' : ''}`}
+                  to="/"
+                >
+                  Home
+                </Link>
               </li>
               <li className="menu-nav_item">
-                <Link className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Phones' ? 'is-active' : ''}`} to="/phones">Phones</Link>
+                <Link
+                  className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Phones' ? 'is-active' : ''}`}
+                  to="/phones"
+                >
+                  Phones
+                </Link>
               </li>
               <li className="menu-nav_item">
-                <Link className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Tablets' ? 'is-active' : ''}`} to="/tablets">Tablets</Link>
+                <Link
+                  className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Tablets' ? 'is-active' : ''}`}
+                  to="/tablets"
+                >
+                  Tablets
+                </Link>
               </li>
               <li className="menu-nav_item">
-                <Link className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Accessories' ? 'is-active' : ''}`} to="/accessories">Accessories</Link>
+                <Link
+                  className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Accessories' ? 'is-active' : ''}`}
+                  to="/accessories"
+                >
+                  Accessories
+                </Link>
               </li>
             </ul>
           </nav>
