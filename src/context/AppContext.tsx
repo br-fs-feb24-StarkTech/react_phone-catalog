@@ -23,6 +23,8 @@ type AppContextType = {
   setTotalQuantity: (number: number) => void;
   totalCost: number;
   setTotalCost: (number: number) => void;
+  selectedNavItem: string;
+  setSelectedNavItem: (item: string) => void;
 };
 
 const AppContext = createContext<AppContextType>({
@@ -41,6 +43,8 @@ const AppContext = createContext<AppContextType>({
   setTotalQuantity: () => {},
   totalCost: 0,
   setTotalCost: () => {},
+  selectedNavItem: 'Home',
+  setSelectedNavItem: () => {},
 });
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -54,6 +58,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const [selectedMenu, setSelectedMenu] = useState<boolean>(false);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalCost, setTotalCost] = useState(799);
+  const [selectedNavItem, setSelectedNavItem] = useState('Home');
 
   const addToFavorites = useCallback(
     (product: Product) => {
@@ -132,6 +137,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         setTotalQuantity,
         totalCost,
         setTotalCost,
+        selectedNavItem,
+        setSelectedNavItem,
       }}
     >
       {children}

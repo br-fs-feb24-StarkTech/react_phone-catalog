@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
   const [favoriteCounter, setFavoriteCounter] = useState(5);
   const location = useLocation();
 
-  const { favorites, cart } = useAppContext();
+  const { favorites, cart, setSelectedNavItem, selectedMenu, setSelectedMenu } = useAppContext();
 
   const logo = 'img/icons/logo.svg';
 
@@ -23,7 +23,24 @@ export const Header: React.FC = () => {
     const page =
       pathname === '/' ? 'Home' : pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
     setSelected(page);
-  }, [location]);
+    setSelectedNavItem(selected);
+  }, [location, selectedMenu, selected, setSelectedNavItem]);
+
+  const handleExitMenu = () => {
+    setSelectedMenu(false);
+  };
+
+  const handleOpenMenu = () => {
+    setSelectedMenu(true);
+  };
+
+  useEffect(() => {
+    if (selectedMenu) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [selectedMenu]);
 
   return (
     <header className="header">
@@ -73,12 +90,21 @@ export const Header: React.FC = () => {
               </Link>
             </div>
 
-            <div className="right-part__item-box">
-              <Link
-                to="/"
-                className={`right-part__icon right-part__icon--menu-burger ${selected === 'Menu' ? 'is-active' : ''}`}
-              ></Link>
-            </div>
+            {selectedMenu ? (
+              <div className="right-part__item-box">
+                <div
+                  className={`right-part__icon right-part__icon--close`}
+                  onClick={handleExitMenu}
+                ></div>
+              </div>
+            ) : (
+              <div className="right-part__item-box">
+                <div
+                  className={`right-part__icon right-part__icon--menu-burger ${selected === 'Menu' ? 'is-active' : ''}`}
+                  onClick={handleOpenMenu}
+                ></div>
+              </div>
+            )}
           </div>
         </div>
       </div>
