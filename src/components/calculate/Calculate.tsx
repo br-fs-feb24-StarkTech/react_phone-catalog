@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../../assets/scss/components/calculate.scss';
+import '../../components/calculate/Calculate.scss';
 import { Modal } from '../modal/Modal';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,38 +11,28 @@ const Calculate = () => {
   const handleModal = () => {
     setModalStatus(true);
 
-    setTimeout( () => {
+    setTimeout(() => {
       navigate('/');
-    }, 5000);
-  }
+    }, 3000);
+  };
 
   return (
     <div className="calculate">
       <div className="calculate__infos">
-        <h2 className="calculate__price">
-          $2657
-        </h2>
+        <h2 className="calculate__price">$2657</h2>
 
-        <p className="calculate__description">
-          Total for 3 items
-        </p>
+        <p className="calculate__description">Total for 3 items</p>
       </div>
 
       <div className="calculate__line"></div>
 
-      <button
-        type="button"
-        className="calculate__button-checkout"
-        onClick={handleModal}
-      >
+      <button type="button" className="calculate__button-checkout" onClick={handleModal}>
         Checkout
       </button>
 
-      {modalStatus &&
-        <Modal />
-      }
+      {modalStatus && <Modal />}
     </div>
   );
-}
+};
 
 export default Calculate;

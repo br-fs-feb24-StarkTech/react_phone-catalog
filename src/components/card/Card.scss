@@ -1,0 +1,46 @@
+@import '../../assets/scss/variables.scss';
+
+.card {
+  background-color: $color-surface-1;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+
+  &__img {
+    width: 100%;
+  }
+
+  &__title {
+    @include font-body-text-desktop;
+    margin: 0;
+  }
+
+  &__price {
+    @include font-h3-mobile;
+    margin: 0;
+
+    &--offer {
+      text-decoration: line-through;
+      color: $color-secondary;
+    }
+  }
+
+  &__line {
+    border: 1px solid #3b3e4a;
+  }
+
+  &__description {
+    .description__text {
+      display: flex;
+      justify-content: space-between;
+
+      @include font-small-text-desktop;
+      color: $color-secondary;
+
+      &--modify {
+        color: white;
+      }
+    }
+  }
+}

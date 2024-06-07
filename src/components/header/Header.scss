@@ -202,7 +202,7 @@ $header-height-desktop: 64px;
   &__icon--favorite {
     display: none;
 
-    background-image: url('../../../public/img/icons/favourites-heart-like.svg');
+    background-image: url('/img/icons/favourites-heart-like.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
@@ -216,7 +216,7 @@ $header-height-desktop: 64px;
     display: none;
     position: relative;
 
-    background-image: url('../../../public/img/icons/shopping-bag-cart.svg');
+    background-image: url('/img/icons/shopping-bag-cart.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
@@ -227,7 +227,7 @@ $header-height-desktop: 64px;
   }
 
   &__icon--menu-burger {
-    background-image: url('../../../public/img/icons/menu.svg');
+    background-image: url('/img/icons/menu.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;

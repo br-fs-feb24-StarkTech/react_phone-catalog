@@ -27,7 +27,7 @@
   }
 
   &__back-button {
-    padding: 24px 0;
+    margin-block: 24px;
 
     display: flex;
     align-items: center;
@@ -36,24 +36,9 @@
     @include font-small-text-desktop;
 
     @include on-tablet {
-      padding: 40px 0 16px 0;
+      margin-block: 40px 16px;
     }
   }
-
-  &__back-icon {
-    cursor: pointer;
-    display: inline-block;
-    line-height: 46px;
-
-    width: 16px;
-    height: 16px;
-    
-    background-image: url('/img/icons/arrow-left-default.svg');
-    background-repeat: no-repeat;
-    background-position: left;
-  }
-
-
   &__title {
     @include font-h1-mobile;
 

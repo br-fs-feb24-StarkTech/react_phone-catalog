@@ -18,7 +18,7 @@ type AppContextType = {
   calculateTotalPrice: () => number;
   clearCart: () => void;
   selectedMenu: boolean;
-  setSelectedMenu: (value: boolean) => void;
+  setSelectedMenu: (isOpen: boolean) => void;
 };
 
 const AppContext = createContext<AppContextType>({
@@ -30,8 +30,8 @@ const AppContext = createContext<AppContextType>({
   removeFromCart: () => {},
   updateCartQuantity: () => {},
   calculateTotalPrice: () => 0,
-  clearCart: () => { },
-  selectedMenu: true,
+  clearCart: () => {},
+  selectedMenu: false,
   setSelectedMenu: () => {},
 });
 
@@ -43,7 +43,7 @@ export const useAppContext = () => {
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
   const [cart, setCart] = useLocalStorage<CartItemProps[]>('cart', []);
-  const [selectedMenu, setSelectedMenu] = useState(false);
+  const [selectedMenu, setSelectedMenu] = useState<boolean>(false);
 
   const addToFavorites = useCallback(
     (product: Product) => {

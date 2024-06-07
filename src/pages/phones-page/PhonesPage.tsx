@@ -1,12 +1,27 @@
-import '../../assets/scss/pages/PhonesPage.scss';
+import './PhonesPage.scss';
 import Card from '../../components/card/Card';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
-import { Modal } from '../../components/modal/Modal';
+import { Product } from '../../types/Product';
+
+const product: Product = {
+  id: 'string',
+  category: 'string',
+  phoneId: 'string',
+  itemId: 'string',
+  name: 'string',
+  fullPrice: 1,
+  price: 1,
+  screen: 'string',
+  capacity: 'string',
+  color: 'string',
+  ram: 'string',
+  year: 1,
+  image: 'string',
+};
 
 const PhonesPage = () => {
   return (
     <>
-      <Modal />
       <div className="products__container products container">
         <BreadCrumbs />
         <h1 className="products__title">Mobile phones</h1>
@@ -32,7 +47,14 @@ const PhonesPage = () => {
         </div>
 
         <ul className="products__list">
-          <Card />
+          <Card product={product} />
+          <Card product={product} />
+          <Card product={product} />
+          <Card product={product} />
+          <Card product={product} />
+          <Card product={product} />
+          <Card product={product} />
+          <Card product={product} />
         </ul>
       </div>
     </>

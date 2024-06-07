@@ -8,11 +8,9 @@ import { Sidebar } from '../components/sidebar-refactor/SidebarRefactor'
 
 export const DefaultLayout = () => {
   const { selectedMenu } = useAppContext();
-  console.log(selectedMenu);
   
   return (
     <div className="app">
-      {/* <Navbar /> */}
       <Header />
 
       {selectedMenu && <Sidebar />}

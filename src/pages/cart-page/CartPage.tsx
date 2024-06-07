@@ -1,24 +1,14 @@
-import { useNavigate } from 'react-router-dom';
 import './CartPage.scss';
 import Calculate from '../../components/calculate/Calculate';
+import { BackButton } from '../../components/back-button/BackButton';
 
 export const CartPage = () => {
-  const navigate = useNavigate();
-
-  const handleBackClick = () => {
-    navigate(-1);
-  };
-
   return (
     <div className="cart-page">
       <div className="container">
         <div className="cart-page__content">
-          <div className="cart-page__back-button back-button" onClick={handleBackClick}>
-            <button className="back-button__content">
-              <div className="cart-page__back-icon back-icon"></div>
-              Back
-            </button>
-
+          <div className="cart-page__back-button">
+            <BackButton />
           </div>
 
           <h1 className="cart-page__title title">Cart</h1>
