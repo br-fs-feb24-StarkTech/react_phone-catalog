@@ -1,28 +1,19 @@
-import React, { useState } from 'react';
-import '../../assets/scss/components/card.scss';
+import './Card.scss';
+import { ActionButtons } from '../action-buttons/ActionButtons';
+// import { Product } from '../../types/Product';
+import { CardProps } from '../../types/CardProps';
 
-interface Props {
-  title: string;
-}
-
-const Card: React.FC<Props> = ({ title }) => {
-  const [addCart, setAddCart] = useState(false);
-  const [fav, setFav] = useState(false);
-
-  const toggleAddToCart = () => {
-    setAddCart(!addCart);
-  };
-
-  const toggleFav = () => {
-    setFav(!fav);
-  };
-
+const Card: React.FC<CardProps> = ({ product }) => {
   return (
     <>
       <li className="products__card card">
-        <img src="./img/phones/apple-iphone-14-pro/gold/04.webp" alt="" className="card__img" />
+        <img
+          src="/img/phones/apple-iphone-14-pro/gold/04.webp"
+          alt="img-phone"
+          className="card__img"
+        />
 
-        <h4 className="card__title">{title}</h4>
+        <h4 className="card__title">Apple iPhone 14 Pro 128GB Gold (MQ083);</h4>
 
         <h3 className="card__price">
           $799 <span className="card__price--offer">$899</span>
@@ -45,18 +36,7 @@ const Card: React.FC<Props> = ({ title }) => {
           </p>
         </div>
 
-        <div className="card__buttons">
-          <button
-            type="button"
-            className={`card__buttons-cart ${addCart && 'active'}`}
-            onClick={toggleAddToCart}
-          >
-            {addCart ? 'Added' : 'Add to cart'}
-          </button>
-          <button type="button" className="card__buttons-fav fav" onClick={toggleFav}>
-            <div className={`fav__status ${fav ? 'on' : 'off'}`}></div>
-          </button>
-        </div>
+        <ActionButtons product={product} />
       </li>
     </>
   );

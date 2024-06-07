@@ -81,7 +81,8 @@
     height: 32px;
     background-color: $color-surface-2;
     transition-duration: 300ms;
-
+    border: 0;
+    
     &:hover {
       transition-duration: 300ms;
       background-color: $color-icons;

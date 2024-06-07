@@ -26,22 +26,12 @@
   }
 
   &__back-button {
-    padding: 24px 0;
+    margin-block: 24px;
 
     @include on-tablet {
-      padding: 40px 0 16px 0;
+      margin-block: 40px 16px;
     }
   }
-
-  &__back-icon {
-    cursor: pointer;
-
-    width: 66px;
-    height: 16px;
-
-    background-image: url('./img/icons/cart-back-button.svg');
-  }
-
   &__title {
     @include font-h1-mobile;
 

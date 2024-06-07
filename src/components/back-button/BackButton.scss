@@ -1,0 +1,13 @@
+@import '../../assets/scss/variables.scss';
+
+.back-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  max-width: 50px;
+
+  &__text {
+    margin: 0 4px;
+    @include font-small-text-desktop;
+  }
+}

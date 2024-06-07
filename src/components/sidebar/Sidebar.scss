@@ -76,11 +76,11 @@
       }
 
       &-fav {
-        background-image: url('./public/img/icons/heart.svg');
+        background-image: url('/img/icons/heart.svg');
       }
 
       &-cart {
-        background-image: url('./public/img/icons/cart.svg');
+        background-image: url('/img/icons/cart.svg');
       }
 
       &-active {
@@ -110,7 +110,7 @@
       font-weight: 700;
       line-height: 12px;
       color: $color-white;
-      background-image: url('./public/img/icons/counter.svg');
+      background-image: url('/img/icons/counter.svg');
     }
   }
 }

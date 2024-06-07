@@ -72,8 +72,6 @@ $header-height-desktop: 64px;
   }
 
   &__logo img {
-    height: 22px;
-    width: 64px;
     margin: 13px 16px;
 
     @include on-desktop {
@@ -108,12 +106,12 @@ $header-height-desktop: 64px;
     display: inline-block;
 
     line-height: $header-height-mobile-tablet;
-    margin-right: 12px;
+    margin-right: 32px;
     height: $header-height-mobile-tablet;
 
     @include on-desktop {
       line-height: $header-height-desktop;
-      margin-right: 44px;
+      margin-right: 64px;
       height: $header-height-desktop;
     }
   }
@@ -204,7 +202,7 @@ $header-height-desktop: 64px;
   &__icon--favorite {
     display: none;
 
-    background-image: url('./img/icons/heart-icon.svg');
+    background-image: url('/img/icons/favourites-heart-like.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
@@ -216,9 +214,9 @@ $header-height-desktop: 64px;
 
   &__icon--cart {
     display: none;
+    position: relative;
 
-    background-image: url('./img/icons/cart-btn-icon.svg');
-
+    background-image: url('/img/icons/shopping-bag-cart.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
@@ -229,8 +227,7 @@ $header-height-desktop: 64px;
   }
 
   &__icon--menu-burger {
-    background-image: url('./img/icons/menu-burger-icon.svg');
-
+    background-image: url('/img/icons/menu.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
@@ -245,3 +242,35 @@ $header-height-desktop: 64px;
   width: 100%;
   left: 0;
 }
+
+.right-part__icon--counter {
+  @include on-tablet {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+    border: 1px solid $color-black;
+
+    background-color: $color-red;
+    color: $color-white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-family: $font-regular;
+    font-size: 9px;
+    font-weight: 300;
+  }
+
+  @include on-desktop {
+    top: 18px;
+    right: 18px;
+  }
+}
+
+
