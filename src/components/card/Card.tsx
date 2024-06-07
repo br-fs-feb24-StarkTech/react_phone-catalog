@@ -1,6 +1,6 @@
-import '../../assets/scss/components/card.scss';
+import './Card.scss';
 import { ActionButtons } from '../action-buttons/ActionButtons';
-import { Product } from '../../types/Product';
+// import { Product } from '../../types/Product';
 import { CardProps } from '../../types/CardProps';
 
 const Card: React.FC<CardProps> = ({ product }) => {

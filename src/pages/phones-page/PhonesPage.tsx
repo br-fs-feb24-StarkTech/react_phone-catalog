@@ -1,7 +1,6 @@
 import './PhonesPage.scss';
 import Card from '../../components/card/Card';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
-import { Modal } from '../../components/modal/Modal';
 import { Product } from '../../types/Product';
 
 const product: Product = {
@@ -23,7 +22,6 @@ const product: Product = {
 const PhonesPage = () => {
   return (
     <>
-      <Modal />
       <div className="products__container products container">
         <BreadCrumbs />
         <h1 className="products__title">Mobile phones</h1>
