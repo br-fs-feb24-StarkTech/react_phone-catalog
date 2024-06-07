@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import './CartPage.scss';
-import Calculate from '../../components/calculate/Calculate';
+import { Calculate } from '../../components/calculate/Calculate';
+import { CartItem } from '../../components/cart-item/CartItem';
 
 export const CartPage = () => {
   const navigate = useNavigate();
@@ -21,9 +22,7 @@ export const CartPage = () => {
 
           <div className="cart-page__wrapper-elements">
             <ul className="cart-page__list list">
-              <li className="cart-page__list-item list-item"></li>
-              <li className="cart-page__list-item list-item"></li>
-              <li className="cart-page__list-item list-item"></li>
+              <CartItem />
             </ul>
 
             <Calculate />

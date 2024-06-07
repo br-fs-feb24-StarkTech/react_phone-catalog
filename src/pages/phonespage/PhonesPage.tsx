@@ -2,12 +2,10 @@ import '../../assets/scss/pages/PhonesPage.scss';
 import '../../assets/scss/components/modal.scss';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
 import Card from '../../components/card/Card';
-import { Modal } from '../../components/modal/Modal';
 
 const PhonesPage = () => {
   return (
     <>
-      <Modal />
       <div className="products__container products container">
         <BreadCrumbs />
         <h1 className="products__title">Mobile phones</h1>
