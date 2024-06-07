@@ -5,6 +5,7 @@ import { HomePage } from './pages/home-page/HomePage';
 import { PageNotFound } from './pages/pagenotfound/PageNotFound';
 import PhonesPage from './pages/phonespage/PhonesPage';
 import { CartPage } from './pages/cartpage/CartPage';
+import { ItemDetails } from './pages/item-details/ItemDetails';
 
 export const App = () => (
   <Router>
@@ -13,6 +14,7 @@ export const App = () => (
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
         <Route path="phonespage" element={<PhonesPage />} />
+        <Route path="item-details/1" element={<ItemDetails />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>

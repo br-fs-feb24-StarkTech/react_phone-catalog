@@ -1,0 +1,66 @@
+@import '../../assets/scss/variables.scss';
+
+.item-details {
+  @include pageGrid;
+
+  box-sizing: border-box;
+  padding: 24px 16px;
+  background-color: $color-black;
+  color: $color-white;
+
+  &__bread-crumbs {
+    grid-column: 1 /-1;
+  }
+
+  &__back-button {
+    margin-top: 24px;
+    grid-column: 1 / -1;
+  }
+
+  &__product {
+    margin-top: 16px;
+    grid-column: 1 / -1;
+  }
+
+  &__details {
+    margin-top: 56px;
+    grid-column: 1 / -1;
+  }
+
+  &__other-products {
+    margin-top: 56px;
+    grid-column: 1 / -1;
+    height: 495px;
+    background-color: $color-surface-2;
+  }
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+
+  &__name {
+    @include font-h2-mobile;
+  }
+
+  &__display {
+    height: 330px;
+    background-color: $color-surface-2;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+
+  &__about {
+    height: 875px;
+    background-color: $color-surface-2;
+  }
+
+  &__tech-specs {
+    margin-top: 56px;
+    height: 296px;
+    background-color: $color-surface-2;
+  }
+}
