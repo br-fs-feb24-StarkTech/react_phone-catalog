@@ -80,6 +80,13 @@ export const Header: React.FC = () => {
                 className={`right-part__icon right-part__icon--menu-burger ${selected === 'Menu' ? 'is-active' : ''}`}
               ></Link>
             </div>
+
+            <div className="right-part__item-box">
+              <Link
+                to="/"
+                className={`right-part__icon right-part__icon--close ${selected === 'Close' ? 'is-active' : ''}`}
+              ></Link>
+            </div>
           </div>
         </div>
       </div>
