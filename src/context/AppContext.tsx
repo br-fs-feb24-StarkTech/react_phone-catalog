@@ -53,7 +53,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const [cart, setCart] = useLocalStorage<CartItemProps[]>('cart', []);
   const [selectedMenu, setSelectedMenu] = useState<boolean>(false);
   const [totalQuantity, setTotalQuantity] = useState(0);
-  const [totalCost, setTotalCost] = useState(0);
+  const [totalCost, setTotalCost] = useState(799);
 
   const addToFavorites = useCallback(
     (product: Product) => {

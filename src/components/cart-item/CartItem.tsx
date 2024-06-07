@@ -3,47 +3,60 @@ import closeIcon from '/img/icons/close.svg';
 import minusIcon from '/img/icons/minus.svg';
 import plusIcon from '/img/icons/plus.svg';
 import './CartItem.scss';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
+import { Product } from '../../types/Product';
 
-export const CartItem = () => {
+type Props = {
+  product: Product;
+};
+
+export const CartItem: React.FC<Props> = ({product}) => {
 
   const [itemCost, setItemCost] = useState(0);
   const [counter, setCounter] = useState(1);
-  const price = 799;
 
-  const {  totalQuantity,
+  const {
+    removeFromCart,
+    totalQuantity,
     setTotalQuantity,
     totalCost,
     setTotalCost,
+    cart,
   } = useAppContext();
 
   const counterIncrease = () => {
     setCounter(counter + 1);
     setTotalQuantity(totalQuantity + 1);
-    setTotalCost(totalCost + price);
+    setTotalCost(totalCost + product.price);
   };
 
   const counterDecrease = () => {
     setCounter(counter - 1);
     setTotalQuantity(totalQuantity - 1);
-    setTotalCost(totalCost - price);
+    setTotalCost(totalCost - product.price);
   };
 
   useEffect(() => {
-    setItemCost(counter * price);
-  }, [counter, price]);
+    setItemCost(counter * product.price);
+  }, [counter, product.price]);
 
-  /*const handleRemoveItem = () => {
-    setTotalQuantity(totalQuantity - counter);
-  };*/
+  const handleRemoveItem = () => {
+    removeFromCart(product.id);
+  };
 
+  console.log(cart);
   return (
     <div className="cart-item">
       <div className="display cart-item__display">
-        <div className="display__close">
+        <button
+          className="display__close"
+          onClick={() => {
+            handleRemoveItem();
+          }}
+        >
           <img src={closeIcon} alt="icon-close" />
-        </div>
+        </button>
 
         <div className="display__img">
           <img className="display__img-phone" src={imgPhone} alt="img-phone" />
