@@ -48,10 +48,11 @@
     width: 16px;
     height: 16px;
     
-    background-image: url('/img/icons/arrow-left.svg');
+    background-image: url('/img/icons/arrow-left-default.svg');
     background-repeat: no-repeat;
     background-position: left;
   }
+
 
   &__title {
     @include font-h1-mobile;
@@ -127,12 +128,15 @@
 
 .back-button__content {
   @include font-small-text-desktop;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
+
   padding-left: 0;
   cursor: pointer;
+  
   background-color: transparent;
   border: none;
 }
