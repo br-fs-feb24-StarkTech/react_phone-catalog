@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 import React, { SetStateAction } from 'react';
 import classNames from 'classnames';
-import { useAppContext } from '../../context/AppContext';
+// import { useAppContext } from '../../context/AppContext';
 
 type Props = {
   isMenuOpen: boolean;
@@ -58,7 +58,7 @@ export const SideNavbar: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           className={getFooterLinkClass}
           onClick={() => setIsMenuOpen(false)}
         >
-          <div className="navbar__footer-button-fav icon">
+          {/* <div className="navbar__footer-button-fav icon">
             {AppContext(favorites).length > 0 && (
               <p className="navbar__footer-counter icon">{AppContext(favorites).length}</p>
             )}
@@ -69,7 +69,7 @@ export const SideNavbar: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             {CartItem.length > 0 && (
               <p className="navbar__footer-counter icon">{useAppContext(cartItem)}</p>
             )}
-          </div>
+          </div> */}
         </NavLink>
       </div>
     </div>
