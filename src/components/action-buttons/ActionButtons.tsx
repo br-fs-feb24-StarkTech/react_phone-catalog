@@ -21,16 +21,20 @@ export const ActionButtons: React.FC<Props> = ({ product }) => {
   const handleFavoriteClick = () => {
     if (isFavourited) {
       removeFromFavorites(product.id);
+      setIsFavourited(false);
     } else {
       addToFavorites(product);
+      setIsFavourited(true);
     }
   };
 
   const handleCartClick = () => {
     if (isInCart) {
       removeFromCart(product.id);
+      setIsInCart(false);
     } else {
       addToCart(product);
+      setIsInCart(true);
     }
   };
   return (
