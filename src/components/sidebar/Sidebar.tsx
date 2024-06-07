@@ -1,77 +1,58 @@
-import { NavLink } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import './Sidebar.scss';
+import { useAppContext } from '../../context/AppContext';
+import { useEffect, useState } from 'react';
 
-import React, { SetStateAction } from 'react';
-import classNames from 'classnames';
-// import { useAppContext } from '../../context/AppContext';
+export const Sidebar: React.FC = () => {
+  const { favorites, cart, selectedNavItem, setSelectedNavItem, selectedMenu } = useAppContext();
+  const [selected, setSelected] = useState('Home');
+  const [cartCounter, setCartCounter] = useState(3);
+  const [favoriteCounter, setFavoriteCounter] = useState(5);
+  const location = useLocation();
 
-type Props = {
-  isMenuOpen: boolean;
-  setIsMenuOpen: React.Dispatch<SetStateAction<boolean>>;
-};
+  useEffect(() => {
+    setFavoriteCounter(favorites.length);
+    setCartCounter(cart.length);
+  }, [favorites, cart]);
 
-export const SideNavbar: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
-  // adicionar as lógicas necessárias do appContext
+  useEffect(() => {
+    const pathname = location.pathname;
+    const page =
+      pathname === '/' ? 'Home' : pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
+    setSelected(page);
+    setSelectedNavItem(selected);
+  }, [location]);
 
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames('navbar-link', {
-      'navbar-link-active': isActive,
-    });
-
-  const getFooterLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames('navbar__footer-button', {
-      'navbar__footer-button-active': isActive,
-    });
+  useEffect(() => {
+    if (selectedMenu) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [selectedMenu]);
 
   return (
-    <div
-      className={classNames({
-        navbar: isMenuOpen === true,
-        disabled: !isMenuOpen,
-      })}
-    >
-      <div className="navbar__top">
-        {/* o que é LOGO? */}
-        {/* <Logo /> */}
-        <div className="header__menu-button" onClick={() => setIsMenuOpen(false)}>
-          <div className="header__menu-button icon icon-close" />
+    <aside className="page__menu menu" id="menu">
+      <div className="container">
+        <div className="menu__bottom">
+          <nav className="menu-nav menu__nav">
+            <ul className="menu-nav__list">
+              <li className="menu-nav_item">
+                <Link className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Home' ? 'is-active' : ''}`} to="/">Home</Link>
+              </li>
+              <li className="menu-nav_item">
+                <Link className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Phones' ? 'is-active' : ''}`} to="/phones">Phones</Link>
+              </li>
+              <li className="menu-nav_item">
+                <Link className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Tablets' ? 'is-active' : ''}`} to="/tablets">Tablets</Link>
+              </li>
+              <li className="menu-nav_item">
+                <Link className={`menu-nav__link menu-nav__link ${selectedNavItem === 'Accessories' ? 'is-active' : ''}`} to="/accessories">Accessories</Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
-
-      <nav className="navbar__list">
-        <NavLink to="/" className={getLinkClass} onClick={() => setIsMenuOpen(false)}>
-          HOME
-        </NavLink>
-        <NavLink to="phones" className={getLinkClass} onClick={() => setIsMenuOpen(false)}>
-          PHONES
-        </NavLink>
-        <NavLink to="tablets" className={getLinkClass} onClick={() => setIsMenuOpen(false)}>
-          TABLETS
-        </NavLink>
-        <NavLink to="/accessories" className={getLinkClass} onClick={() => setIsMenuOpen(false)}>
-          ACCESSORIES
-        </NavLink>
-      </nav>
-
-      <div className="navbar__footer">
-        <NavLink
-          to="favourites"
-          className={getFooterLinkClass}
-          onClick={() => setIsMenuOpen(false)}
-        >
-          {/* <div className="navbar__footer-button-fav icon">
-            {AppContext(favorites).length > 0 && (
-              <p className="navbar__footer-counter icon">{AppContext(favorites).length}</p>
-            )}
-          </div>
-        </NavLink>
-        <NavLink to="cart" className={getFooterLinkClass} onClick={() => setIsMenuOpen(false)}>
-          <div className="navbar__footer-button-cart icon">
-            {CartItem.length > 0 && (
-              <p className="navbar__footer-counter icon">{useAppContext(cartItem)}</p>
-            )}
-          </div> */}
-        </NavLink>
-      </div>
-    </div>
+    </aside>
   );
 };

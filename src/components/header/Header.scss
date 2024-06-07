@@ -236,6 +236,17 @@ $header-height-desktop: 64px;
       display: none;
     }
   }
+
+  &__icon--close {
+    background-image: url('../../../public/img//icons/close.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
 }
 
 .right-part__icon.is-active::after {
@@ -273,4 +284,6 @@ $header-height-desktop: 64px;
   }
 }
 
-
+.no-scroll {
+  overflow: hidden;
+}

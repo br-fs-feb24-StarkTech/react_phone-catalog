@@ -1,116 +1,126 @@
-@import '../../assets/scss/variables';
+/* #region menu */
+@import '../../assets/scss/variables.scss';
 
-.disabled {
-  display: none;
-  transform: translateX(-100%);
-  transition: transform 0.5s;
-}
+.menu {
+  margin-top: 1px;
+  box-sizing: border-box;
 
-.navbar {
-  transform: translateX(0);
-  z-index: 1;
   height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: $page-color;
+  min-height: 320px;
+
+  background-color: $color-black;
+
+  font-weight: 700;
+  text-transform: uppercase;
+
+  padding-top: 24px;
 
   &__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+    margin-bottom: 32px;
 
-  &__list {
-    width: 100%;
-    height: 156px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
-  }
-
-  &-link {
-    @extend %upper-case;
-
-    color: $color-secodary;
-    padding-block: 25px;
-
-    &-active {
-      color: $color-white;
-      position: relative;
-
-      &::after {
-        position: absolute;
-        content: '';
-        display: block;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 3px;
-        background-color: $color-white;
-      }
+    @include on-tablet {
+      margin-bottom: 0;
     }
   }
 
-  &__footer {
-    position: absolute;
-    height: 64px;
-    bottom: 0;
-    width: 100%;
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__nav-link {
+    @include font-uppercase-desktop;
+  }
+}
+
+.top-bar {
+  padding-block: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  &__icons {
     display: flex;
-    flex-direction: row;
-    border-top: 1px solid $color-gray-elements;
+    gap: 24px;
+  }
 
-    &-button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50%;
-      height: 100%;
-      position: relative;
+  &__logo-link {
+    display: flex;
+  }
 
-      &:last-child {
-        border-left: 1px solid $color-gray-elements;
-      }
+  &__logo {
+    height: 16px;
 
-      &-fav {
-        background-image: url('/img/icons/heart.svg');
-      }
+    // @include hover(transform, scale(1.2));
 
-      &-cart {
-        background-image: url('/img/icons/cart.svg');
-      }
-
-      &-active {
-        position: relative;
-
-        &::after {
-          position: absolute;
-          content: '';
-          display: block;
-          left: 0;
-          bottom: 0;
-          width: 100%;
-          height: 3px;
-          background-color: $color-white;
-        }
-      }
-    }
-
-    &-counter {
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      left: 52%;
-      top: 28%;
-      font-size: 9px;
-      font-weight: 700;
-      line-height: 12px;
-      color: $color-white;
-      background-image: url('/img/icons/counter.svg');
+    @include on-tablet {
+      height: 24px;
     }
   }
 }
+
+.menu-nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__link {
+    position: relative;
+    color: #75767f;
+    text-decoration: none;
+    
+    @include font-uppercase-desktop;
+    color: #75767f;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: $color-surface-1;
+
+      transition:  transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+
+  // @include hover(transform, scale(1.2));
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  &--close {
+    background-image: url('../../../public/img//icons/close.svg');
+  }
+}
+
+
+

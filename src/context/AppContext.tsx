@@ -19,6 +19,8 @@ type AppContextType = {
   clearCart: () => void;
   selectedMenu: boolean;
   setSelectedMenu: (isOpen: boolean) => void;
+  selectedNavItem: string;
+  setSelectedNavItem: (item: string) => void;
 };
 
 const AppContext = createContext<AppContextType>({
@@ -32,7 +34,9 @@ const AppContext = createContext<AppContextType>({
   calculateTotalPrice: () => 0,
   clearCart: () => {},
   selectedMenu: false,
-  setSelectedMenu: () => {},
+  setSelectedMenu: () => { },
+  selectedNavItem: 'Home',
+  setSelectedNavItem: () => {},
 });
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -43,7 +47,8 @@ export const useAppContext = () => {
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
   const [cart, setCart] = useLocalStorage<CartItemProps[]>('cart', []);
-  const [selectedMenu, setSelectedMenu] = useState<boolean>(false);
+  const [selectedMenu, setSelectedMenu] = useState<boolean>(true);
+  const [selectedNavItem, setSelectedNavItem] = useState('Home');
 
   const addToFavorites = useCallback(
     (product: Product) => {
@@ -103,7 +108,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       cart.reduce((total, { product, quantity }) => total + product.price * quantity, 0),
     );
   }, [cart]);
-
+  
   return (
     <AppContext.Provider
       value={{
@@ -118,6 +123,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         clearCart,
         selectedMenu,
         setSelectedMenu,
+        selectedNavItem,
+        setSelectedNavItem,
       }}
     >
       {children}
