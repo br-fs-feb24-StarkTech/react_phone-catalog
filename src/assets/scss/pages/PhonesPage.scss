@@ -1,6 +1,11 @@
 @import '../variables.scss';
 
+body {
+  background-color: $color-black;
+}
+
 .products {
+
   &__title {
     @include font-h1-mobile;
     margin: 0;
