@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext } from 'react';
+import React, { createContext, useCallback, useContext, useState } from 'react';
 import { Product } from '../types/Product';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { CartItemProps } from '../types/CartItemProps';
@@ -17,6 +17,8 @@ type AppContextType = {
   updateCartQuantity: (productId: string, quantity: number) => void;
   calculateTotalPrice: () => number;
   clearCart: () => void;
+  selectedMenu: boolean;
+  setSelectedMenu: (isOpen: boolean) => void;
 };
 
 const AppContext = createContext<AppContextType>({
@@ -29,6 +31,8 @@ const AppContext = createContext<AppContextType>({
   updateCartQuantity: () => {},
   calculateTotalPrice: () => 0,
   clearCart: () => {},
+  selectedMenu: false,
+  setSelectedMenu: () => {},
 });
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -39,6 +43,7 @@ export const useAppContext = () => {
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
   const [cart, setCart] = useLocalStorage<CartItemProps[]>('cart', []);
+  const [selectedMenu, setSelectedMenu] = useState<boolean>(false);
 
   const addToFavorites = useCallback(
     (product: Product) => {
@@ -111,6 +116,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         updateCartQuantity,
         calculateTotalPrice,
         clearCart,
+        selectedMenu,
+        setSelectedMenu,
       }}
     >
       {children}

@@ -20,7 +20,8 @@ export const Header: React.FC = () => {
 
   useEffect(() => {
     const pathname = location.pathname;
-    const page = pathname === '/' ? 'Home' : pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
+    const page =
+      pathname === '/' ? 'Home' : pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
     setSelected(page);
   }, [location]);
 
@@ -57,8 +58,9 @@ export const Header: React.FC = () => {
               >
                 {favoriteCounter ? (
                   <div className="right-part__icon--counter">{favoriteCounter}</div>
-                ) : ('')}
-
+                ) : (
+                  ''
+                )}
               </Link>
             </div>
 
@@ -67,10 +69,7 @@ export const Header: React.FC = () => {
                 to="/cart"
                 className={`right-part__icon right-part__icon--cart ${selected === 'Cart' ? 'is-active' : ''}`}
               >
-                {cartCounter ? (
-                  <div className="right-part__icon--counter">{cartCounter}</div>
-                ) : ('')}
-
+                {cartCounter ? <div className="right-part__icon--counter">{cartCounter}</div> : ''}
               </Link>
             </div>
 
