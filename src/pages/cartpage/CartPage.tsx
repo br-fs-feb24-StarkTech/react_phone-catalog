@@ -14,7 +14,11 @@ export const CartPage = () => {
       <div className="container">
         <div className="cart-page__content">
           <div className="cart-page__back-button back-button" onClick={handleBackClick}>
-            <div className="cart-page__back-icon back-icon"></div>
+            <button className="back-button__content">
+              <div className="cart-page__back-icon back-icon"></div>
+              Back
+            </button>
+
           </div>
 
           <h1 className="cart-page__title title">Cart</h1>
