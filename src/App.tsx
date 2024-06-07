@@ -13,7 +13,7 @@ export const App = () => (
       <Route path="/" element={<DefaultLayout />}>
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
-        <Route path="phonespage" element={<PhonesPage />} />
+        <Route path="phones" element={<PhonesPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
