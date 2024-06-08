@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import '../../assets/scss/components/products-slider.scss';
-import Card from '../card/Card';
 
 export const ProductsSlider = () => {
     const products = 20;
@@ -62,10 +61,6 @@ export const ProductsSlider = () => {
         </div>
 
           <div className="slider__list" style={carouselStyle}>
-            <Card title="Apple iPhone 14 Pro 128GB Gold (MQ083);"/>
-            <Card title="Apple iPhone 15 Pro 128GB Gold (MQ083);"/>
-            <Card title="Apple iPhone 16 Pro 128GB Gold (MQ083);"/>
-            <Card title="Apple iPhone 17 Pro 128GB Gold (MQ083);"/>
           </div>
       </div>
     </section>
