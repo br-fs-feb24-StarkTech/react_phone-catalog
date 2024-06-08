@@ -6,9 +6,16 @@
   display: flex;
   flex-direction: column;
   row-gap: 8px;
+  box-sizing: border-box;
+
+  &:hover &__img {
+    transform: scale(1.2);
+    z-index: 1;
+  }
 
   &__img {
     width: 100%;
+    transition: all 0.5s;
   }
 
   &__title {
