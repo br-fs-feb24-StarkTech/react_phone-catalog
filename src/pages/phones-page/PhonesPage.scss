@@ -6,6 +6,18 @@ body {
 
 .products {
 
+  &__container {
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 32px;
+    }
+  }
+
   &__title {
     @include font-h1-mobile;
     margin: 0;
