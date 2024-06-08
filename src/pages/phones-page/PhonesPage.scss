@@ -16,16 +16,25 @@ body {
     @include on-desktop {
       padding-inline: 32px;
     }
+
+    @media (min-width: 1201px) {
+      padding-inline: 152px;
+    }
   }
 
   &__title {
     @include font-h1-mobile;
     margin: 0;
+    margin-top: 24px;
     vertical-align: middle;
+
+    @include on-desktop {
+      margin-top: 40px;
+    }
   }
 
   &__quantity {
-    margin: 0;
+    margin-top: 8px;
 
     &Text {
       @include font-small-text-desktop;
