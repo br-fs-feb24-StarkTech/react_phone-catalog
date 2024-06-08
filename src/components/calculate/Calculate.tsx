@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
-=======
-import { useState } from 'react';
->>>>>>> 8d1a53a4eb85cf83d5e71cfe8bb252a16a1e5ee1
 import '../../components/calculate/Calculate.scss';
 import { Modal } from '../modal/Modal';
 import { useNavigate } from 'react-router-dom';
