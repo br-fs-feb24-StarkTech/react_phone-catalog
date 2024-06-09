@@ -47,7 +47,7 @@ export const useAppContext = () => {
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
   const [cart, setCart] = useLocalStorage<CartItemProps[]>('cart', []);
-  const [selectedMenu, setSelectedMenu] = useState<boolean>(true);
+  const [selectedMenu, setSelectedMenu] = useState<boolean>(false);
   const [selectedNavItem, setSelectedNavItem] = useState('Home');
 
   const addToFavorites = useCallback(

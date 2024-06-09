@@ -4,12 +4,12 @@ import './Header.scss';
 import { useAppContext } from '../../context/AppContext';
 
 export const Header: React.FC = () => {
-  const [selected, setSelected] = useState('Home');
+  const { selectedNavItem, setSelectedNavItem, selectedMenu, setSelectedMenu } = useAppContext();
   const [cartCounter, setCartCounter] = useState(3);
   const [favoriteCounter, setFavoriteCounter] = useState(5);
   const location = useLocation();
 
-  const { favorites, cart, selectedNavItem, setSelectedNavItem, selectedMenu, setSelectedMenu } = useAppContext();
+  const { favorites, cart } = useAppContext();
 
   const logo = 'img/icons/logo.svg';
 
@@ -22,9 +22,8 @@ export const Header: React.FC = () => {
     const pathname = location.pathname;
     const page =
       pathname === '/' ? 'Home' : pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
-    setSelected(page);
-    setSelectedNavItem(selected);
-  }, [location, selectedMenu]);
+    setSelectedNavItem(page);
+  }, [location, setSelectedNavItem]);
 
   const handleExitMenu = () => {
     setSelectedMenu(false);
@@ -57,7 +56,8 @@ export const Header: React.FC = () => {
                   <li key={page} className="nav__item">
                     <Link
                       to={`/${page.toLowerCase()}`}
-                      className={`nav__link ${selected === page ? 'is-active' : ''}`}
+                      className={`nav__link ${selectedNavItem === page ? 'is-active' : ''}`}
+                      onClick={() => setSelectedNavItem(page)}
                     >
                       {page}
                     </Link>
@@ -71,7 +71,7 @@ export const Header: React.FC = () => {
             <div className="right-part__item-box">
               <Link
                 to="/favorite"
-                className={`right-part__icon right-part__icon--favorite ${selected === 'Favorite' ? 'is-active' : ''}`}
+                className={`right-part__icon right-part__icon--favorite ${selectedNavItem === 'Favorite' ? 'is-active' : ''}`}
               >
                 {favoriteCounter ? (
                   <div className="right-part__icon--counter">{favoriteCounter}</div>
@@ -84,7 +84,7 @@ export const Header: React.FC = () => {
             <div className="right-part__item-box">
               <Link
                 to="/cart"
-                className={`right-part__icon right-part__icon--cart ${selected === 'Cart' ? 'is-active' : ''}`}
+                className={`right-part__icon right-part__icon--cart ${selectedNavItem === 'Cart' ? 'is-active' : ''}`}
               >
                 {cartCounter ? <div className="right-part__icon--counter">{cartCounter}</div> : ''}
               </Link>
@@ -100,7 +100,7 @@ export const Header: React.FC = () => {
             ) : (
               <div className="right-part__item-box">
                 <div
-                  className={`right-part__icon right-part__icon--menu-burger ${selected === 'Menu' ? 'is-active' : ''}`}
+                  className={`right-part__icon right-part__icon--menu-burger ${selectedNavItem === 'Menu' ? 'is-active' : ''}`}
                   onClick={handleOpenMenu}
                 ></div>
               </div>

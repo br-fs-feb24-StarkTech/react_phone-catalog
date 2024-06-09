@@ -1,12 +1,12 @@
-/* #region menu */
 @import '../../assets/scss/variables.scss';
 
+$header-height-mobile-tablet: 48px;
+$header-height-desktop: 64px;
+
 .menu {
-  margin-top: 1px;
   box-sizing: border-box;
 
   height: 100vh;
-  min-height: 320px;
 
   background-color: $color-black;
 
@@ -15,12 +15,13 @@
 
   padding-top: 24px;
 
-  &__top {
-    margin-bottom: 32px;
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
 
-    @include on-tablet {
-      margin-bottom: 0;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &__nav {
@@ -30,36 +31,11 @@
   &__nav-link {
     @include font-uppercase-desktop;
   }
-}
 
-.top-bar {
-  padding-block: 24px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @include on-tablet {
-    padding-block: 64px;
-  }
-
-  &__icons {
+  &__bottom-part {
+    box-sizing: border-box;
     display: flex;
-    gap: 24px;
-  }
-
-  &__logo-link {
-    display: flex;
-  }
-
-  &__logo {
-    height: 16px;
-
-    // @include hover(transform, scale(1.2));
-
-    @include on-tablet {
-      height: 24px;
-    }
+    align-items: center;
   }
 }
 
@@ -77,29 +53,53 @@
 
   &__link {
     position: relative;
-    color: #75767f;
+    color: $color-secondary;
     text-decoration: none;
-    
+    transition: color 0.3s;
+    padding-bottom: 8px;
+
     @include font-uppercase-desktop;
-    color: #75767f;
+    color: $color-secondary;
 
     &::after {
       content: '';
       position: absolute;
-      bottom: -8px;
-      display: block;
-      height: 1px;
-      width: 100%;
-      background-color: $color-surface-1;
+      bottom: 0;
+      left: 50%;
 
-      transition:  transform 0.3s;
-      transform: scale(0);
-      transform-origin: left;
+      width: 0;
+      height: 4px;
+
+      background-color: $color-white;
+      margin-bottom: 1px;
+
+      transition:
+        width 0.3s ease-in-out,
+        left 0.3s ease-in-out;
+
+      transform-origin: center bottom;
     }
 
+    &.is-active::after,
     &:hover::after {
-      transform: scale(1);
+      width: 100%;
+      left: 0%;
     }
+
+    &__link.is-active::after,
+    &__link:hover::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+
+.is-active {
+  color: $color-white;
+
+  &::after {
+    width: 100%;
+    left: 0;
   }
 }
 
@@ -107,20 +107,163 @@
   display: block;
   width: 24px;
   height: 24px;
+
   background-size: cover;
   background-position: center;
-
-  // @include hover(transform, scale(1.2));
 
   @include on-tablet {
     height: 32px;
     width: 32px;
   }
+}
 
-  &--close {
+.icon-wrapper {
+  width: 48px;
+  height: $header-height-mobile-tablet;
+  
+}
+
+.bottom-part {
+  width: 100%;
+  border-top: 1px solid $color-surface-2;
+
+  &__item-box {
+    width: 50%;
+    margin-bottom: 74.5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: -1px 0 0 0 $color-surface-2;
+  }
+
+  &__icon {
+    width: 100%;
+    height: $header-height-mobile-tablet;
+
+    display: flex;
+    justify-content: center;
+
+    @include on-desktop {
+      width: 64px;
+      height: $header-height-desktop;
+    }
+
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+
+      width: 0;
+      height: 4px;
+
+      background-color: $color-white;
+      margin-bottom: 1px;
+
+      transition:
+        width 0.3s ease-in-out,
+        left 0.3s ease-in-out;
+    }
+
+    &.is-active::after,
+    &:hover::after {
+      width: 100%;
+      left: 0%;
+    }
+
+    &__link.is-active::after,
+    &__link:hover::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  &__icon--favorite {
+    background-image: url('/img/icons/favourites-heart-like.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+
+    @include on-tablet {
+      display: inline-block;
+    }
+  }
+
+  &__icon--cart {
+    position: relative;
+
+    background-image: url('/img/icons/shopping-bag-cart.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+
+    @include on-tablet {
+      display: inline-block;
+    }
+  }
+
+  &__icon--menu-burger {
+    background-image: url('/img/icons/menu.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__icon--close {
     background-image: url('../../../public/img//icons/close.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+
+    @include on-tablet {
+      display: none;
+    }
   }
 }
 
+.bottom-part__icon.is-active::after {
+  width: 100%;
+  left: 0;
+}
 
+.bottom-part__icon--counter {
+  @include on-tablet {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+    border: 1px solid $color-black;
+
+    background-color: $color-red;
+    color: $color-white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: $font-regular;
+    font-size: 9px;
+    font-weight: 300;
+  }
+
+  @include on-desktop {
+    top: 18px;
+    right: 18px;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+}
