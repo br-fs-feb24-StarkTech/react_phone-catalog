@@ -5,15 +5,14 @@ $header-height-desktop: 64px;
 
 .menu {
   box-sizing: border-box;
-
   height: 100vh;
+
+  padding-top: 24px;
 
   background-color: $color-black;
 
   font-weight: 700;
   text-transform: uppercase;
-
-  padding-top: 24px;
 
   &__content {
     box-sizing: border-box;
@@ -34,6 +33,7 @@ $header-height-desktop: 64px;
 
   &__bottom-part {
     box-sizing: border-box;
+
     display: flex;
     align-items: center;
   }
@@ -43,6 +43,7 @@ $header-height-desktop: 64px;
   &__list {
     margin: 0;
     padding: 0;
+
     list-style: none;
 
     display: flex;
@@ -53,8 +54,10 @@ $header-height-desktop: 64px;
 
   &__link {
     position: relative;
+
     color: $color-secondary;
     text-decoration: none;
+
     transition: color 0.3s;
     padding-bottom: 8px;
 
@@ -63,6 +66,7 @@ $header-height-desktop: 64px;
 
     &::after {
       content: '';
+
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -173,12 +177,6 @@ $header-height-desktop: 64px;
     &:hover::after {
       width: 100%;
       left: 0%;
-    }
-
-    &__link.is-active::after,
-    &__link:hover::after {
-      width: 100%;
-      left: 0;
     }
   }
 
