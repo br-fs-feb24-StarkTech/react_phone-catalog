@@ -7,8 +7,7 @@ $header-height-desktop: 64px;
   @include font-uppercase-desktop;
 
   background-color: $color-black;
-  // box-shadow: 0 1px 0 0 $color-surface-2; <-- box não está se comportando como eu esperava
-  border-bottom: 1px solid $color-surface-2; // <-- usando border-bottom provisóriamente
+  border-bottom: 1px solid $color-surface-2;
 
   width: 100%;
   min-width: 320px;
