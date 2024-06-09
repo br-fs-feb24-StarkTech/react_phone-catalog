@@ -2,7 +2,7 @@
 
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
-- [Original Dark](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
+- [Original Dark](<https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark>)
 
 There are optional tasks at the end of this readme, go check them out!
 
@@ -122,7 +122,7 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
 2. Implement the `Product was not found` state for the `ProductDetailsPage`.
 
-## (*) Advanced tasks
+## (\*) Advanced tasks
 
 - Implement color theme switching!
 - Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.

@@ -1,0 +1,49 @@
+@import '../variables.scss';
+
+.slider {
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+
+    &-title {
+      @include font-h2-desktop;
+    }
+
+    &-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #3B3E4A;
+      background-color: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .open {
+      background-color: $color-surface-2;
+    }
+
+    .left {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__products {
+    overflow: hidden;
+  }
+
+  
+  &__list {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+  }
+}
