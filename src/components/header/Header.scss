@@ -159,6 +159,7 @@ $header-height-desktop: 64px;
       left: 0;
     }
   }
+  
 }
 
 .is-active {
@@ -202,6 +203,12 @@ $header-height-desktop: 64px;
       transition:
         width 0.3s ease-in-out,
         left 0.3s ease-in-out;
+    }
+
+    &.is-active::after,
+    &:hover::after {
+      width: 100%;
+      left: 0%;
     }
   }
 
