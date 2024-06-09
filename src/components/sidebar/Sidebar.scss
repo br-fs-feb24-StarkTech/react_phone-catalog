@@ -79,7 +79,7 @@
     position: relative;
     color: #75767f;
     text-decoration: none;
-    
+
     @include font-uppercase-desktop;
     color: #75767f;
 
@@ -92,7 +92,7 @@
       width: 100%;
       background-color: $color-surface-1;
 
-      transition:  transform 0.3s;
+      transition: transform 0.3s;
       transform: scale(0);
       transform-origin: left;
     }
@@ -118,9 +118,6 @@
   }
 
   &--close {
-    background-image: url('../../../public/img//icons/close.svg');
+    background-image: url('/img/icons/close.svg');
   }
 }
-
-
-
