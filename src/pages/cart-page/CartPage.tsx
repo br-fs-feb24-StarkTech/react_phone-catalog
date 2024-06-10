@@ -4,10 +4,8 @@ import { BackButton } from '../../components/back-button/BackButton';
 import { CartItem } from '../../components/cart-item/CartItem';
 import { Calculate } from '../../components/calculate/Calculate';
 import { useAppContext } from '../../context/AppContext';
-import React from 'react';
-import { ProductType } from '../../types/ProductType';
 
-export const CartPage: React.FC<ProductType> = () => {
+export const CartPage = () => {
 
   const { cart } = useAppContext();
 
