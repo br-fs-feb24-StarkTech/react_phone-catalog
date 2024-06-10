@@ -1,3 +1,6 @@
 export interface PaginationProps {
-  pageNUmber: number;
+  totalCount: number;
+  pageSize: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
 }
