@@ -7,13 +7,33 @@
   flex-direction: column;
   row-gap: 8px;
 
+  &:hover &__img {
+    transform: scale(1.2);
+
+    @include on-desktop {
+      transition: transform 1s;
+    }
+    
+  }
+
   &__img {
     width: 100%;
+    object-fit: contain;
+    height: 130px;
+
+    @include on-tablet {
+      height: 196px;
+    }
+
+    @include on-desktop {
+      height: 208px;
+    }
   }
 
   &__title {
     @include font-body-text-desktop;
     margin: 0;
+    margin-top: 16px;
   }
 
   &__price {

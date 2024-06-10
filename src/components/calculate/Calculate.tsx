@@ -6,9 +6,10 @@ import { useAppContext } from '../../context/AppContext';
 
 export const Calculate: React.FC = () => {
   const navigate = useNavigate();
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [cartQuantity, setCartQuantity] = useState(0);
 
   const [modalStatus, setModalStatus] = useState(false);
-  const [quantity, setQuantity] = useState<number>(0);
   const handleModal = () => {
     setModalStatus(true);
 
@@ -18,22 +19,21 @@ export const Calculate: React.FC = () => {
   };
 
   const {
+    calculateTotalPrice,
     cart,
-    totalCost,
   } = useAppContext();
 
   useEffect(() => {
-    setQuantity(cart.length);
-  }, []);
-
-  console.log(cart)
+    setTotalPrice(calculateTotalPrice);
+    setCartQuantity(cart.length);
+  }, [calculateTotalPrice, cart.length]);
 
   return (
     <div className="calculate">
       <div className="calculate__infos">
-        <h2 className="calculate__price">${totalCost}</h2>
+        <h2 className="calculate__price">${totalPrice}</h2>
 
-        <p className="calculate__description">Total for {quantity} items</p>
+        <p className="calculate__description">Total for {cartQuantity} items</p>
       </div>
 
       <div className="calculate__line"></div>

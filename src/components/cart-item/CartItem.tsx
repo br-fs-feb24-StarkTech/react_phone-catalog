@@ -1,51 +1,51 @@
-import imgPhone from '/img/phones/apple-iphone-11-pro-max/gold/00.webp';
 import closeIcon from '/img/icons/close.svg';
 import minusIcon from '/img/icons/minus.svg';
 import plusIcon from '/img/icons/plus.svg';
 import './CartItem.scss';
 import React, { useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
-import { Product } from '../../types/Product';
+import { CartItemProps } from '../../types/CartItemProps';
 
-type Props = {
-  product: Product;
-};
+export const CartItem: React.FC<CartItemProps> = ({product}) => {
 
-export const CartItem: React.FC<Props> = ({product}) => {
-
-  const [itemCost, setItemCost] = useState(0);
-  const [counter, setCounter] = useState(1);
+  const [quantity, setQuantity] = useState(1);
+  const [cost, setCost] = useState(0);
+  const [totalCost, setTotalCost] = useState(0);
 
   const {
     removeFromCart,
-    totalQuantity,
-    setTotalQuantity,
-    totalCost,
-    setTotalCost,
     cart,
+    updateCartQuantity,
   } = useAppContext();
 
   const counterIncrease = () => {
-    setCounter(counter + 1);
-    setTotalQuantity(totalQuantity + 1);
-    setTotalCost(totalCost + product.price);
+    updateCartQuantity(product.id, 1);
+    setQuantity(quantity + 1);
+    setTotalCost(cost * (quantity + 1));
   };
 
   const counterDecrease = () => {
-    setCounter(counter - 1);
-    setTotalQuantity(totalQuantity - 1);
-    setTotalCost(totalCost - product.price);
+    updateCartQuantity(product.id, -1);
+    setQuantity(quantity - 1);
+    setTotalCost(cost * (quantity - 1));
   };
-
-  useEffect(() => {
-    setItemCost(counter * product.price);
-  }, [counter, product.price]);
 
   const handleRemoveItem = () => {
     removeFromCart(product.id);
   };
 
-  console.log(cart);
+  useEffect(() => {
+    cart.filter( (cartItem) => {
+      if(cartItem.product.id === product.id) {
+        setQuantity(cartItem.quantity);
+        setCost(cartItem.product.price);
+        setTotalCost(cartItem.product.price * cartItem.quantity);
+      }
+   });
+  }, []);
+
+  console.log(product.name);
+
   return (
     <div className="cart-item">
       <div className="display cart-item__display">
@@ -59,23 +59,23 @@ export const CartItem: React.FC<Props> = ({product}) => {
         </button>
 
         <div className="display__img">
-          <img className="display__img-phone" src={imgPhone} alt="img-phone" />
+          <img className="display__img-phone" src={product.image} alt="img-phone" />
         </div>
 
-        <p className="display__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
+        <p className="display__name">{product.name}</p>
       </div>
 
       <div className="details cart-item__details">
         <div className="quantity details__quantity">
           <button
-            className="quantity__button quantity__button--disabled"
+            className={`quantity__button ${quantity === 1 ? "quantity__button--disabled" : ""}`}
             onClick={counterDecrease}
-            disabled={`${counter}` === '1'}
+            disabled={quantity === 1}
           >
             <img src={minusIcon} alt="button-minus-desabled" />
           </button>
 
-          <span className="quantity__number">{counter}</span>
+          <span className="quantity__number">{quantity}</span>
 
           <button
             className="quantity__button"
@@ -85,7 +85,7 @@ export const CartItem: React.FC<Props> = ({product}) => {
           </button>
         </div>
 
-        <h3 className="details__price">{itemCost}</h3>
+        <h3 className="details__price">{totalCost}</h3>
       </div>
     </div>
   );
