@@ -1,0 +1,42 @@
+@import '../../assets/scss/variables.scss';
+
+.modal {
+  width: 400px;
+  height: 250px;
+  padding: 16px;
+  color: #666;
+  background-color: #fff;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 3;
+
+  &__success {
+    position: relative;
+    width: 100%;
+
+    &-gif {
+      width: 60%;
+    }
+  }
+
+  &__description {
+    @include font-h3-desktop;
+    color: $color-surface-1;
+  }
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}

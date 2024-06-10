@@ -1,12 +1,12 @@
 import '../../components/footer/Footer.scss';
-import logo from '../../../public/img/svg/logo.svg';
-import chevronUp from '../../../public/img/svg/chevron-up.svg';
+import logoIcon from '/img/icons/logo.svg';
+import arrowUp from '/img/icons/arrow-up.svg';
 
 export const Footer = () => {
   return (
     <footer className="footer">
       <div className="logo footer__logo">
-        <img className="logo__img" src={logo} alt="logo" />
+        <img className="logo__img" src={logoIcon} alt="logo" />
       </div>
 
       <div className="actions footer__actions">
@@ -27,7 +27,7 @@ export const Footer = () => {
         <p className="top-button__text">Back to top</p>
 
         <div className="top-button__button">
-          <img className="top-button__icon" src={chevronUp} alt="Back to top" />
+          <img className="top-button__icon" src={arrowUp} alt="Back to top" />
         </div>
       </div>
     </footer>
