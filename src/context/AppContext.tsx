@@ -19,6 +19,10 @@ type AppContextType = {
   clearCart: () => void;
   selectedMenu: boolean;
   setSelectedMenu: (isOpen: boolean) => void;
+  totalQuantity: number;
+  setTotalQuantity: (number: number) => void;
+  totalCost: number;
+  setTotalCost: (number: number) => void;
   selectedNavItem: string;
   setSelectedNavItem: (item: string) => void;
 };
@@ -34,7 +38,11 @@ const AppContext = createContext<AppContextType>({
   calculateTotalPrice: () => 0,
   clearCart: () => {},
   selectedMenu: false,
-  setSelectedMenu: () => { },
+  setSelectedMenu: () => {},
+  totalQuantity: 0,
+  setTotalQuantity: () => {},
+  totalCost: 0,
+  setTotalCost: () => {},
   selectedNavItem: 'Home',
   setSelectedNavItem: () => {},
 });
@@ -48,6 +56,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
   const [cart, setCart] = useLocalStorage<CartItemProps[]>('cart', []);
   const [selectedMenu, setSelectedMenu] = useState<boolean>(false);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const [totalCost, setTotalCost] = useState(799);
   const [selectedNavItem, setSelectedNavItem] = useState('Home');
 
   const addToFavorites = useCallback(
@@ -108,7 +118,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       cart.reduce((total, { product, quantity }) => total + product.price * quantity, 0),
     );
   }, [cart]);
-  
+
   return (
     <AppContext.Provider
       value={{
@@ -123,6 +133,10 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         clearCart,
         selectedMenu,
         setSelectedMenu,
+        totalQuantity,
+        setTotalQuantity,
+        totalCost,
+        setTotalCost,
         selectedNavItem,
         setSelectedNavItem,
       }}

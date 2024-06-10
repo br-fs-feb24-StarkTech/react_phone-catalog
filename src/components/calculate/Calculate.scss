@@ -1,7 +1,7 @@
 @import '../../assets/scss/variables.scss';
 
 .calculate {
-  border: 1px solid #3B3E4A;
+  border: 1px solid #3b3e4a;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -37,13 +37,13 @@
   }
 
   &__line {
-    border: 1px solid #3B3E4A;
+    border: 1px solid #3b3e4a;
   }
 
   &__button-checkout {
     display: flex;
     justify-content: center;
-    background-color: #905BFF;
+    background-color: #905bff;
     align-items: center;
     text-decoration: none;
     border: none;

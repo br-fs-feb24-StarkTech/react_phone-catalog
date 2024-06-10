@@ -28,12 +28,6 @@
   &__back-button {
     margin-block: 24px;
 
-    display: flex;
-    align-items: center;
-    gap: 4px;
-
-    @include font-small-text-desktop;
-
     @include on-tablet {
       margin-block: 40px 16px;
     }
@@ -107,6 +101,21 @@
       width: 33%;
       height: 206px;
     }
+  }
+
+  .alert {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    width: 100%;
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 16px;
+    background-color: $color-surface-1;
+    
+    @include font-h3-desktop;
   }
 }
 
