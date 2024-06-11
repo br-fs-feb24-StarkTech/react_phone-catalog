@@ -18,10 +18,7 @@ export const Calculate: React.FC = () => {
     }, 3000);
   };
 
-  const {
-    calculateTotalPrice,
-    cart,
-  } = useAppContext();
+  const { calculateTotalPrice, cart } = useAppContext();
 
   useEffect(() => {
     setTotalPrice(calculateTotalPrice);

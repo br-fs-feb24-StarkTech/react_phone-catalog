@@ -59,7 +59,6 @@
       gap: 16px;
 
       padding-bottom: 80px;
-
     }
   }
 
@@ -115,7 +114,7 @@
     flex-direction: column;
     gap: 16px;
     background-color: $color-surface-1;
-    
+
     @include font-h3-desktop;
   }
 }
@@ -130,7 +129,7 @@
 
   padding-left: 0;
   cursor: pointer;
-  
+
   background-color: transparent;
   border: none;
 }

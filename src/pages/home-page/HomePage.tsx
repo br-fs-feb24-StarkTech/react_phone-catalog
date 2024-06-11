@@ -1,8 +1,7 @@
 export const HomePage = () => {
-  return ( 
+  return (
     <>
       <h1 className="title">Phone Catalog</h1>;
     </>
-  )
-  
+  );
 };

@@ -6,17 +6,12 @@ import React, { useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
 import { CartItemProps } from '../../types/CartItemProps';
 
-export const CartItem: React.FC<CartItemProps> = ({product}) => {
-
+export const CartItem: React.FC<CartItemProps> = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const [cost, setCost] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
 
-  const {
-    removeFromCart,
-    cart,
-    updateCartQuantity,
-  } = useAppContext();
+  const { removeFromCart, cart, updateCartQuantity } = useAppContext();
 
   const counterIncrease = () => {
     updateCartQuantity(product.id, 1);
@@ -35,13 +30,13 @@ export const CartItem: React.FC<CartItemProps> = ({product}) => {
   };
 
   useEffect(() => {
-    cart.filter( (cartItem) => {
-      if(cartItem.product.id === product.id) {
+    cart.filter(cartItem => {
+      if (cartItem.product.id === product.id) {
         setQuantity(cartItem.quantity);
         setCost(cartItem.product.price);
         setTotalCost(cartItem.product.price * cartItem.quantity);
       }
-   });
+    });
   }, []);
 
   console.log(product.name);
@@ -68,7 +63,7 @@ export const CartItem: React.FC<CartItemProps> = ({product}) => {
       <div className="details cart-item__details">
         <div className="quantity details__quantity">
           <button
-            className={`quantity__button ${quantity === 1 ? "quantity__button--disabled" : ""}`}
+            className={`quantity__button ${quantity === 1 ? 'quantity__button--disabled' : ''}`}
             onClick={counterDecrease}
             disabled={quantity === 1}
           >
@@ -77,10 +72,7 @@ export const CartItem: React.FC<CartItemProps> = ({product}) => {
 
           <span className="quantity__number">{quantity}</span>
 
-          <button
-            className="quantity__button"
-            onClick={counterIncrease}
-          >
+          <button className="quantity__button" onClick={counterIncrease}>
             <img src={plusIcon} alt="button-plus-default" />
           </button>
         </div>

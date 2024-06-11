@@ -6,7 +6,6 @@ import { Calculate } from '../../components/calculate/Calculate';
 import { useAppContext } from '../../context/AppContext';
 
 export const CartPage = () => {
-
   const { cart } = useAppContext();
 
   return (
@@ -21,14 +20,19 @@ export const CartPage = () => {
 
           <div className="cart-page__wrapper-elements">
             <ul className="cart-page__list list">
-              {cart.length > 0 ?
-              cart.map((item) => {
-                return <CartItem key={item.product.id} product={item.product} quantity={item.quantity} />;
-                }
-              ) 
-                :
+              {cart.length > 0 ? (
+                cart.map(item => {
+                  return (
+                    <CartItem
+                      key={item.product.id}
+                      product={item.product}
+                      quantity={item.quantity}
+                    />
+                  );
+                })
+              ) : (
                 <p className="alert">Nenhum item no carrinho</p>
-              }
+              )}
             </ul>
 
             <Calculate />

@@ -6,11 +6,7 @@ const Card: React.FC<CardProps> = ({ product }) => {
   return (
     <>
       <li className="products__card card">
-        <img
-          src={product.image}
-          alt="img-phone"
-          className="card__img"
-        />
+        <img src={product.image} alt="img-phone" className="card__img" />
 
         <h4 className="card__title">{product.name}</h4>
 

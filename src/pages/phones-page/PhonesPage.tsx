@@ -6,14 +6,12 @@ import { useEffect, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
 
 const PhonesPage = () => {
-
   const [phones, setPhones] = useState<ProductType[]>([]);
 
-  useEffect( () => {
-    fetchProducts()
-      .then(data => {
-        setPhones(data.filter((product: ProductType) => product.category === 'phones'));
-      });
+  useEffect(() => {
+    fetchProducts().then(data => {
+      setPhones(data.filter((product: ProductType) => product.category === 'phones'));
+    });
   }, []);
 
   return (
