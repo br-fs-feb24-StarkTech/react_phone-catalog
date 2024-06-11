@@ -5,7 +5,7 @@ import { PaginationProps } from '../../types/PaginationProps';
 import { usePagination } from '../../hooks/UsePagination';
 
 enum Direction {
-  RIGTH = 'rigth',
+  RIGHT = 'right',
   LEFT = 'left',
 }
 
@@ -27,7 +27,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         return;
       }
       onPageChange(currentPage - 1);
-    } else if (direction === Direction.RIGTH) {
+    } else if (direction === Direction.RIGHT) {
       if (currentPage === paginationRange.length) {
         return;
       }
@@ -57,7 +57,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       </ul>
 
       <div
-        onClick={() => handlePageChange(Direction.RIGTH)}
+        onClick={() => handlePageChange(Direction.RIGHT)}
         className={`pagination__button ${currentPage === paginationRange.length ? 'pagination__button--disabled' : ''}`}
       >
         <img className="pagination__button__next" src={arrowRight} alt="next-button" />
