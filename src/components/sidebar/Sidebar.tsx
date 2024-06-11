@@ -1,4 +1,3 @@
-// src/components/Sidebar.tsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Sidebar.scss';
@@ -24,11 +23,6 @@ export const Sidebar: React.FC = () => {
       document.body.classList.remove('no-scroll');
     }
   }, [selectedMenu]);
-
-  const handleMenuItemClick = (page: string) => {
-    setSelectedNavItem(page);
-    setSelectedMenu(false);
-  };
 
   return (
     <aside className="menu" id="menu">
