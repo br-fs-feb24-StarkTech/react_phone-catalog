@@ -22,6 +22,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   margin-bottom: 16px;
 
   &__title {
@@ -41,40 +42,49 @@
 .carousel-button {
   width: 32px;
   height: 32px;
+
   background-size: cover;
   border: none;
+
   cursor: pointer;
 }
 
 .carousel-button.left {
+  background-color: transparent;
   background-image: url('../../public/img/icons/slider-button-default-right.svg');
+
   transform: rotate(180deg);
   transition: all .3s;
 }
 
 .carousel-button.left:hover:not(.disabled) {
   transition: all .3s;
+  background-color: transparent;
   background-image: url('../../public/img/icons/slider-button-hover-right.svg');
 }
 
 .carousel-button.left.disabled {
   background-image: url('../../public/img/icons/slider-button-disable-right.svg');
+  background-color: transparent;
   cursor: not-allowed;
   transition: all .3s;
 }
 
 .carousel-button.right {
   background-image: url('../../public/img/icons/slider-button-default-right.svg');
+  background-color: transparent;
   transition: all .3s;
 }
 
 .carousel-button.right:hover:not(.disabled) {
   background-image: url('../../public/img/icons/slider-button-hover-right.svg');
+  background-color: transparent;
   transition: all .3s;
 }
 
 .carousel-button.right.disabled {
   background-image: url('../../public/img/icons/slider-button-disable-right.svg');
+  background-color: transparent;
   cursor: not-allowed;
   transition: all .3s;
 }
@@ -90,21 +100,22 @@
     display: grid;
     grid-gap: 16px;
     grid-auto-flow: column;
-    grid-auto-columns: calc((100% - 16px) / 1.3); /* 1.3 cards on mobile */
+    grid-auto-columns: calc((100% - 16px) / 1.3);
 
-    scroll-snap-type: x mandatory;
+    // scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
     transition: transform 0.3s ease-in-out;
   
     &::-webkit-scrollbar {
-      display: none; /* Hide scrollbar for better appearance */
+      display: none; 
     }
 
     @include on-tablet {
-      grid-auto-columns: calc((100% - 32px) / 2.3); /* 2.3 cards on tablet */
+      grid-auto-columns: calc((100% - 32px) / 2.3);
     }
   
     @include on-desktop {
-      grid-auto-columns: calc((100% - 48px) / 4); /* 4 cards on desktop */
+      grid-auto-columns: calc((100% - 48px) / 4);
     }
   }
 }

@@ -6,7 +6,6 @@ export const SliderCard: React.FC<CardProps> = ({ product }) => {
 
   const { image, name, fullPrice, price, screen, ram, capacity } = product;
   return (
-
     <li className="card carousel-card">
       <div className="card__top-part">
         <div className="card__box-image">
@@ -16,7 +15,6 @@ export const SliderCard: React.FC<CardProps> = ({ product }) => {
             className="card__img"
           />
         </div>
-        
       </div>
 
       <div className="card__infos-box">
@@ -41,7 +39,6 @@ export const SliderCard: React.FC<CardProps> = ({ product }) => {
         </div>
         <ActionButtons product={product} />
       </div>
-
     </li>
 
   );
