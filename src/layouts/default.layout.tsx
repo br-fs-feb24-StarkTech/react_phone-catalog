@@ -4,7 +4,7 @@ import './default.layout.scss';
 import { Header } from '../components/header/Header';
 import { Footer } from '../components/footer/Footer';
 import { useAppContext } from '../context/AppContext';
-import { Sidebar } from '../components/sidebar/Sidebar';
+import { Sidebar } from '../components/sidebar/';
 
 export const DefaultLayout = () => {
   const { selectedMenu, setSelectedMenu } = useAppContext();

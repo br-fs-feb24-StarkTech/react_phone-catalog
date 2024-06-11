@@ -25,6 +25,11 @@ export const Sidebar: React.FC = () => {
     }
   }, [selectedMenu]);
 
+  const handleMenuItemClick = (page: string) => {
+    setSelectedNavItem(page);
+    setSelectedMenu(false);
+  };
+
   return (
     <aside className="menu" id="menu">
       <div className="container">
