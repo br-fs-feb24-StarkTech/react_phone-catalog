@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   category: string;
-  phoneId: string;
+  phoneId?: string;
   itemId: string;
   name: string;
   fullPrice: number;
