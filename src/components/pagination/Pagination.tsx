@@ -4,6 +4,11 @@ import './Pagination.scss';
 import { PaginationProps } from '../../types/PaginationProps';
 import { usePagination } from '../../hooks/UsePagination';
 
+enum Direction {
+  RIGTH = 'rigth',
+  LEFT = 'left',
+}
+
 export const Pagination: React.FC<PaginationProps> = ({
   totalCount,
   pageSize,
@@ -16,22 +21,24 @@ export const Pagination: React.FC<PaginationProps> = ({
     return null;
   }
 
-  const onNext = () => {
-    if (currentPage < paginationRange.length) {
-      onPageChange(currentPage + 1);
-    }
-  };
-
-  const onPrevious = () => {
-    if (currentPage > 1) {
+  const handlePageChange = (direction: Direction) => {
+    if (direction === Direction.LEFT) {
+      if (currentPage === paginationRange[0]) {
+        return;
+      }
       onPageChange(currentPage - 1);
+    } else if (direction === Direction.RIGTH) {
+      if (currentPage === paginationRange.length) {
+        return;
+      }
+      onPageChange(currentPage + 1);
     }
   };
 
   return (
     <div className="pagination">
       <div
-        onClick={onPrevious}
+        onClick={() => handlePageChange(Direction.LEFT)}
         className={`pagination__button ${currentPage === 1 ? 'pagination__button--disabled' : ''}`}
       >
         <img className="pagination__button__previous" src={arrowLeft} alt="previous-button" />
@@ -50,7 +57,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       </ul>
 
       <div
-        onClick={onNext}
+        onClick={() => handlePageChange(Direction.RIGTH)}
         className={`pagination__button ${currentPage === paginationRange.length ? 'pagination__button--disabled' : ''}`}
       >
         <img className="pagination__button__next" src={arrowRight} alt="next-button" />
