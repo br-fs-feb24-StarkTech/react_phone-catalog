@@ -7,6 +7,7 @@ import PhonesPage from './pages/phones-page/PhonesPage';
 import { CartPage } from './pages/cart-page/CartPage';
 import './App.css';
 import { AppProvider } from './context/AppContext';
+import { ItemDetails } from './pages/item-details/ItemDetails';
 
 export const App = () => (
   <AppProvider
@@ -17,6 +18,7 @@ export const App = () => (
             <Route index element={<HomePage />} />
             <Route path="home" element={<Navigate to="/" replace />} />
             <Route path="phones" element={<PhonesPage />} />
+            <Route path="item-details/1" element={<ItemDetails />} />
             <Route path="cart" element={<CartPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
