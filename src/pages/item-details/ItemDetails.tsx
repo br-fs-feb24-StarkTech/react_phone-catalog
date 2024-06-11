@@ -1,4 +1,5 @@
-import BreadCrumbs from '../../components/bread-crumbs/BreadCrumbs';
+import { BackButton } from '../../components/back-button/BackButton';
+import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
 import './ItemDetails.scss';
 
 export const ItemDetails = () => {
@@ -8,13 +9,15 @@ export const ItemDetails = () => {
         <BreadCrumbs />
       </div>
 
-      <div className="item-details__back-button">BACK BUTTON</div>
+      <div className="item-details__back-button">
+        <BackButton />
+      </div>
 
       <div className="product item-details__product">
         <h2 className="product__name">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</h2>
 
         <div className="display product__display">
-          <div className="display__images">IMAGE</div>
+          <div className="display__images">IMAGES</div>
 
           <div className="display__card">CARD</div>
         </div>

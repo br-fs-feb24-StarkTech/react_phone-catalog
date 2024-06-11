@@ -4,9 +4,20 @@
   @include pageGrid;
 
   box-sizing: border-box;
-  padding: 24px 16px;
+  padding: 24px 16px 56px;
   background-color: $color-black;
   color: $color-white;
+  gap: 0;
+
+  @include on-tablet {
+    padding-inline: 24px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    padding-bottom: 80px;
+  }
 
   &__bread-crumbs {
     grid-column: 1 /-1;
@@ -15,6 +26,10 @@
   &__back-button {
     margin-top: 24px;
     grid-column: 1 / -1;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
   }
 
   &__product {
@@ -25,6 +40,14 @@
   &__details {
     margin-top: 56px;
     grid-column: 1 / -1;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
   }
 
   &__other-products {
@@ -32,6 +55,14 @@
     grid-column: 1 / -1;
     height: 495px;
     background-color: $color-surface-2;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
   }
 }
 
@@ -40,27 +71,85 @@
   flex-direction: column;
 
   &__name {
-    @include font-h2-mobile;
-  }
+    margin: 0;
 
-  &__display {
-    height: 330px;
-    background-color: $color-surface-2;
+    @include font-h2-mobile;
+
+    @include on-tablet {
+      @include font-h2-desktop;
+    }
   }
 }
 
-.details {
+.display {
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
 
+  @include on-tablet {
+    margin-top: 40px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+
+  &__images {
+    width: 100%;
+    height: 356px;
+    background-color: $color-surface-2;
+
+    @include on-desktop {
+      height: 464px;
+    }
+  }
+
+  &__card {
+    width: 100%;
+    height: 435px;
+    background-color: $color-surface-2;
+
+    @include on-desktop {
+      height: 464px;
+    }
+  }
+}
+
+.item-details .details {
+  display: flex;
+  flex-direction: column;
+
+  @include on-desktop {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 64px;
+  }
+
   &__about {
+    width: 100%;
     height: 875px;
     background-color: $color-surface-2;
+
+    @include on-tablet {
+      height: 631px;
+    }
   }
 
   &__tech-specs {
+    width: 100%;
     margin-top: 56px;
     height: 296px;
     background-color: $color-surface-2;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 0;
+    }
   }
 }
