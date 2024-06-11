@@ -1,12 +1,17 @@
 import './PhonesPage.scss';
 import Card from '../../components/card/Card';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
+import { Pagination } from '../../components/pagination/Pagination';
 import { fetchProducts } from '../../utils/mockApi';
 import { useEffect, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
 
+const DEFAULT_PAGE_SIZE = 16;
+
 const PhonesPage = () => {
   const [phones, setPhones] = useState<ProductType[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
 
   useEffect(() => {
     fetchProducts().then(data => {
@@ -14,13 +19,20 @@ const PhonesPage = () => {
     });
   }, []);
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const currentPhones = phones.slice(startIndex, startIndex + pageSize);
+
   return (
     <>
       <div className="products__container products container">
         <BreadCrumbs />
         <h1 className="products__title">Mobile phones</h1>
         <p className="products__quantity">
-          <span className="products__quantityText">97 models</span>
+          <span className="products__quantityText">{phones.length} models</span>
         </p>
 
         <div className="products__filter filter">
@@ -34,17 +46,29 @@ const PhonesPage = () => {
 
             <div className="perPage__select">
               <div className="perPage__options-wrapper">
-                <div className="perPage__option"></div>
+                <select value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>
+                  <option value={8}>8</option>
+                  <option value={12}>12</option>
+                  <option value={16}>{`16 (default)`}</option>
+                  <option value={20}>20</option>
+                </select>
               </div>
             </div>
           </div>
         </div>
 
         <ul className="products__list">
-          {phones.map(product => {
+          {currentPhones.map(product => {
             return <Card key={product.id} product={product} />;
           })}
         </ul>
+
+        <Pagination
+          totalCount={phones.length}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
       </div>
     </>
   );
