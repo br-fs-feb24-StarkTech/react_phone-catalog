@@ -1,68 +1,66 @@
 @import '../../assets/scss/variables';
 
 .pagination {
-  margin: 0 auto;
-  height: 32px;
-  width: auto;
   display: flex;
   flex-direction: row;
-  gap: 16px;
   justify-content: center;
-  margin-top: 40px;
+  align-items: center;
 
-  @include on-mobile {
-    margin-top: 24px;
-  }
-
-  &__left-slide,
-  &__right-slide {
-    @extend %small-button;
-
-    background-color: $color-surface2;
+  &__button {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
-    transition-duration: $transition-duration;
-  }
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    background-color: $color-surface-2;
+    transition-duration: 300ms;
 
-  &__slider {
-    height: 100%;
-    overflow: hidden;
-    width: auto;
-    display: flex;
-    gap: 8px;
-
-    &-list {
-      width: auto;
-      display: flex;
-      flex-direction: row;
-      gap: 8px;
-    }
-
-    &-item {
-      width: 32px;
-      height: 32px;
-    }
-
-    &-num {
-      @extend %body-text;
-
-      border: none;
-      color: $color-white;
-      background-color: $color-gray-elements;
-      width: 32px;
-      height: 32px;
+    &:hover {
+      background-color: $color-icons;
+      transition-duration: 300ms;
       cursor: pointer;
+    }
 
-      &-active {
-        background-color: $color-accent;
+    &--disabled {
+      background-color: transparent;
+      border: 1px solid $color-elements;
+
+      &:hover {
+        background-color: transparent;
+        cursor: default;
       }
     }
+  }
 
-    &-dots {
-      color: $color-white;
-      font-size: 15px;
+  .numbers {
+    @include font-body-text-desktop;
+    padding: 0;
+    margin-inline: 16px;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 8px;
+    color: $color-white;
+
+    &__page {
+      width: 32px;
+      height: 32px;
+      background-color: $color-surface-1;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition-duration: 300ms;
+
+      &--active {
+        background-color: $color-accent-hover;
+      }
+
+      &:hover {
+        background-color: $color-elements;
+        transition-duration: 300ms;
+      }
     }
   }
 }
