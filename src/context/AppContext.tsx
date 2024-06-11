@@ -1,28 +1,24 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
-import { Product } from '../types/Product';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { CartItemProps } from '../types/CartItemProps';
+import { ProductType } from '../types/ProductType';
 
 type Props = {
   children: React.ReactNode;
 };
 
 type AppContextType = {
-  favorites: Product[];
-  addToFavorites: (product: Product) => void;
-  removeFromFavorites: (productId: string) => void;
+  favorites: ProductType[];
+  addToFavorites: (product: ProductType) => void;
+  removeFromFavorites: (productId: number) => void;
   cart: CartItemProps[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void;
-  updateCartQuantity: (productId: string, quantity: number) => void;
+  addToCart: (product: ProductType) => void;
+  removeFromCart: (productId: number) => void;
+  updateCartQuantity: (productId: number, quantity: number) => void;
   calculateTotalPrice: () => number;
   clearCart: () => void;
   selectedMenu: boolean;
   setSelectedMenu: (isOpen: boolean) => void;
-  totalQuantity: number;
-  setTotalQuantity: (number: number) => void;
-  totalCost: number;
-  setTotalCost: (number: number) => void;
   selectedNavItem: string;
   setSelectedNavItem: (item: string) => void;
 };
@@ -39,10 +35,6 @@ const AppContext = createContext<AppContextType>({
   clearCart: () => {},
   selectedMenu: false,
   setSelectedMenu: () => {},
-  totalQuantity: 0,
-  setTotalQuantity: () => {},
-  totalCost: 0,
-  setTotalCost: () => {},
   selectedNavItem: 'Home',
   setSelectedNavItem: () => {},
 });
@@ -53,23 +45,21 @@ export const useAppContext = () => {
 };
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
-  const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
+  const [favorites, setFavorites] = useLocalStorage<ProductType[]>('favorites', []);
   const [cart, setCart] = useLocalStorage<CartItemProps[]>('cart', []);
   const [selectedMenu, setSelectedMenu] = useState<boolean>(false);
-  const [totalQuantity, setTotalQuantity] = useState(0);
-  const [totalCost, setTotalCost] = useState(799);
   const [selectedNavItem, setSelectedNavItem] = useState('Home');
 
   const addToFavorites = useCallback(
-    (product: Product) => {
-      setFavorites((prevFavorites: Product[]) => [...prevFavorites, product]);
+    (product: ProductType) => {
+      setFavorites((prevFavorites: ProductType[]) => [...prevFavorites, product]);
     },
     [setFavorites],
   );
 
   const removeFromFavorites = useCallback(
-    (productId: string) => {
-      setFavorites((prevFavorites: Product[]) =>
+    (productId: number) => {
+      setFavorites((prevFavorites: ProductType[]) =>
         prevFavorites.filter(product => product.id !== productId),
       );
     },
@@ -77,14 +67,14 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   );
 
   const addToCart = useCallback(
-    (product: Product) => {
+    (product: ProductType) => {
       setCart(prevCart => [...prevCart, { product, quantity: 1 }]);
     },
     [setCart],
   );
 
   const removeFromCart = useCallback(
-    (productId: string) => {
+    (productId: number) => {
       setCart((prevCart: CartItemProps[]) =>
         prevCart.filter(item => item.product.id !== productId),
       );
@@ -93,7 +83,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   );
 
   const updateCartQuantity = useCallback(
-    (productId: string, delta: number) => {
+    (productId: number, delta: number) => {
       setCart(currentCart =>
         currentCart.map(cartItem => {
           if (cartItem.product.id === productId) {
@@ -133,10 +123,6 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         clearCart,
         selectedMenu,
         setSelectedMenu,
-        totalQuantity,
-        setTotalQuantity,
-        totalCost,
-        setTotalCost,
         selectedNavItem,
         setSelectedNavItem,
       }}
