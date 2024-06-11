@@ -28,7 +28,7 @@ export const Calculate: React.FC = () => {
   return (
     <div className="calculate">
       <div className="calculate__infos">
-        <h2 className="calculate__price">${totalPrice}</h2>
+        <h2 className="calculate__price">${totalPrice.toLocaleString()}</h2>
 
         <p className="calculate__description">Total for {cartQuantity} items</p>
       </div>

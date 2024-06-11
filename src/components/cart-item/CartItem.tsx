@@ -77,7 +77,7 @@ export const CartItem: React.FC<CartItemProps> = ({ product }) => {
           </button>
         </div>
 
-        <h3 className="details__price">{totalCost}</h3>
+        <h3 className="details__price">{totalCost.toLocaleString()}</h3>
       </div>
     </div>
   );
