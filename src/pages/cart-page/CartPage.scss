@@ -107,7 +107,6 @@
     justify-self: center;
     align-items: center;
     width: 100%;
-    width: 100%;
     padding: 16px;
     box-sizing: border-box;
     flex-direction: column;
@@ -115,6 +114,10 @@
     background-color: $color-surface-1;
 
     @include font-h3-desktop;
+
+    &__img {
+      width: 30%;
+    }
   }
 }
 

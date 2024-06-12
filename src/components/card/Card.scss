@@ -10,18 +10,19 @@
   flex-direction: column;
   row-gap: 8px;
 
-  &:hover &__img {
-    transform: scale(1.2);
-
-    @include on-desktop {
-      transition: transform 1s;
-    }
-  }
-
   &__img {
     width: 100%;
     object-fit: contain;
     height: 130px;
+    transition: transform 0.5s ease-out;
+
+    &:hover {
+      transform: scale(1.1);
+
+      @include on-desktop {
+        transition: transform 0.5s ease-in;
+      }
+    }
 
     @include on-tablet {
       height: 196px;
