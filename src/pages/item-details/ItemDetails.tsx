@@ -2,7 +2,7 @@ import { BackButton } from '../../components/back-button/BackButton';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
 import './ItemDetails.scss';
 
-export const ItemDetails = () => {
+export const ItemDetails = ( ) => {
   return (
     <div className="item-details">
       <div className="item-details__bread-crumbs">
@@ -19,7 +19,8 @@ export const ItemDetails = () => {
         <div className="display product__display">
           <div className="display__images">IMAGES</div>
 
-          <div className="display__card">CARD</div>
+          <div className="display__card">
+          </div>
         </div>
       </div>
 

@@ -1,10 +1,12 @@
 import './Card.scss';
 import { ActionButtons } from '../action-buttons/ActionButtons';
 import { CardProps } from '../../types/CardProps';
+import { Link } from 'react-router-dom';
 
 const Card: React.FC<CardProps> = ({ product }) => {
   return (
     <>
+    <Link to={`item-details`}>
       <li className="products__card card">
         <img src={product.image} alt="img-phone" className="card__img" />
 
@@ -33,6 +35,7 @@ const Card: React.FC<CardProps> = ({ product }) => {
 
         <ActionButtons product={product} />
       </li>
+      </Link>
     </>
   );
 };
