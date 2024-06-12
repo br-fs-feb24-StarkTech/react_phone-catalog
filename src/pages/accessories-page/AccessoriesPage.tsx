@@ -1,6 +1,6 @@
 import './AccessoriesPage.scss';
 
-const AccessoriesPage = () => {
+export const AccessoriesPage = () => {
   return (
     <div>
       <h1>Accessories Page</h1>
@@ -8,5 +8,3 @@ const AccessoriesPage = () => {
     </div>
   );
 };
-
-export default AccessoriesPage;
