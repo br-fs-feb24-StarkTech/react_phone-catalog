@@ -8,13 +8,16 @@ export const Calculate: React.FC = () => {
   const navigate = useNavigate();
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartQuantity, setCartQuantity] = useState(0);
-
   const [modalStatus, setModalStatus] = useState(false);
+
+  const { clearCart } = useAppContext();
+
   const handleModal = () => {
     setModalStatus(true);
 
     setTimeout(() => {
       navigate('/');
+      clearCart();
     }, 3000);
   };
 
@@ -28,7 +31,7 @@ export const Calculate: React.FC = () => {
   return (
     <div className="calculate">
       <div className="calculate__infos">
-        <h2 className="calculate__price">${totalPrice}</h2>
+        <h2 className="calculate__price">${totalPrice.toLocaleString()}</h2>
 
         <p className="calculate__description">Total for {cartQuantity} items</p>
       </div>

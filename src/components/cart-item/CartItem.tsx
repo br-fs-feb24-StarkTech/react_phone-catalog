@@ -52,7 +52,6 @@ export const CartItem: React.FC<CartItemProps> = ({ product }) => {
         >
           <img src={closeIcon} alt="icon-close" />
         </button>
-
         <div className="display__img">
           <img className="display__img-phone" src={product.image} alt="img-phone" />
         </div>
@@ -77,7 +76,7 @@ export const CartItem: React.FC<CartItemProps> = ({ product }) => {
           </button>
         </div>
 
-        <h3 className="details__price">{totalCost}</h3>
+        <h3 className="details__price">{totalCost.toLocaleString()}</h3>
       </div>
     </div>
   );
