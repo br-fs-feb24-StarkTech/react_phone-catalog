@@ -15,7 +15,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   onPageChange,
 }) => {
-  const paginationRange = usePagination({ totalCount, pageSize, currentPage });
+  const { paginationRange, showingRange } = usePagination({ totalCount, pageSize, currentPage });
 
   if (paginationRange.length < 2) {
     return null;
@@ -45,15 +45,20 @@ export const Pagination: React.FC<PaginationProps> = ({
       </div>
 
       <ul className="numbers pagination__numbers">
-        {paginationRange.map(pageNumber => (
-          <li
-            key={pageNumber}
-            className={`numbers__page ${currentPage === pageNumber ? 'numbers__page--active' : ''}`}
-            onClick={() => onPageChange(pageNumber)}
-          >
-            {pageNumber}
-          </li>
-        ))}
+        {showingRange.map(page => {
+          if (typeof page === 'string') {
+            return <span className="numbers__dots">{page}</span>;
+          }
+          return (
+            <li
+              key={page}
+              className={`numbers__page ${currentPage === page ? 'numbers__page--active' : ''}`}
+              onClick={() => onPageChange(page)}
+            >
+              {page}
+            </li>
+          );
+        })}
       </ul>
 
       <div
