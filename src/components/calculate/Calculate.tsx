@@ -8,13 +8,16 @@ export const Calculate: React.FC = () => {
   const navigate = useNavigate();
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartQuantity, setCartQuantity] = useState(0);
-
   const [modalStatus, setModalStatus] = useState(false);
+
+  const { clearCart } = useAppContext();
+
   const handleModal = () => {
     setModalStatus(true);
 
     setTimeout(() => {
       navigate('/');
+      clearCart();
     }, 3000);
   };
 
@@ -26,21 +29,27 @@ export const Calculate: React.FC = () => {
   }, [calculateTotalPrice, cart.length]);
 
   return (
-    <div className="calculate">
-      <div className="calculate__infos">
-        <h2 className="calculate__price">${totalPrice.toLocaleString()}</h2>
+    <>
+      {cart.length > 0 ? (
+        <div className="calculate">
+          <div className="calculate__infos">
+            <h2 className="calculate__price">${totalPrice.toLocaleString()}</h2>
 
-        <p className="calculate__description">Total for {cartQuantity} items</p>
-      </div>
+            <p className="calculate__description">Total for {cartQuantity} items</p>
+          </div>
 
-      <div className="calculate__line"></div>
+          <div className="calculate__line"></div>
 
-      <button type="button" className="calculate__button-checkout" onClick={handleModal}>
-        Checkout
-      </button>
+          <button type="button" className="calculate__button-checkout" onClick={handleModal}>
+            Checkout
+          </button>
 
-      {modalStatus && <Modal />}
-    </div>
+          {modalStatus && <Modal />}
+        </div>
+      ) : (
+        ''
+      )}
+    </>
   );
 };
 

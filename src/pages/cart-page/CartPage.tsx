@@ -31,11 +31,14 @@ export const CartPage = () => {
                   );
                 })
               ) : (
-                <p className="alert">Nenhum item no carrinho</p>
+                <div className="alert">
+                  <img src="./img/cart-is-empty.png" className="alert__img"/>
+                  <p className="alert__description">Cart is empty</p>
+                </div>
               )}
             </ul>
-
-            <Calculate />
+              <Calculate />
+            
           </div>
         </div>
       </div>

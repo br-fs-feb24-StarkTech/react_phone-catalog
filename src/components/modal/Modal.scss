@@ -9,11 +9,11 @@
   margin: auto;
   top: 0;
   bottom: 0;
-  left: 0;
   right: 0;
+  left: 0;
   text-align: center;
   border-radius: 10px;
-  position: absolute;
+  position: fixed;
   z-index: 3;
 
   &__success {

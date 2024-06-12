@@ -52,7 +52,6 @@ export const CartItem: React.FC<CartItemProps> = ({ product }) => {
         >
           <img src={closeIcon} alt="icon-close" />
         </button>
-
         <div className="display__img">
           <img className="display__img-phone" src={product.image} alt="img-phone" />
         </div>
