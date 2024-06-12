@@ -1,6 +1,6 @@
 import './TabletsPage.scss';
 
-export const TabletsPage = () => {
+const TabletsPage = () => {
   return (
     <div>
       <h1>Tablets Page</h1>
@@ -8,3 +8,5 @@ export const TabletsPage = () => {
     </div>
   );
 };
+
+export default TabletsPage;
