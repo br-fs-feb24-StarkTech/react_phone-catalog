@@ -1,6 +1,6 @@
 // import { ProductsSlider } from "../../components/products-slider/ProductsSlider";
 // import { RecommendedGoods } from "../../components/recommended-carousel/RecommendedGoods";
-import { Carousel } from "../../components/slider/Slider";
+import { Carousel } from "../../components/product-slider/ProductSlider";
 
 export const HomePage = () => {
   return (
