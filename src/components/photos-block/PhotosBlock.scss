@@ -1,0 +1,87 @@
+@import '../../assets/scss/variables.scss';
+
+.photos-block {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__list {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    @include on-tablet {
+      margin-top: 0;
+      flex-direction: column;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__selected {
+    display: flex;
+    justify-content: center;
+
+    width: 288px;
+    height: 288px;
+
+    @include on-desktop {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__selected-image {
+    height: 273px;
+
+    @include on-desktop {
+      height: 442px;
+    }
+  }
+}
+
+.list {
+  &__square {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $color-elements;
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    &--active {
+      border: 1px solid $color-white;
+    }
+  }
+
+  &__image {
+    height: 40px;
+
+    @include on-tablet {
+      height: 28px;
+    }
+
+    @include on-desktop {
+      height: 66px;
+    }
+  }
+}
