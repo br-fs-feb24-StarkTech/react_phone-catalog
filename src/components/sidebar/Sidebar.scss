@@ -5,15 +5,19 @@ $header-height-desktop: 64px;
 
 .menu {
   box-sizing: border-box;
+
   height: 100vh;
+  width: 100%; 
   padding-top: 24px;
+
   background-color: $color-black;
   font-weight: 700;
   text-transform: uppercase;
-  position: fixed; // Adicionado para manter o menu fixo na tela
-  top: 0; // Certifica-se de que o menu comece do topo
-  left: 0; // Certifica-se de que o menu comece da esquerda
-  width: 100%; // Define a largura do menu para cobrir toda a tela
+
+  position: fixed; 
+  top: 0; 
+  left: 0;
+
   z-index: 1000;
 
   &__content {
