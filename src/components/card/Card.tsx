@@ -1,22 +1,17 @@
 import './Card.scss';
 import { ActionButtons } from '../action-buttons/ActionButtons';
-// import { Product } from '../../types/Product';
 import { CardProps } from '../../types/CardProps';
 
 const Card: React.FC<CardProps> = ({ product }) => {
   return (
     <>
       <li className="products__card card">
-        <img
-          src="/img/phones/apple-iphone-14-pro/gold/04.webp"
-          alt="img-phone"
-          className="card__img"
-        />
+        <img src={product.image} alt="img-phone" className="card__img" />
 
-        <h4 className="card__title">Apple iPhone 14 Pro 128GB Gold (MQ083);</h4>
+        <h4 className="card__title">{product.name}</h4>
 
         <h3 className="card__price">
-          $799 <span className="card__price--offer">$899</span>
+          $ {product.price} <span className="card__price--offer">$ {product.fullPrice}</span>
         </h3>
 
         <div className="card__line"></div>
@@ -24,15 +19,15 @@ const Card: React.FC<CardProps> = ({ product }) => {
         <div className="card__description description">
           <p className="description__text">
             <span>Screen</span>
-            <span className="description__text--modify">5.8" OLED</span>
+            <span className="description__text--modify">{product.screen}</span>
           </p>
           <p className="description__text">
             <span>Capacity</span>
-            <span className="description__text--modify">64 GB</span>
+            <span className="description__text--modify">{product.capacity}</span>
           </p>
           <p className="description__text">
-            <span>Screen</span>
-            <span className="description__text--modify">4 GB</span>
+            <span>RAM</span>
+            <span className="description__text--modify">{product.ram}</span>
           </p>
         </div>
 

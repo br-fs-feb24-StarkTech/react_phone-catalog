@@ -1,24 +1,20 @@
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Sidebar.scss';
 import { useAppContext } from '../../context/AppContext';
-import { useEffect, useState } from 'react';
+import { useHandleMenuItemClick } from '../../hooks/useHandleMenuItemClick';
 
 export const Sidebar: React.FC = () => {
-  const { favorites, cart, selectedNavItem, setSelectedNavItem, selectedMenu, setSelectedMenu } = useAppContext();
+  const { favorites, cart, selectedNavItem, selectedMenu } = useAppContext();
   const [cartCounter, setCartCounter] = useState(3);
   const [favoriteCounter, setFavoriteCounter] = useState(5);
-  const location = useLocation();
+
+  const handleMenuItemClick = useHandleMenuItemClick();
 
   useEffect(() => {
     setFavoriteCounter(favorites.length);
     setCartCounter(cart.length);
   }, [favorites, cart]);
-
-  useEffect(() => {
-    const pathname = location.pathname;
-    const page = pathname === '/' ? 'Home' : pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
-    setSelectedNavItem(page);
-  }, [location, setSelectedNavItem]);
 
   useEffect(() => {
     if (selectedMenu) {
@@ -28,53 +24,23 @@ export const Sidebar: React.FC = () => {
     }
   }, [selectedMenu]);
 
-  const handleMenuItemClick = (page: string) => {
-    setSelectedNavItem(page);
-    setSelectedMenu(false);
-  };
-
   return (
     <aside className="menu" id="menu">
       <div className="container">
         <div className="menu__content">
           <nav className="menu-nav menu__nav">
             <ul className="menu-nav__list">
-              <li className="menu-nav_item">
-                <Link
-                  className={`menu-nav__link ${selectedNavItem === 'Home' ? 'is-active' : ''}`}
-                  to="/"
-                  onClick={() => handleMenuItemClick('Home')}
-                >
-                  Home
-                </Link>
-              </li>
-              <li className="menu-nav_item">
-                <Link
-                  className={`menu-nav__link ${selectedNavItem === 'Phones' ? 'is-active' : ''}`}
-                  to="/phones"
-                  onClick={() => handleMenuItemClick('Phones')}
-                >
-                  Phones
-                </Link>
-              </li>
-              <li className="menu-nav_item">
-                <Link
-                  className={`menu-nav__link ${selectedNavItem === 'Tablets' ? 'is-active' : ''}`}
-                  to="/tablets"
-                  onClick={() => handleMenuItemClick('Tablets')}
-                >
-                  Tablets
-                </Link>
-              </li>
-              <li className="menu-nav_item">
-                <Link
-                  className={`menu-nav__link ${selectedNavItem === 'Accessories' ? 'is-active' : ''}`}
-                  to="/accessories"
-                  onClick={() => handleMenuItemClick('Accessories')}
-                >
-                  Accessories
-                </Link>
-              </li>
+              {['Home', 'Phones', 'Tablets', 'Accessories'].map(page => (
+                <li key={page} className="menu-nav_item">
+                  <Link
+                    className={`menu-nav__link ${selectedNavItem === page ? 'is-active' : ''}`}
+                    to={`/${page.toLowerCase()}`}
+                    onClick={() => handleMenuItemClick(page)}
+                  >
+                    {page}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -86,12 +52,12 @@ export const Sidebar: React.FC = () => {
                 onClick={() => handleMenuItemClick('Favorite')}
               >
                 <div className="bottom-part__icon--favorite icon-wrapper">
-                {favoriteCounter ? (
-                  <div className="bottom-part__icon--counter">{favoriteCounter}</div>
-                ) : (
-                  ''
-                )}
-                </div> 
+                  {favoriteCounter ? (
+                    <div className="bottom-part__icon--counter">{favoriteCounter}</div>
+                  ) : (
+                    ''
+                  )}
+                </div>
               </Link>
             </div>
 
@@ -102,11 +68,14 @@ export const Sidebar: React.FC = () => {
                 onClick={() => handleMenuItemClick('Cart')}
               >
                 <div className="bottom-part__icon--cart icon-wrapper">
-                  {cartCounter ? <div className="bottom-part__icon--counter">{cartCounter}</div> : ''}
+                  {cartCounter ? (
+                    <div className="bottom-part__icon--counter">{cartCounter}</div>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </Link>
             </div>
-
           </div>
         </div>
       </div>

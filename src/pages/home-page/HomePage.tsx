@@ -3,12 +3,11 @@
 import { Carousel } from "../../components/slider/Slider";
 
 export const HomePage = () => {
-  return ( 
+  return (
     <>
       <h1 className="title">Phone Catalog</h1>;
       {/* <ProductsSlider /> */}
       <Carousel />
     </>
-  )
-  
+  );
 };

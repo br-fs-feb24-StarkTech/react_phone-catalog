@@ -1,15 +1,17 @@
+// src/components/Header.tsx
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 import { useAppContext } from '../../context/AppContext';
+import { useHandleMenuItemClick } from '../../hooks/useHandleMenuItemClick';
 
 export const Header: React.FC = () => {
-  const { selectedNavItem, setSelectedNavItem, selectedMenu, setSelectedMenu } = useAppContext();
+  const { selectedNavItem, setSelectedMenu, selectedMenu } = useAppContext();
   const [cartCounter, setCartCounter] = useState(3);
   const [favoriteCounter, setFavoriteCounter] = useState(5);
-  const location = useLocation();
 
   const { favorites, cart } = useAppContext();
+  const handleMenuItemClick = useHandleMenuItemClick();
 
   const logo = 'img/icons/logo.svg';
 
@@ -17,13 +19,6 @@ export const Header: React.FC = () => {
     setFavoriteCounter(favorites.length);
     setCartCounter(cart.length);
   }, [favorites, cart]);
-
-  useEffect(() => {
-    const pathname = location.pathname;
-    const page =
-      pathname === '/' ? 'Home' : pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
-    setSelectedNavItem(page);
-  }, [location, setSelectedNavItem]);
 
   const handleExitMenu = () => {
     setSelectedMenu(false);
@@ -57,7 +52,7 @@ export const Header: React.FC = () => {
                     <Link
                       to={`/${page.toLowerCase()}`}
                       className={`nav__link ${selectedNavItem === page ? 'is-active' : ''}`}
-                      onClick={() => setSelectedNavItem(page)}
+                      onClick={() => handleMenuItemClick(page)}
                     >
                       {page}
                     </Link>

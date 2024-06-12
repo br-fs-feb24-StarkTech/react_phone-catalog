@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
-import { Product } from '../../types/Product';
 import './ActionButtons.scss';
+import { ProductType } from '../../types/ProductType';
 
 type Props = {
-  product: Product;
+  product: ProductType;
 };
 
 export const ActionButtons: React.FC<Props> = ({ product }) => {

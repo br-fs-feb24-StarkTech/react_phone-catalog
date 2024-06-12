@@ -1,25 +1,19 @@
 import './PhonesPage.scss';
 import Card from '../../components/card/Card';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
-import { Product } from '../../types/Product';
-
-const product: Product = {
-  id: 'string',
-  category: 'string',
-  phoneId: 'string',
-  itemId: 'string',
-  name: 'string',
-  fullPrice: 799,
-  price: 799,
-  screen: 'string',
-  capacity: 'string',
-  color: 'string',
-  ram: 'string',
-  year: 1,
-  image: 'string',
-};
+import { fetchProducts } from '../../utils/mockApi';
+import { useEffect, useState } from 'react';
+import { ProductType } from '../../types/ProductType';
 
 const PhonesPage = () => {
+  const [phones, setPhones] = useState<ProductType[]>([]);
+
+  useEffect(() => {
+    fetchProducts().then(data => {
+      setPhones(data.filter((product: ProductType) => product.category === 'phones'));
+    });
+  }, []);
+
   return (
     <>
       <div className="products__container products container">
@@ -47,14 +41,9 @@ const PhonesPage = () => {
         </div>
 
         <ul className="products__list">
-          <Card product={product} />
-          <Card product={product} />
-          <Card product={product} />
-          <Card product={product} />
-          <Card product={product} />
-          <Card product={product} />
-          <Card product={product} />
-          <Card product={product} />
+          {phones.map(product => {
+            return <Card key={product.id} product={product} />;
+          })}
         </ul>
       </div>
     </>
