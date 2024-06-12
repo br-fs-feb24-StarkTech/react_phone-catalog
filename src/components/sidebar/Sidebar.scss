@@ -6,13 +6,15 @@ $header-height-desktop: 64px;
 .menu {
   box-sizing: border-box;
   height: 100vh;
-
   padding-top: 24px;
-
   background-color: $color-black;
-
   font-weight: 700;
   text-transform: uppercase;
+  position: fixed; // Adicionado para manter o menu fixo na tela
+  top: 0; // Certifica-se de que o menu comece do topo
+  left: 0; // Certifica-se de que o menu comece da esquerda
+  width: 100%; // Define a largura do menu para cobrir toda a tela
+  z-index: 1000;
 
   &__content {
     box-sizing: border-box;
@@ -41,7 +43,7 @@ $header-height-desktop: 64px;
 
 .menu-nav {
   &__list {
-    margin: 0;
+    margin: 48px 0 0;
     padding: 0;
 
     list-style: none;
@@ -124,7 +126,6 @@ $header-height-desktop: 64px;
 .icon-wrapper {
   width: 48px;
   height: $header-height-mobile-tablet;
-  
 }
 
 .bottom-part {
@@ -133,7 +134,8 @@ $header-height-desktop: 64px;
 
   &__item-box {
     width: 50%;
-    margin-bottom: 74.5px;
+    // margin-bottom: 74.5px;
+    margin-bottom: 24px;
 
     display: flex;
     justify-content: center;
@@ -181,6 +183,8 @@ $header-height-desktop: 64px;
   }
 
   &__icon--favorite {
+    position: relative;
+
     background-image: url('/img/icons/favourites-heart-like.svg');
     background-position: center;
     background-repeat: no-repeat;
@@ -223,6 +227,34 @@ $header-height-desktop: 64px;
 
     @include on-tablet {
       display: none;
+    }
+  }
+
+  &__icon--counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+    border: 1px solid $color-black;
+
+    background-color: $color-red;
+    color: $color-white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: $font-regular;
+    font-size: 9px;
+    font-weight: 300;
+
+    @include on-desktop {
+      top: 18px;
+      right: 18px;
     }
   }
 }
