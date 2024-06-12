@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import  { useEffect, useState, useRef } from 'react';
 import './Slider.scss';
 import { ProductType } from '../../types/ProductType';
 import { SliderCard } from '../slider-card/SliderCard';
