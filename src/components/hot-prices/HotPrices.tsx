@@ -8,7 +8,7 @@ export const HotPrices = () => {
 
   useEffect(() => {
     getHotPriceProducts().then(product => setProduct(product));
-  }, []);
+  }, [products]);
 
   return <ProductsSlider products={products} title="Hot prices" />;
 };
