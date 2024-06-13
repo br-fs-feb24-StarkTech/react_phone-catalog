@@ -2,8 +2,14 @@ import { useRef, useState, useEffect } from 'react';
 import './Banner.scss';
 
 const carouselImages = [
-  { desktop: '../../../public/img/banner-promo.png', mobile: '../../../public/img/banner-promo-mobile.png' },
-  { desktop: '../../../public/img/banner-phones.png', mobile: '../../../public/img/banner-phones-mobile.png' },
+  {
+    desktop: '/img/banner-promo.png',
+    mobile: '/img/banner-promo-mobile.png',
+  },
+  {
+    desktop: '/img/banner-phones.png',
+    mobile: '/img/banner-phones-mobile.png',
+  },
 ];
 
 export const Banner = () => {
@@ -55,7 +61,7 @@ export const Banner = () => {
   };
 
   const scrollLeft = () => {
-    const newIndex = (currentIndex > 0) ? currentIndex - 1 : lastCarouselItemIndex;
+    const newIndex = currentIndex > 0 ? currentIndex - 1 : lastCarouselItemIndex;
     setCurrentIndex(newIndex);
     scrollToIndex(newIndex);
   };
@@ -96,10 +102,14 @@ export const Banner = () => {
   }, [currentIndex, lastCarouselItemIndex]);
 
   return (
-    <div className="carousel" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+    <div
+      className="carousel"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="carousel__top-part">
-        <button className="carousel__button carousel__button-left" onClick={scrollLeft}>
-        </button>
+        <button className="carousel__button carousel__button-left" onClick={scrollLeft}></button>
 
         <div className="carousel__content" ref={carousel}>
           {carouselImages.map((image, index) => (
@@ -113,16 +123,12 @@ export const Banner = () => {
           ))}
         </div>
 
-        <button className="carousel__button carousel__button-right" onClick={scrollRight}>
-        </button>
+        <button className="carousel__button carousel__button-right" onClick={scrollRight}></button>
       </div>
       <div className="carousel__bottom-part">
         <div className="carousel__dots">
           {carouselImages.map((image, index) => (
-            <div
-              key={index}
-              className={`dot ${index === currentIndex ? 'dot--active' : ''}`}
-            ></div>
+            <div key={index} className={`dot ${index === currentIndex ? 'dot--active' : ''}`}></div>
           ))}
         </div>
       </div>
