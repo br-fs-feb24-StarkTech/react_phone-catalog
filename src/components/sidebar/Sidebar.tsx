@@ -47,11 +47,11 @@ export const Sidebar: React.FC = () => {
           <div className="menu__bottom-part bottom-part">
             <div className="bottom-part__item-box">
               <Link
-                to="/favorite"
-                className={`bottom-part__icon ${selectedNavItem === 'Favorite' ? 'is-active' : ''}`}
-                onClick={() => handleMenuItemClick('Favorite')}
+                to="/favourites"
+                className={`bottom-part__icon ${selectedNavItem === 'Favourites' ? 'is-active' : ''}`}
+                onClick={() => handleMenuItemClick('Favourites')}
               >
-                <div className="bottom-part__icon--favorite icon-wrapper">
+                <div className="bottom-part__icon--favourite icon-wrapper">
                   {favoriteCounter ? (
                     <div className="bottom-part__icon--counter">{favoriteCounter}</div>
                   ) : (

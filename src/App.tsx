@@ -10,6 +10,7 @@ import { AppProvider } from './context/AppContext';
 import { ItemDetails } from './pages/item-details/ItemDetails';
 import { TabletsPage } from './pages/tablets-page/TabletsPage';
 import { AccessoriesPage } from './pages/accessories-page/AccessoriesPage';
+import { FavouritesPage } from './pages/favourites-page';
 
 export const App = () => (
   <AppProvider
@@ -24,6 +25,7 @@ export const App = () => (
             <Route path="/products/:productId" element={<ItemDetails />} />
             <Route path="tablets" element={<TabletsPage />} />
             <Route path="accessories" element={<AccessoriesPage />} />
+            <Route path='favourites' element={<FavouritesPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>
