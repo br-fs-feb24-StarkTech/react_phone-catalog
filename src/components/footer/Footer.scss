@@ -82,30 +82,18 @@
   align-items: center;
   gap: 16px;
 
-  @include on-tablet {
-    justify-content: flex-end;
-  }
-
   &__text {
     @include font-small-text-desktop;
 
     color: $color-secondary;
     margin: 0;
+
+    @include on-tablet {
+      margin: 0 32px;
+    }
   }
 
-  &__button {
-    width: 32px;
-    height: 32px;
-    background-color: $color-surface-2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition-duration: 300ms;
-
-    &:hover {
-      background-color: $color-icons;
-      transition-duration: 300ms;
-      cursor: pointer;
-    }
+  @include on-tablet {
+    justify-content: flex-end;
   }
 }

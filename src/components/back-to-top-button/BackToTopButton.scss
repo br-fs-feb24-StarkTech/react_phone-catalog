@@ -1,0 +1,29 @@
+@import '../../assets/scss/variables';
+
+.back-to-top {
+  width: 32px;
+  height: 32px;
+  background-color: $color-surface-2;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 300ms;
+
+  @include on-tablet {
+    position: fixed;
+    bottom: 32px;
+    right: 25px;
+    z-index: 900;
+  }
+
+  &:hover {
+    background-color: $color-icons;
+    transition-duration: 300ms;
+    cursor: pointer;
+  }
+
+  &--invisible {
+    display: none;
+  }
+}
