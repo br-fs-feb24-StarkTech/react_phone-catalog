@@ -4,7 +4,6 @@ import { ProductType } from '../../types/ProductType';
 import { fetchProducts } from '../../utils/mockApi';
 // import { ProductsSlider } from "../../components/products-slider/ProductsSlider";
 // import { RecommendedGoods } from "../../components/recommended-carousel/RecommendedGoods";
-import { Carousel } from '../../components/product-slider/ProductSlider';
 
 export const HomePage = () => {
   const [productsList, setProductsList] = useState<ProductType[]>([]);
