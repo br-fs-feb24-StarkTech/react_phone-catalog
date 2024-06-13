@@ -13,13 +13,18 @@ const Card: React.FC<CardProps> = ({ product }) => {
   return (
     <>
       <li className="products__card card">
-        <img
-          onClick={handleSelectProduct}
-          src={product.image}
-          alt="img-phone"
-          className="card__img"
-        />
+        <div className="cardtop-part">
+        <div className="cardbox-image">
+          <img
+            onClick={handleSelectProduct}
+            src={product.image}
+            alt="img-phone"
+            className="card__img"
+          />
+          </div>
+        </div>
 
+        <div className="cardinfos-box">
         <h4 onClick={handleSelectProduct} className="card__title">
           {product.name}
         </h4>
@@ -46,6 +51,8 @@ const Card: React.FC<CardProps> = ({ product }) => {
         </div>
 
         <ActionButtons product={product} />
+
+        </div>
       </li>
     </>
   );
