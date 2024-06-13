@@ -1,5 +1,6 @@
 import { BackButton } from '../../components/back-button/BackButton';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
+import { ProductsSlider } from '../../components/product-slider/ProductSlider';
 import './ItemDetails.scss';
 
 export const ItemDetails = () => {
@@ -28,7 +29,9 @@ export const ItemDetails = () => {
         <div className="details__tech-specs">TECH-SPECS</div>
       </div>
 
-      <div className="item-details__other-products">OTHER PRODUCTS</div>
+      <div className="item-details__other-products">
+        <ProductsSlider products={products} title={'You may also like'} />
+      </div>
     </div>
   );
 };

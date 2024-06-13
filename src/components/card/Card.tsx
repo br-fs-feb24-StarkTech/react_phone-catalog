@@ -1,14 +1,28 @@
 import './Card.scss';
 import { ActionButtons } from '../action-buttons/ActionButtons';
 import { CardProps } from '../../types/CardProps';
+import { useNavigate } from 'react-router-dom';
 
 const Card: React.FC<CardProps> = ({ product }) => {
+  const navigate = useNavigate();
+
+  const handleSelectProduct = () => {
+    navigate(`/products/${product.itemId}`);
+  };
+
   return (
     <>
       <li className="products__card card">
-        <img src={product.image} alt="img-phone" className="card__img" />
+        <img
+          onClick={handleSelectProduct}
+          src={product.image}
+          alt="img-phone"
+          className="card__img"
+        />
 
-        <h4 className="card__title">{product.name}</h4>
+        <h4 onClick={handleSelectProduct} className="card__title">
+          {product.name}
+        </h4>
 
         <h3 className="card__price">
           $ {product.price} <span className="card__price--offer">$ {product.fullPrice}</span>
