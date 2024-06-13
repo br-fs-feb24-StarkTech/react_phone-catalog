@@ -57,8 +57,6 @@
   &__other-products {
     margin-top: 56px;
     grid-column: 1 / -1;
-    height: 495px;
-    background-color: $color-surface-2;
 
     @include on-tablet {
       margin-top: 64px;
