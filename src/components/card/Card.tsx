@@ -1,7 +1,7 @@
 import './Card.scss';
 import { ActionButtons } from '../action-buttons/ActionButtons';
 import { CardProps } from '../../types/CardProps';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Card: React.FC<CardProps> = ({ product }) => {
 
