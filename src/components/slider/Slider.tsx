@@ -1,7 +1,8 @@
-import  { useEffect, useState, useRef } from 'react';
+import  React, { useEffect, useState, useRef } from 'react';
 import './Slider.scss';
 import { ProductType } from '../../types/ProductType';
 import { SliderCard } from '../slider-card/SliderCard';
+import { CardProps } from '../../types/CardProps';
 
 const products1 = [
   {
@@ -147,7 +148,11 @@ const products1 = [
   }
 ];
 
-export const Carousel = () => {
+interface Props {
+  products1: ProductType[];
+}
+
+export const Carousel: React.FC<Props> = ({ products1 }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [data, setData] = useState<ProductType[]>([]);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -159,7 +164,6 @@ export const Carousel = () => {
     // fetch('http://localhost:5173/api/products.json')
     //   .then(res => res.json())
     //   .then(setData);
-
     setData(products1);
   }, []);
 
