@@ -3,6 +3,7 @@ import { Category } from '../../components/category/Category';
 import { ProductType } from '../../types/ProductType';
 import { fetchProducts } from '../../utils/mockApi';
 
+
 export const HomePage = () => {
   const [productsList, setProductsList] = useState<ProductType[]>([]);
 
