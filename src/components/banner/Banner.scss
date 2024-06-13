@@ -1,0 +1,99 @@
+@import '../../assets/scss/variables.scss';
+
+.carousel {
+  width: 100%;
+  min-width: 320px;
+
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include on-tablet {
+    max-width: 1136px;
+  } 
+
+  &__top-part {
+    position: relative;
+  }
+
+  &__content {
+    display: flex;
+    gap: 2px;
+    overflow: hidden;
+
+    @include on-tablet {
+      max-width: 1136px;
+      margin-inline: 48px;
+    } 
+    
+  }
+
+  &__item-box {
+    min-width: 100%;
+  }
+
+  &__item-image {
+    width: 100%;
+    height: 100%;
+
+    
+    @include on-tablet {
+
+    }
+  }
+
+  &__button {
+    display: none;
+    height: 100%;
+    width: 32px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    z-index: 1;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__button-left {
+    left: 0;
+    background-color: $color-surface-2;
+    background-image: url('../../../public/img/icons/arrow-left-default.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__button-right {
+    right: 0;
+    background-color: $color-surface-2;
+    background-image: url('../../../public/img/icons/arrow-right-default.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__dots {
+    display: flex;
+    gap: 14px;
+    margin-top: 18px;
+  }
+}
+
+.dot {
+  background-color: $color-elements;
+  width: 14px;
+  height: 4px;
+
+  &.dot--active {
+    background-color: white;  // Cor branca para o dot ativo
+  }
+}
