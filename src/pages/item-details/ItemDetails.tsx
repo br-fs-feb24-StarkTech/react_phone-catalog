@@ -12,22 +12,20 @@ import { TechSpecs } from '../../components/tech-specs/TechSpecs';
 
 export const ItemDetails = () => {
 
-  const { id } = useParams();
+  const { productId } = useParams();
   const [product, setProduct] = useState<ProductDetails | null>(null);
-
-  console.log(id);
 
   useEffect(() => {
     fetchProduct().then(data => {
       const targetProduct = data.find(
-        (item: ProductDetails) => item.id === id,
+        (item: ProductDetails) => item.id === productId,
       );
 
       if(targetProduct) {
         setProduct(targetProduct);
       }
     });
-  }, [id]);
+  }, [productId]);
 
   if (product) {
     const { name, images, description,} = product;

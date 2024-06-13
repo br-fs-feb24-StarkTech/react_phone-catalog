@@ -9,11 +9,11 @@ type Props = {
 };
 
 function makeColorLink(id: string, color: String, targetColor: String) {
-  return `/item-details/${id.replace(color.replace(' ', '-'), targetColor.replace(' ', '-'))}`;
+  return `/products/${id.replace(color.replace(' ', '-'), targetColor.replace(' ', '-'))}`;
 }
 
 function makeCapacityLink(id: string, capacity: string, capacityCurrent: String) {
-  return `/item-details/${id.replace(capacity.toLowerCase(), capacityCurrent.toLowerCase())}`
+  return `/products/${id.replace(capacity.toLowerCase(), capacityCurrent.toLowerCase())}`
 }
 
 export const Variants: React.FC<Props> = ({ product }) => {

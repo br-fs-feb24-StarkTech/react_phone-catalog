@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({ product }) => {
 
   return (
     <li className="products__card card">
-      <Link to={`${returnPath}item-details/${product.itemId}`} style={{ textDecoration: 'none' }}>
+      <Link to={`${returnPath}products/${product.itemId}`} style={{ textDecoration: 'none' }}>
         <img src={product.image} alt="img-phone" className="card__img" />
 
         <h4 className="card__title">{product.name}</h4>
