@@ -1,20 +1,6 @@
 @import '../../assets/scss/variables';
 
 .category {
-  padding-inline: 16px;
-
-  @include on-tablet {
-    padding-inline: 24px;
-  }
-
-  @include on-desktop {
-    padding-inline: 32px;
-  }
-
-  @media (min-width: 1201px) {
-    padding-inline: 152px;
-  }
-
   &__container {
     @include pageGrid;
     gap: 24px;
