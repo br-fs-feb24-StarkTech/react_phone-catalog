@@ -1,11 +1,11 @@
 import './PhonesPage.scss';
-import Card from '../../components/card/Card';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
 import { Pagination } from '../../components/pagination/Pagination';
 import { fetchProducts } from '../../utils/mockApi';
 import { useEffect, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
 import { useNavigate } from 'react-router-dom';
+import Card from '../../components/card/Card';
 
 const DEFAULT_PAGE_SIZE = 16;
 
