@@ -3,7 +3,7 @@ import { Category } from '../../components/category/Category';
 import { ProductType } from '../../types/ProductType';
 import { fetchProducts } from '../../utils/mockApi';
 import { Banner } from '../../components/banner/Banner';
-
+import './HomePage.scss';
 
 export const HomePage = () => {
   const [productsList, setProductsList] = useState<ProductType[]>([]);
@@ -22,13 +22,25 @@ export const HomePage = () => {
 
   return (
     <>
-      <h1 className="title">Welcome to Nice Gadgets store!</h1>;
-      <Banner />
-      <Category
-        phonesQuantity={phonesQuantity}
-        tabletsQuantity={tabletsQuantity}
-        accessoriesQuantity={accessoriesQuantity}
-      />
+      <div className="home-page">
+        <h1 className="home-page__title">Welcome to Nice Gadgets store!</h1>
+
+        <div className="home-page__banner">
+          <Banner />
+        </div>
+
+        <div className="home-page__slider">BRAND NEW MODELS</div>
+
+        <div className="home-page__category">
+          <Category
+            phonesQuantity={phonesQuantity}
+            tabletsQuantity={tabletsQuantity}
+            accessoriesQuantity={accessoriesQuantity}
+          />
+        </div>
+
+        <div className="home-page__slider">HOT PRICES</div>
+      </div>
     </>
   );
 };
