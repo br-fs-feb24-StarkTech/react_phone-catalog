@@ -11,17 +11,15 @@ export const FavouritesPage = () => {
 
   useEffect(() => {
     setFavourites(favorites);
-  }, []);
+  }, [favorites]);
 
   return (
     <div className="favorites-page">
       <div className="container">
         <div className="favorites-page__content content">
-          <BreadCrumbs  />
+          <BreadCrumbs />
           <h1 className="favorites-page__title title">Favourites</h1>
-          <div className="favorites-page__counter counter">
-            {favourites.length} items
-          </div>
+          <div className="favorites-page__counter counter">{favourites.length} items</div>
 
           <ul className="favorites-page__list list">
             {favourites.map(product => (
@@ -32,4 +30,4 @@ export const FavouritesPage = () => {
       </div>
     </div>
   );
-}
+};

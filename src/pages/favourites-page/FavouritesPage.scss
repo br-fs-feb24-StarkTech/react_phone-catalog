@@ -16,7 +16,7 @@
   }
 
   &__title {
-    @include font-h1-mobile; 
+    @include font-h1-mobile;
     margin: 24px 0 8px 0;
 
     @include on-tablet {
