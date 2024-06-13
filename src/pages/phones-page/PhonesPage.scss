@@ -212,11 +212,11 @@ body {
         &-icon {
           width: 16px;
           height: 16px;
-          background: url(./img/icons/arrow-down.svg) no-repeat;
+          background: url('/img/icons/arrow-down.svg') no-repeat;
         }
 
         .icon-active {
-          background: url(./img/icons/arrow-up.svg) no-repeat;
+          background: url('/img/icons/arrow-up.svg') no-repeat;
         }
       }
 
