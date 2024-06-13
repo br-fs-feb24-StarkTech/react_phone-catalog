@@ -6,27 +6,25 @@ import { useAppContext } from '../../context/AppContext';
 
 export const Calculate: React.FC = () => {
   const navigate = useNavigate();
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [cartQuantity, setCartQuantity] = useState(0);
-  const [modalStatus, setModalStatus] = useState(false);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [cartQuantity, setCartQuantity] = useState<number>(0);
+  const [modalStatus, setModalStatus] = useState<boolean>(false);
 
-  const { clearCart } = useAppContext();
+  const { clearCart, calculateTotalPrice, cart } = useAppContext();
 
   const handleModal = () => {
     setModalStatus(true);
-
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       navigate('/');
       clearCart();
     }, 3000);
+    return () => clearTimeout(timeoutId);
   };
 
-  const { calculateTotalPrice, cart } = useAppContext();
-
   useEffect(() => {
-    setTotalPrice(calculateTotalPrice);
+    setTotalPrice(calculateTotalPrice());
     setCartQuantity(cart.length);
-  }, [calculateTotalPrice, cart.length]);
+  }, [calculateTotalPrice, cart]);
 
   return (
     <>
@@ -34,21 +32,15 @@ export const Calculate: React.FC = () => {
         <div className="calculate">
           <div className="calculate__infos">
             <h2 className="calculate__price">${totalPrice.toLocaleString()}</h2>
-
             <p className="calculate__description">Total for {cartQuantity} items</p>
           </div>
-
           <div className="calculate__line"></div>
-
           <button type="button" className="calculate__button-checkout" onClick={handleModal}>
             Checkout
           </button>
-
           {modalStatus && <Modal />}
         </div>
-      ) : (
-        ''
-      )}
+      ) : null}
     </>
   );
 };

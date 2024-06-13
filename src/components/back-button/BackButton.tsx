@@ -10,9 +10,9 @@ export const BackButton: React.FC = () => {
   };
 
   return (
-    <button className="back-button" onClick={handleBackClick}>
+    <a className="back-button" onClick={handleBackClick}>
       <img src={arrowLeft} alt="Back" />
       <p className="back-button__text">Back</p>
-    </button>
+    </a>
   );
 };

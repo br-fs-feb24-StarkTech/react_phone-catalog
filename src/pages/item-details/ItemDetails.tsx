@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { BackButton } from '../../components/back-button/BackButton';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
+import { ProductsSlider } from '../../components/product-slider/ProductSlider';
 import './ItemDetails.scss';
 import { useEffect, useState } from 'react';
 import { ProductDetails } from '../../types/ProductDetails';
@@ -63,7 +64,9 @@ export const ItemDetails = () => {
         </div>
       </div>
 
-      <div className="item-details__other-products">OTHER PRODUCTS</div>
+      <div className="item-details__other-products">
+        <ProductsSlider products={products} title={'You may also like'} />
+      </div>
     </div>
   );
 }

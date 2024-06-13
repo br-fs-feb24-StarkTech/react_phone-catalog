@@ -1,0 +1,78 @@
+@import '../../assets/scss/variables.scss';
+
+.products-carousel {
+  display: flex;
+  flex-direction: column;
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, auto-fill);
+    grid-auto-flow: column;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  &__product {
+    padding: 0 8px;
+    width: 212px;
+    height: 439px;
+
+    @include on-tablet {
+      width: 237px;
+      height: 512px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+      height: 506px;
+    }
+  }
+}
+
+.navigation {
+  &__title {
+    @include font-h2-mobile;
+  }
+}
+
+.directions {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    background-color: $color-surface-2;
+    transition-duration: 300ms;
+    border: 0;
+
+    &:hover {
+      transition-duration: 300ms;
+      background-color: $color-icons;
+      cursor: pointer;
+    }
+
+    &--disabled {
+      background-color: transparent;
+      border: 1px solid $color-elements;
+
+      &:hover {
+        background-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+}
