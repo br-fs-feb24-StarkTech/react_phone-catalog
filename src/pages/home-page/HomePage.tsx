@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Category } from '../../components/category/Category';
 import { ProductType } from '../../types/ProductType';
 import { fetchProducts } from '../../utils/mockApi';
+import { Banner } from '../../components/banner/Banner';
 
 
 export const HomePage = () => {
@@ -21,7 +22,8 @@ export const HomePage = () => {
 
   return (
     <>
-      <h1 className="title">Phone Catalog</h1>;
+      <h1 className="title">Welcome to Nice Gadgets store!</h1>;
+      <Banner />
       <Category
         phonesQuantity={phonesQuantity}
         tabletsQuantity={tabletsQuantity}
