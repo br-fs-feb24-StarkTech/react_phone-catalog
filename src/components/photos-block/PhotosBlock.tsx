@@ -9,7 +9,7 @@ export const PhotosBlock: React.FC<Props> = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState(images[0]);
 
   useEffect(() => {
-    setSelectedImage(images[0])
+    setSelectedImage(images[0]);
   }, [images]);
 
   return (
@@ -29,9 +29,10 @@ export const PhotosBlock: React.FC<Props> = ({ images }) => {
 
       <div className="photos-block__selected">
         <img
-          className="photos-block__selected-image" 
-          src={`.././${selectedImage}`} 
-          alt="selected image" />
+          className="photos-block__selected-image"
+          src={`.././${selectedImage}`}
+          alt="selected image"
+        />
       </div>
     </div>
   );

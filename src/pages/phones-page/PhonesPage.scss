@@ -5,7 +5,7 @@ body {
 }
 
 .products {
-  margin-top: 24px; 
+  margin-top: 24px;
 
   &__container {
     padding-inline: 16px;
@@ -83,7 +83,7 @@ body {
         align-items: center;
         height: 40px;
         background-color: $color-surface-2;
-        color: #F1F2F9;
+        color: #f1f2f9;
         justify-content: space-between;
         padding-inline: 12px;
         border: 0;
@@ -93,14 +93,14 @@ body {
         @include on-tablet {
           width: 187px;
         }
-      
+
         &:hover {
           cursor: pointer;
-          border: 1px solid #4A4D58;
+          border: 1px solid #4a4d58;
         }
 
         &:focus {
-          border: 1px solid #905BFF;
+          border: 1px solid #905bff;
         }
 
         &-label {
@@ -126,14 +126,16 @@ body {
         margin: 0;
         display: flex;
         flex-direction: column;
-        border: 1px solid #3B3E4A;
-        background-color:#0F1121;
+        border: 1px solid #3b3e4a;
+        background-color: #0f1121;
         position: absolute;
         width: 140px;
         z-index: 1;
         visibility: hidden;
         opacity: 0;
-        transition: opacity 1s ease, visibility 0s ease 1s;
+        transition:
+          opacity 1s ease,
+          visibility 0s ease 1s;
 
         @include on-tablet {
           width: 185px;
@@ -143,7 +145,9 @@ body {
       .block {
         visibility: visible;
         opacity: 1;
-        transition: opacity 1s ease, visibility 0s ease 0s;
+        transition:
+          opacity 1s ease,
+          visibility 0s ease 0s;
       }
 
       &__item {
@@ -154,7 +158,7 @@ body {
 
         &:hover {
           background-color: $color-surface-2;
-          color: #F1F2F9;
+          color: #f1f2f9;
         }
 
         @include font-buttons-desktop;
@@ -163,7 +167,7 @@ body {
 
       .active {
         background-color: $color-surface-2;
-        color: #F1F2F9;
+        color: #f1f2f9;
       }
     }
 
@@ -181,7 +185,7 @@ body {
         align-items: center;
         height: 40px;
         background-color: $color-surface-2;
-        color: #F1F2F9;
+        color: #f1f2f9;
         justify-content: space-between;
         padding-inline: 12px;
         border: 0;
@@ -191,14 +195,14 @@ body {
         @include on-tablet {
           width: 136px;
         }
-      
+
         &:hover {
           cursor: pointer;
-          border: 1px solid #4A4D58;
+          border: 1px solid #4a4d58;
         }
 
         &:focus {
-          border: 1px solid #905BFF;
+          border: 1px solid #905bff;
         }
 
         &-label {
@@ -224,24 +228,28 @@ body {
         margin: 0;
         display: flex;
         flex-direction: column;
-        border: 1px solid #3B3E4A;
-        background-color:#0F1121;
+        border: 1px solid #3b3e4a;
+        background-color: #0f1121;
         position: absolute;
         width: 134px;
         z-index: 1;
         visibility: hidden;
         opacity: 0;
-        transition: opacity 1s ease, visibility 0s ease 1s;
+        transition:
+          opacity 1s ease,
+          visibility 0s ease 1s;
 
         @include on-tablet {
           width: 185px;
         }
       }
 
-      .block-page{
+      .block-page {
         visibility: visible;
         opacity: 1;
-        transition: opacity 1s ease, visibility 0s ease 0s;
+        transition:
+          opacity 1s ease,
+          visibility 0s ease 0s;
       }
 
       &__item {
@@ -252,7 +260,7 @@ body {
 
         &:hover {
           background-color: $color-surface-2;
-          color: #F1F2F9;
+          color: #f1f2f9;
         }
 
         @include font-buttons-desktop;
@@ -261,7 +269,7 @@ body {
 
       .active {
         background-color: $color-surface-2;
-        color: #F1F2F9;
+        color: #f1f2f9;
       }
     }
   }

@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import './Category.scss';
 
 interface Props {
-  phonesQuantity: number,
-  tabletsQuantity: number,
-  accessoriesQuantity: number,
+  phonesQuantity: number;
+  tabletsQuantity: number;
+  accessoriesQuantity: number;
 }
 
 export const Category: React.FC<Props> = ({
@@ -57,4 +57,4 @@ export const Category: React.FC<Props> = ({
       </div>
     </div>
   );
-}
+};
