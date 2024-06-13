@@ -1,7 +1,6 @@
 @import './../../assets/scss/variables';
 
 .variants {
-  @include pageGrid;
 
   &__container {
     grid-column: span 4;
@@ -130,11 +129,23 @@
     border: 1px solid black;
   }
 
+  &__texts {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__text {
     @include font-small-text-desktop;
     margin: 0;
 
     color: $color-secondary;
+  }
+
+  &__id {
+    @include font-small-text-desktop;
+    margin: 0;
+
+    color: #4A4D58;
   }
 
   &__line {

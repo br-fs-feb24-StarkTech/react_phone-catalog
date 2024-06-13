@@ -32,7 +32,7 @@ export const CartPage = () => {
                 })
               ) : (
                 <div className="alert">
-                  <img src="./img/cart-is-empty.png" className="alert__img"/>
+                  <img src="./img/cart-is-empty.png" className="alert__image"/>
                   <p className="alert__description">Cart is empty</p>
                 </div>
               )}
