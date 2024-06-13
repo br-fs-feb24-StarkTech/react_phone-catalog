@@ -10,7 +10,7 @@ export const NewModels = () => {
   useEffect(() => {
     getNewProducts()
       .then(product => setProducts(product));
-  }, []);
+  }, [products]);
 
   return (
     <ProductsSlider products={products} title="Brand new models" />
