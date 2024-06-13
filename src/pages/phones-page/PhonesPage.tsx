@@ -5,7 +5,7 @@ import { fetchProducts } from '../../utils/mockApi';
 import { useEffect, useState, useMemo } from 'react';
 import { ProductType } from '../../types/ProductType';
 import { useNavigate } from 'react-router-dom';
-import Card from '../../components/card/Card';
+import { Card } from '../../components/card/Card';
 
 const DEFAULT_PAGE_SIZE = 16;
 

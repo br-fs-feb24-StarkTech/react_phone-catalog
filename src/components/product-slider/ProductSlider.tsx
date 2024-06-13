@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ProductSlider.scss';
 import { ProductType } from '../../types/ProductType';
 import { useSwipeable } from 'react-swipeable';
-import Card from '../card/Card';
+import { Card } from '../card/Card';
 import arrowLeft from '/img/icons/arrow-left-default.svg';
 import arrowRight from '/img/icons/arrow-right-default.svg';
 
