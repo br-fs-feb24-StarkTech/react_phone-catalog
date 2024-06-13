@@ -25,7 +25,7 @@ export const App = () => (
             <Route path="/products/:productId" element={<ItemDetails />} />
             <Route path="tablets" element={<TabletsPage />} />
             <Route path="accessories" element={<AccessoriesPage />} />
-            <Route path='favourites' element={<FavouritesPage />} />
+            <Route path="favourites" element={<FavouritesPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>

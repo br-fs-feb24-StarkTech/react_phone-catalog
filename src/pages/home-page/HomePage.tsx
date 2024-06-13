@@ -39,8 +39,7 @@ export const HomePage = () => {
           />
         </div>
 
-        <div className="home-page__slider">Hot prices
-        </div>
+        <div className="home-page__slider">Hot prices</div>
       </div>
     </>
   );
