@@ -1,0 +1,36 @@
+@import '../../assets/scss/variables.scss';
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__title {
+    @include font-h3-mobile;
+
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+
+    @include on-tablet {
+      @include font-h3-desktop;
+    }
+  }
+}
+
+.description {
+  &__title {
+    @include font-h4-mobile;
+
+    padding-bottom: 16px;
+
+    @include on-tablet {
+      @include font-h4-desktop;
+    }
+  }
+
+  &__text {
+    @include font-body-text-desktop;
+    color: $color-secondary;
+  }
+}
