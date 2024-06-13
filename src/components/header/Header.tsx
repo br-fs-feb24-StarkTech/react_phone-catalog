@@ -65,8 +65,8 @@ export const Header: React.FC = () => {
           <div className="header__right-part right-part">
             <div className="right-part__item-box">
               <Link
-                to="/favorite"
-                className={`right-part__icon right-part__icon--favorite ${selectedNavItem === 'Favorite' ? 'is-active' : ''}`}
+                to="/favourites"
+                className={`right-part__icon right-part__icon--favorite ${selectedNavItem === 'Favourites' ? 'is-active' : ''}`}
               >
                 {favoriteCounter ? (
                   <div className="right-part__icon--counter">{favoriteCounter}</div>
