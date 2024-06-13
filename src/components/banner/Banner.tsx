@@ -3,13 +3,15 @@ import './Banner.scss';
 
 const carouselImages = [
   { desktop: '../../../public/img/banner-promo.png', mobile: '../../../public/img/banner-promo-mobile.png' },
-  { desktop: '../../../public/img/banner-phones.png', mobile: '../../../public/img/banner-promo-mobile.png' },
+  { desktop: '../../../public/img/banner-phones.png', mobile: '../../../public/img/banner-phones-mobile.png' },
 ];
 
 export const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
   const carousel = useRef<HTMLDivElement>(null);
+  let startX: number | null = null;
+  let currentX: number | null = null;
 
   const updateIsMobile = () => {
     setIsMobile(window.innerWidth < 640);
@@ -19,6 +21,28 @@ export const Banner = () => {
     window.addEventListener('resize', updateIsMobile);
     return () => window.removeEventListener('resize', updateIsMobile);
   }, []);
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    startX = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!startX) return;
+    currentX = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (startX && currentX) {
+      const difference = startX - currentX;
+      if (difference > 50) {
+        scrollRight();
+      } else if (difference < -50) {
+        scrollLeft();
+      }
+    }
+    startX = null;
+    currentX = null;
+  };
 
   const scrollLeft = () => {
     if (carousel.current) {
@@ -56,7 +80,7 @@ export const Banner = () => {
   }, []);
 
   return (
-    <div className="carousel">
+    <div className="carousel" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
       <div className="carousel__top-part">
         <button className="carousel__button carousel__button-left" onClick={scrollLeft}>
         </button>
