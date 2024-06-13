@@ -3,6 +3,9 @@ import './variants.scss';
 import { Color } from '../../types/Color';
 import { Link } from 'react-router-dom';
 import { ProductDetails } from '../../types/ProductDetails';
+import { fetchProducts } from '../../utils/mockApi';
+import { ProductType } from '../../types/ProductType';
+import { ActionButtons } from '../action-buttons/ActionButtons';
 
 type Props = {
   product: ProductDetails;
@@ -36,6 +39,8 @@ export const Variants: React.FC<Props> = ({ product }) => {
   const [capacities, setCapacities] = useState<String[]>([]);
   const [capacityActive, setCapacityActive] = useState<String>();
   const [colorActive, setColorActive] = useState<String>(Color.black);
+  const [productType, setProductType] = useState<ProductType[]>([]);
+  const [productAction, setProductAction] = useState<ProductType>();
 
   if (product) {
     useEffect(() => {
@@ -43,11 +48,24 @@ export const Variants: React.FC<Props> = ({ product }) => {
       setCapacityActive(capacity);
       setColors(colorsAvailable);
       setCapacities(capacityAvailable);
-    }, [product]);
+
+      fetchProducts().then(data => {
+        const targetProductType = data.filter((item: ProductType) => item.itemId === product.id);
+  
+        if(targetProductType) {
+          setProductType(targetProductType);
+
+          if(productType) {
+            productType.map((productA: ProductType) => setProductAction(productA));
+          }
+        }
+      });
+    }, [product, productType]);
   }
 
   return (
     <div className="variants">
+
       <div className="variants__container">
         <div className="variants__colors">
           <div className="variants__texts">
@@ -94,6 +112,10 @@ export const Variants: React.FC<Props> = ({ product }) => {
           ${priceRegular.toLocaleString()}{' '}
           <span className="variants__price--offer">${priceDiscount.toLocaleString()}</span>
         </h3>
+
+        {productAction && 
+          <ActionButtons product={productAction} />
+        }
 
         <div className="card__description description">
           <p className="description__text">
