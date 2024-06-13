@@ -97,8 +97,8 @@ export const Variants: React.FC<Props> = ({ product }) => {
         <div className="variants__line"></div>
 
         <h3 className="variants__price">
-          ${priceRegular.toLocaleString()}{' '}
-          <span className="variants__price--offer">${priceDiscount.toLocaleString()}</span>
+          ${priceDiscount.toLocaleString()}{' '}
+          <span className="variants__price--offer">${priceRegular.toLocaleString()}</span>
         </h3>
 
         {productAction && <ActionButtons product={productAction} />}
