@@ -1,22 +1,26 @@
+import React from 'react';
 import './Card.scss';
 import { ActionButtons } from '../action-buttons/ActionButtons';
 import { CardProps } from '../../types/CardProps';
 import { Link } from 'react-router-dom';
 
+const productSpecs = {
+  screen: 'Screen',
+  capacity: 'Capacity',
+  ram: 'RAM',
+};
+
+const getReturnPath = () => (window.location.pathname === '/' ? '' : '../');
+
 const Card: React.FC<CardProps> = ({ product }) => {
-
-  const pathname = window.location.pathname;
-  let returnPath = "";
-
-  if(pathname !== "/") {
-    returnPath = "../";
+  if (!product) {
+    return <div>Product data is missing</div>;
   }
 
   return (
     <li className="products__card card">
-      <Link to={`${returnPath}products/${product.itemId}`} style={{ textDecoration: 'none' }}>
-        <img src={product.image} alt="img-phone" className="card__img" />
-
+      <Link to={`${getReturnPath()}products/${product.itemId}`} style={{ textDecoration: 'none' }}>
+        <img src={product.image} alt={product.name || 'Product Image'} className="card__img" />
         <h4 className="card__title">{product.name}</h4>
       </Link>
 
@@ -28,15 +32,15 @@ const Card: React.FC<CardProps> = ({ product }) => {
 
       <div className="card__description description">
         <p className="description__text">
-          <span>Screen</span>
+          <span>{productSpecs.screen}</span>
           <span className="description__text--modify">{product.screen}</span>
         </p>
         <p className="description__text">
-          <span>Capacity</span>
+          <span>{productSpecs.capacity}</span>
           <span className="description__text--modify">{product.capacity}</span>
         </p>
         <p className="description__text">
-          <span>RAM</span>
+          <span>{productSpecs.ram}</span>
           <span className="description__text--modify">{product.ram}</span>
         </p>
       </div>
