@@ -10,6 +10,7 @@ export const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
   const carousel = useRef<HTMLDivElement>(null);
+  const lastCarouselItemIndex = carouselImages.length - 1;
   let startX: number | null = null;
   let currentX: number | null = null;
 
@@ -44,22 +45,25 @@ export const Banner = () => {
     currentX = null;
   };
 
-  const scrollLeft = () => {
+  const scrollToIndex = (index: number) => {
     if (carousel.current) {
-      carousel.current.scrollBy({
-        left: -carousel.current.clientWidth,
-        behavior: 'smooth'
+      carousel.current.scrollTo({
+        left: index * carousel.current.clientWidth,
+        behavior: 'smooth',
       });
     }
   };
 
+  const scrollLeft = () => {
+    const newIndex = (currentIndex > 0) ? currentIndex - 1 : lastCarouselItemIndex;
+    setCurrentIndex(newIndex);
+    scrollToIndex(newIndex);
+  };
+
   const scrollRight = () => {
-    if (carousel.current) {
-      carousel.current.scrollBy({
-        left: carousel.current.clientWidth,
-        behavior: 'smooth'
-      });
-    }
+    const newIndex = (currentIndex + 1) % carouselImages.length;
+    setCurrentIndex(newIndex);
+    scrollToIndex(newIndex);
   };
 
   const handleScroll = () => {
@@ -78,6 +82,18 @@ export const Banner = () => {
       };
     }
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (currentIndex === lastCarouselItemIndex) {
+        setCurrentIndex(0);
+        scrollToIndex(0);
+      } else {
+        scrollRight();
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [currentIndex, lastCarouselItemIndex]);
 
   return (
     <div className="carousel" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
