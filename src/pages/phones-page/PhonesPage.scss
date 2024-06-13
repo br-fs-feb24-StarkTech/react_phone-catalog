@@ -70,7 +70,7 @@ body {
         align-items: center;
         height: 40px;
         background-color: $color-surface-2;
-        color: #f1f2f9;
+        color: #F1F2F9;
         justify-content: space-between;
         padding-inline: 12px;
         border: 0;
@@ -83,11 +83,11 @@ body {
 
         &:hover {
           cursor: pointer;
-          border: 1px solid #4a4d58;
+          border: 1px solid #4A4D58;
         }
 
         &:focus {
-          border: 1px solid #905bff;
+          border: 1px solid #905BFF;
         }
 
         &-label {
@@ -97,11 +97,11 @@ body {
         &-icon {
           width: 16px;
           height: 16px;
-          background: url(./img/icons/arrow-down.svg) no-repeat;
+          background: url('/public/img/icons/arrow-down.svg') no-repeat;
         }
 
         .icon-active {
-          background: url(./img/icons/arrow-up.svg) no-repeat;
+          background: url('/public/img/icons/arrow-up.svg') no-repeat;
         }
       }
 
@@ -113,16 +113,14 @@ body {
         margin: 0;
         display: flex;
         flex-direction: column;
-        border: 1px solid #3b3e4a;
-        background-color: #0f1121;
+        border: 1px solid #3B3E4A;
+        background-color: #0F1121;
         position: absolute;
         width: 140px;
         z-index: 1;
         visibility: hidden;
         opacity: 0;
-        transition:
-          opacity 1s ease,
-          visibility 0s ease 1s;
+        transition: opacity 1s ease, visibility 0s ease 1s;
 
         @include on-tablet {
           width: 185px;
@@ -132,9 +130,7 @@ body {
       .block {
         visibility: visible;
         opacity: 1;
-        transition:
-          opacity 1s ease,
-          visibility 0s ease 0s;
+        transition: opacity 1s ease, visibility 0s ease 0s;
       }
 
       &__item {
@@ -145,7 +141,7 @@ body {
 
         &:hover {
           background-color: $color-surface-2;
-          color: #f1f2f9;
+          color: #F1F2F9;
         }
 
         @include font-buttons-desktop;
@@ -154,7 +150,7 @@ body {
 
       .active {
         background-color: $color-surface-2;
-        color: #f1f2f9;
+        color: #F1F2F9;
       }
     }
 
@@ -172,7 +168,7 @@ body {
         align-items: center;
         height: 40px;
         background-color: $color-surface-2;
-        color: #f1f2f9;
+        color: #F1F2F9;
         justify-content: space-between;
         padding-inline: 12px;
         border: 0;
@@ -185,11 +181,11 @@ body {
 
         &:hover {
           cursor: pointer;
-          border: 1px solid #4a4d58;
+          border: 1px solid #4A4D58;
         }
 
         &:focus {
-          border: 1px solid #905bff;
+          border: 1px solid #905BFF;
         }
 
         &-label {
@@ -199,11 +195,11 @@ body {
         &-icon {
           width: 16px;
           height: 16px;
-          background: url('/img/icons/arrow-down.svg') no-repeat;
+          background: url('/public/img/icons/arrow-down.svg') no-repeat;
         }
 
         .icon-active {
-          background: url('/img/icons/arrow-up.svg') no-repeat;
+          background: url('/public/img/icons/arrow-up.svg') no-repeat;
         }
       }
 
@@ -215,16 +211,14 @@ body {
         margin: 0;
         display: flex;
         flex-direction: column;
-        border: 1px solid #3b3e4a;
-        background-color: #0f1121;
+        border: 1px solid #3B3E4A;
+        background-color: #0F1121;
         position: absolute;
         width: 134px;
         z-index: 1;
         visibility: hidden;
         opacity: 0;
-        transition:
-          opacity 1s ease,
-          visibility 0s ease 1s;
+        transition: opacity 1s ease, visibility 0s ease 1s;
 
         @include on-tablet {
           width: 135px;
@@ -235,9 +229,7 @@ body {
       .block-page {
         visibility: visible;
         opacity: 1;
-        transition:
-          opacity 1s ease,
-          visibility 0s ease 0s;
+        transition: opacity 1s ease, visibility 0s ease 0s;
       }
 
       &__item {
@@ -248,7 +240,7 @@ body {
 
         &:hover {
           background-color: $color-surface-2;
-          color: #f1f2f9;
+          color: #F1F2F9;
         }
 
         @include font-buttons-desktop;
@@ -257,7 +249,7 @@ body {
 
       .active {
         background-color: $color-surface-2;
-        color: #f1f2f9;
+        color: #F1F2F9;
       }
     }
   }
