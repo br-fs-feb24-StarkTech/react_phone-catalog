@@ -1,0 +1,137 @@
+@import '../../assets/scss/variables.scss';
+
+.ProductCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  height: 440px;
+  min-width: 212px;
+  width: 100%;
+  padding: 32px;
+  border: 1px solid var(--color-elements);
+  border-radius: 2px;
+
+
+  AQUI_VERIFICAR
+  // @include on-tablet {
+  //   height: 506px;
+  // }
+
+  // @include on-desktop {
+  //   width: 272px;
+  // }
+}
+
+.ProductCard:hover {
+  border: 1px solid VERIFICAR_A_COR;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+
+  width: 148px;
+  min-height: 109px;
+
+  @include on-tablet {
+    min-width: 173px;
+    min-height: 181px;
+  }
+
+  @include on-desktop {
+    width: 208px;
+    height: 196px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.titleContainer {
+  display: flex;
+  width: 100%;
+}
+
+.title {
+  text-decoration: none;
+
+  font-family: Mont, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+
+  color: VERIFICAR_A_COR;
+  padding-top: 16px;
+}
+
+
+.price {
+  display: flex;
+  gap: 8px;
+
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  line-height: 31.8px;
+  letter-spacing: 0;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.existPrice {
+  color: var(--color-primary);
+}
+
+.hotPrice {
+  display: flex;
+  color: VERIFICAR_A_COR;
+}
+
+.divider {
+  border-top: 1px solid VERIFICAR_A_COR;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.existDescription {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.descriptionTitle {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15.34px;
+  letter-spacing: 0;
+}
+
+.descriptionText {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15.34px;
+  letter-spacing: 0;
+
+  color: VERIFICAR_A_COR;
+}

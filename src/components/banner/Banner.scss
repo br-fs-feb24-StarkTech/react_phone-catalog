@@ -68,7 +68,7 @@
   &__button-left {
     left: 0;
     background-color: $color-surface-2;
-    background-image: url('../../../public/img/icons/arrow-left-default.svg');
+    background-image: url('/img/icons/arrow-left-default.svg');
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -76,7 +76,7 @@
   &__button-right {
     right: 0;
     background-color: $color-surface-2;
-    background-image: url('../../../public/img/icons/arrow-right-default.svg');
+    background-image: url('/img/icons/arrow-right-default.svg');
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -94,6 +94,6 @@
   height: 4px;
 
   &.dot--active {
-    background-color: white;  // Cor branca para o dot ativo
+    background-color: white;
   }
 }

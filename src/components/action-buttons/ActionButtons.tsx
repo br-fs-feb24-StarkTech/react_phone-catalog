@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
 import './ActionButtons.scss';
 import { ProductType } from '../../types/ProductType';
+import classNames from 'classnames';
 
 type Props = {
   product: ProductType;
@@ -16,9 +17,9 @@ export const ActionButtons: React.FC<Props> = ({ product }) => {
   useEffect(() => {
     setIsFavourited(favorites.some(favProduct => favProduct.id === product.id));
     setIsInCart(cart.some(cartItem => cartItem.product.id === product.id));
-  }, []);
+  }, [cart, favorites, product.id]);
 
-  const handleFavoriteClick = () => {
+  const handleFavoriteClick = useCallback(() => {
     if (isFavourited) {
       removeFromFavorites(product.id);
       setIsFavourited(false);
@@ -26,9 +27,9 @@ export const ActionButtons: React.FC<Props> = ({ product }) => {
       addToFavorites(product);
       setIsFavourited(true);
     }
-  };
+  }, [isFavourited, product, addToFavorites, removeFromFavorites]);
 
-  const handleCartClick = () => {
+  const handleCartClick = useCallback(() => {
     if (isInCart) {
       removeFromCart(product.id);
       setIsInCart(false);
@@ -36,20 +37,26 @@ export const ActionButtons: React.FC<Props> = ({ product }) => {
       addToCart(product);
       setIsInCart(true);
     }
-  };
+  }, [isInCart, product, addToCart, removeFromCart]);
+
   return (
     <div className="actions-button">
       <button
-        className={`actions-button__add-to-cart ${isInCart ? 'actions-button__add-to-cart--active' : ''}`}
+        className={classNames('actions-button__add-to-cart', {
+          'actions-button__add-to-cart--active': isInCart,
+        })}
         onClick={handleCartClick}
       >
         {isInCart ? 'Remove' : 'Add to cart'}
       </button>
 
-      <div
-        className={`actions-button__favourite ${isFavourited ? 'actions-button__favourite--filled' : ''}`}
+      <button
+        className={classNames('actions-button__favourite', {
+          'actions-button__favourite--filled': isFavourited,
+        })}
         onClick={handleFavoriteClick}
-      ></div>
+        aria-label={isFavourited ? 'Remove from favorites' : 'Add to favorites'}
+      ></button>
     </div>
   );
 };
