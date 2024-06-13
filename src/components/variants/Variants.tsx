@@ -11,16 +11,15 @@ type Props = {
   product: ProductDetails;
 };
 
-function makeColorLink(id: string, color: String, targetColor: String) {
+function makeColorLink(id: string, color: string, targetColor: string) {
   return `/products/${id.replace(color.replace(' ', '-'), targetColor.replace(' ', '-'))}`;
 }
 
-function makeCapacityLink(id: string, capacity: string, capacityCurrent: String) {
-  return `/products/${id.replace(capacity.toLowerCase(), capacityCurrent.toLowerCase())}`
+function makeCapacityLink(id: string, capacity: string, capacityCurrent: string) {
+  return `/products/${id.replace(capacity.toLowerCase(), capacityCurrent.toLowerCase())}`;
 }
 
 export const Variants: React.FC<Props> = ({ product }) => {
-
   const {
     id,
     colorsAvailable,
@@ -35,55 +34,46 @@ export const Variants: React.FC<Props> = ({ product }) => {
     ram,
   } = product;
 
-  const [colors, setColors] = useState<String[]>([]);
-  const [capacities, setCapacities] = useState<String[]>([]);
-  const [capacityActive, setCapacityActive] = useState<String>();
-  const [colorActive, setColorActive] = useState<String>(Color.black);
-  const [productType, setProductType] = useState<ProductType[]>([]);
+  const [colors, setColors] = useState<string[]>([]);
+  const [capacities, setCapacities] = useState<string[]>([]);
+  const [capacityActive, setCapacityActive] = useState<string>();
+  const [colorActive, setColorActive] = useState<string>(Color.black);
   const [productAction, setProductAction] = useState<ProductType>();
 
-  if (product) {
-    useEffect(() => {
+  useEffect(() => {
+    if (product) {
       setColorActive(color);
       setCapacityActive(capacity);
       setColors(colorsAvailable);
       setCapacities(capacityAvailable);
 
       fetchProducts().then(data => {
-        const targetProductType = data.filter((item: ProductType) => item.itemId === product.id);
-  
-        if(targetProductType) {
-          setProductType(targetProductType);
-
-          if(productType) {
-            productType.map((productA: ProductType) => setProductAction(productA));
-          }
+        const targetProductType = data.find((item: ProductType) => item.itemId === product.id);
+        if (targetProductType) {
+          setProductAction(targetProductType);
         }
       });
-    }, [product, productType]);
-  }
+    }
+  }, [capacity, capacityAvailable, color, colorsAvailable, product]);
 
   return (
     <div className="variants">
-
       <div className="variants__container">
         <div className="variants__colors">
           <div className="variants__texts">
-            <p className="variants__text">Avaliable colors</p>
+            <p className="variants__text">Available colors</p>
           </div>
 
           <div className="variants__colors-content">
-            {colors.map(colorCurrent => {
-              return (
-                <Link to={makeColorLink(id, color, colorCurrent)}>
-                  <span
-                    className={`variants__colors-border ${colorCurrent === colorActive ? 'active--border' : ''}`}
-                  >
-                    <button className={`variants__color color--${colorCurrent}`}></button>
-                  </span>
-                </Link>
-              );
-            })}
+            {colors.map(colorCurrent => (
+              <Link key={colorCurrent} to={makeColorLink(id, color, colorCurrent)}>
+                <span
+                  className={`variants__colors-border ${colorCurrent === colorActive ? 'active--border' : ''}`}
+                >
+                  <button className={`variants__color color--${colorCurrent}`}></button>
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
 
@@ -92,17 +82,15 @@ export const Variants: React.FC<Props> = ({ product }) => {
         <div className="variants__capacity">
           <p className="variants__text">Select capacity</p>
           <div className="variants__capacity-content">
-            {capacities.map(capacityCurrent => {
-              return (
-                <Link to={makeCapacityLink(id, capacity, capacityCurrent)}>
-                  <button
-                    className={`variants__capacity-button ${capacityCurrent === capacityActive ? 'active' : ''}`}
-                  >
-                    {capacityCurrent}
-                  </button>
-                </Link>
-              );
-            })}
+            {capacities.map(capacityCurrent => (
+              <Link key={capacityCurrent} to={makeCapacityLink(id, capacity, capacityCurrent)}>
+                <button
+                  className={`variants__capacity-button ${capacityCurrent === capacityActive ? 'active' : ''}`}
+                >
+                  {capacityCurrent}
+                </button>
+              </Link>
+            ))}
           </div>
         </div>
 
@@ -113,9 +101,7 @@ export const Variants: React.FC<Props> = ({ product }) => {
           <span className="variants__price--offer">${priceDiscount.toLocaleString()}</span>
         </h3>
 
-        {productAction && 
-          <ActionButtons product={productAction} />
-        }
+        {productAction && <ActionButtons product={productAction} />}
 
         <div className="card__description description">
           <p className="description__text">
