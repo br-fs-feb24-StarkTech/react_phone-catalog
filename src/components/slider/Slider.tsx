@@ -148,7 +148,11 @@ const products1 = [
   }
 ];
 
-export const Carousel: React.FC<CardProps> = ( products1 ) => {
+interface Props {
+  products1: ProductType[];
+}
+
+export const Carousel: React.FC<Props> = ({ products1 }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [data, setData] = useState<ProductType[]>([]);
   const carouselRef = useRef<HTMLDivElement>(null);
