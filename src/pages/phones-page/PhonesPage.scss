@@ -17,10 +17,6 @@ body {
     @include on-desktop {
       padding-inline: 32px;
     }
-
-    @media (min-width: 1201px) {
-      padding-inline: 152px;
-    }
   }
 
   &__title {
@@ -121,8 +117,8 @@ body {
         visibility: hidden;
         opacity: 0;
         transition:
-          opacity 1s ease,
-          visibility 0s ease 1s;
+          opacity 0.3s ease,
+          visibility 0s ease 0.3s;
 
         @include on-tablet {
           width: 185px;
@@ -133,7 +129,7 @@ body {
         visibility: visible;
         opacity: 1;
         transition:
-          opacity 1s ease,
+          opacity 0.3s ease,
           visibility 0s ease 0s;
       }
 
@@ -223,8 +219,8 @@ body {
         visibility: hidden;
         opacity: 0;
         transition:
-          opacity 1s ease,
-          visibility 0s ease 1s;
+          opacity 0.3s ease,
+          visibility 0s ease 0.3s;
 
         @include on-tablet {
           width: 135px;
@@ -235,7 +231,7 @@ body {
         visibility: visible;
         opacity: 1;
         transition:
-          opacity 1s ease,
+          opacity 0.3s ease,
           visibility 0s ease 0s;
       }
 
