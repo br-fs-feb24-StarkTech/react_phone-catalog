@@ -2,24 +2,24 @@
 
 .card {
   box-sizing: border-box;
-  
+
   background-color: $color-surface-1;
   padding: 32px;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   row-gap: 8px;
-  
+
   grid-column: span 4;
-  
-    @include on-tablet {
-      grid-column: span 6;
-    }
-  
-    @include on-desktop {
-      grid-column: span 6;
-    }
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
 
   &top-part {
     display: flex;
