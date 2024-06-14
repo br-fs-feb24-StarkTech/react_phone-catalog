@@ -51,19 +51,6 @@ body {
     @include pageGrid;
   }
 
-  &__card {
-    grid-column: span 4;
-    grid-row: auto;
-
-    @include on-tablet {
-      grid-column: span 6;
-    }
-
-    @include on-desktop {
-      grid-column: span 6;
-    }
-  }
-
   &__filter {
     display: flex;
     flex-wrap: wrap;
