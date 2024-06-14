@@ -134,7 +134,7 @@ export const Banner = () => {
         ></button>
 
         <div className="carousel__content" ref={carousel}>
-          {carouselImages.map((image) => (
+          {carouselImages.map(image => (
             <div key={image.id} className="carousel__item-box">
               <Link to={image.url}>
                 <img
