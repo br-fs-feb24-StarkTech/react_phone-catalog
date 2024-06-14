@@ -36,11 +36,11 @@ body {
 
   &__quantity {
     margin: 0;
+  }
 
-    &Text {
-      @include font-small-text-desktop;
-      color: $color-secondary;
-    }
+  &__Text {
+    @include font-body-text-desktop;
+    color: $color-secondary;
   }
 
   &__list {

@@ -123,7 +123,7 @@ const TabletsPage = () => {
         <BreadCrumbs />
         <h1 className="products__title">Tablets</h1>
         <p className="products__quantity">
-          <span className="products__quantityText">{tablets.length} models</span>
+          <span className="products__Text">{tablets.length} models</span>
         </p>
 
         <div className="products__filter filter">
