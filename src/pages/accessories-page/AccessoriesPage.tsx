@@ -68,9 +68,9 @@ const AccessoriesPage = () => {
       .then(data => {
         setAccessories(data.filter((product: ProductType) => product.category === 'accessories'));
       })
-      .finally( () => {
+      .finally(() => {
         setSkeleton(false);
-      });;
+      });
   }, []);
 
   useEffect(() => {
@@ -179,10 +179,13 @@ const AccessoriesPage = () => {
         </div>
 
         <ul className="products__list">
-        {skeleton ? <SkeletonCard /> :
-          currentAccessories.map(product => {
-            return <Card key={product.id} product={product} />;
-          })}
+          {skeleton ? (
+            <SkeletonCard />
+          ) : (
+            currentAccessories.map(product => {
+              return <Card key={product.id} product={product} />;
+            })
+          )}
         </ul>
 
         <Pagination

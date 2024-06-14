@@ -68,7 +68,7 @@ const TabletsPage = () => {
       .then(data => {
         setTablets(data.filter((product: ProductType) => product.category === 'tablets'));
       })
-      .finally( () => {
+      .finally(() => {
         setSkeleton(false);
       });
   }, []);
@@ -179,10 +179,13 @@ const TabletsPage = () => {
         </div>
 
         <ul className="products__list">
-        {skeleton ? <SkeletonCard /> :
-          currentTablets.map(product => {
-            return <Card key={product.id} product={product} />;
-          })}
+          {skeleton ? (
+            <SkeletonCard />
+          ) : (
+            currentTablets.map(product => {
+              return <Card key={product.id} product={product} />;
+            })
+          )}
         </ul>
 
         <Pagination

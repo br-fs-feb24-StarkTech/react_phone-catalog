@@ -62,14 +62,13 @@ const PhonesPage = () => {
   };
 
   useEffect(() => {
-
     setSkeleton(true);
 
     fetchProducts()
       .then(data => {
         setPhones(data.filter((product: ProductType) => product.category === 'phones'));
       })
-      .finally( () => {
+      .finally(() => {
         setSkeleton(false);
       });
   }, []);
@@ -180,12 +179,13 @@ const PhonesPage = () => {
         </div>
 
         <ul className="products__list">
-          {skeleton ? <SkeletonCard /> : 
+          {skeleton ? (
+            <SkeletonCard />
+          ) : (
             currentPhones.map(product => {
               return <Card key={product.id} product={product} />;
             })
-          }
-          
+          )}
         </ul>
 
         <Pagination
