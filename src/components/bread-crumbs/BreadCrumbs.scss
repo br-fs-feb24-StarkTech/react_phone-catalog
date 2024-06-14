@@ -1,12 +1,13 @@
 @import '../../assets/scss/variables.scss';
 
 .breadcrumbs {
+  display: flex;
+  align-items: center;
+
   &__icon {
     margin: 0 16px;
-    vertical-align: middle;
 
     &--home {
-      vertical-align: middle;
       color: white;
     }
   }
@@ -15,5 +16,9 @@
     @include font-small-text-desktop;
     color: $color-secondary;
     text-decoration: none;
+  }
+
+  .active-bread {
+    color: #f1f2f9;
   }
 }
