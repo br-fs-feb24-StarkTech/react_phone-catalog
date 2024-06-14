@@ -16,6 +16,10 @@
     max-width: 1136px;
   }
 
+  @include on-desktop {
+    max-width: none;
+  }
+
   &__top-part {
     position: relative;
   }
@@ -28,6 +32,10 @@
     @include on-tablet {
       max-width: 1136px;
       margin-inline: 48px;
+    }
+
+    @include on-desktop {
+      max-width: none;
     }
   }
 

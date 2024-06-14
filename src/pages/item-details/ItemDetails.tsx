@@ -1,19 +1,22 @@
 import { useParams } from 'react-router-dom';
 import { BackButton } from '../../components/back-button/BackButton';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
-// import { ProductsSlider } from '../../components/product-slider/ProductSlider';
+import { ProductsSlider } from '../../components/product-slider/ProductSlider';
 import './ItemDetails.scss';
 import { useEffect, useState } from 'react';
-import { ProductDetails } from '../../types/ProductDetails';
-import { fetchProduct } from '../../utils/mockApi';
+import { fetchProduct, fetchProducts } from '../../utils/mockApi';
 import { PhotosBlock } from '../../components/photos-block/PhotosBlock';
 import { Variants } from '../../components/variants/Variants';
 import { AboutSection } from '../../components/about-section/AboutSection';
 import { TechSpecs } from '../../components/tech-specs/TechSpecs';
+import { ProductType } from '../../types/ProductType';
+import { ProductDetails } from '../../types/ProductDetails';
 
 export const ItemDetails = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [products, setProducts] = useState<ProductType[]>([]);
+
   useEffect(() => {
     fetchProduct().then(data => {
       const targetProduct = data.find((item: ProductDetails) => item.id === productId);
@@ -21,6 +24,8 @@ export const ItemDetails = () => {
         setProduct(targetProduct);
       }
     });
+
+    fetchProducts().then(product => setProducts(product));
   }, [productId]);
 
   if (product) {
@@ -60,7 +65,7 @@ export const ItemDetails = () => {
         </div>
 
         <div className="item-details__other-products">
-          {/* <ProductsSlider products={products} title={'You may also like'} /> */}
+          <ProductsSlider products={products} title={'You may also like'} />
         </div>
       </div>
     );
