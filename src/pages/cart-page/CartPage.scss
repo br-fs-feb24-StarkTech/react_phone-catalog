@@ -1,37 +1,42 @@
 @import '../../assets/scss/variables.scss';
 
 .cart-page {
-  padding: 0 16px;
+  padding: 24px 16px 56px;
   box-sizing: border-box;
-
   width: 100%;
   min-width: 320px;
   min-height: 100vh;
-
   background-color: $color-black;
   color: $color-white;
+  overflow-x: hidden;
 
   @include on-tablet {
-    padding-inline: 24px;
+    padding: 40px 24px 64px;
   }
 
   @include on-desktop {
-    padding-inline: 32px;
-    min-height: 0;
+    padding: 40px 32px 80px;
+  }
+
+  @media (min-width: 1400px) {
+    padding-inline: 152px;
   }
 
   &__content {
     margin: 0 auto;
     max-width: 1136px;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   &__back-button {
-    margin-block: 24px;
+    margin-bottom: 24px;
 
     @include on-tablet {
-      margin-block: 40px 16px;
+      margin-bottom: 16px;
     }
   }
+
   &__title {
     @include font-h1-mobile;
 
@@ -46,43 +51,26 @@
   &__wrapper-elements {
     display: flex;
     flex-direction: column;
-
-    padding-bottom: 56px;
-
-    @include on-tablet {
-      padding-bottom: 64px;
-    }
+    gap: 16px;
+    width: 100%;
 
     @include on-desktop {
       flex-direction: row;
-      gap: 16px;
-
-      padding-bottom: 80px;
     }
   }
 
   &__list {
     padding: 0;
     margin: 0;
-
     display: flex;
     flex-direction: column;
-    gap: 16px;
-
     list-style: none;
-
-    margin-bottom: 32px;
-
-    @include on-desktop {
-      width: 67%;
-      margin-bottom: o;
-    }
+    gap: 16px;
+    width: 100%;
   }
 
   &__list-item {
     width: 100%;
-    height: 160px;
-
     background-color: $color-surface-1;
 
     @include on-tablet {
@@ -93,7 +81,6 @@
   &__checkout {
     width: 100%;
     height: 190px;
-
     border: 1px solid $color-elements;
 
     @include on-desktop {
@@ -119,19 +106,4 @@
       width: 30%;
     }
   }
-}
-
-.back-button__content {
-  @include font-small-text-desktop;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-
-  padding-left: 0;
-  cursor: pointer;
-
-  background-color: transparent;
-  border: none;
 }
