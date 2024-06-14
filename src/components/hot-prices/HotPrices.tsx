@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ProductsSlider } from '../product-slider/ProductSlider';
 import { ProductType } from '../../types/ProductType';
 import { getHotPriceProducts } from '../../services/Products';
+import { ProductsSlider } from '../product-slider/ProductSlider';
 
 export const HotPrices = () => {
   const [products, setProduct] = useState<ProductType[]>([]);

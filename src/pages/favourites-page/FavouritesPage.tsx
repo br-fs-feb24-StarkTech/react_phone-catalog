@@ -11,7 +11,7 @@ export const FavouritesPage = () => {
 
   useEffect(() => {
     setFavourites(favorites);
-  }, []);
+  }, [favorites]);
 
   return (
     <div className="favorites-page">
