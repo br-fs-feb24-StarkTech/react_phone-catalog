@@ -1,5 +1,12 @@
 @import '../../assets/scss/variables.scss';
 
+.item-details__container {
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto
+  }
+}
+
 .item-details {
   @include pageGrid;
 
@@ -19,9 +26,6 @@
     padding-bottom: 80px;
   }
 
-  @media (min-width: 1400px) {
-    padding-inline: 152px;
-  }
 
   &__bread-crumbs {
     grid-column: 1 /-1;
@@ -96,15 +100,17 @@
   }
 
   @include on-desktop {
-    gap: 64px;
+   
   }
 
   &__images {
     width: 100%;
     height: 356px;
+    
 
     @include on-desktop {
       height: 464px;
+      max-width: 560px;
     }
   }
 
@@ -119,6 +125,7 @@
 
     @include on-desktop {
       height: 464px;
+      max-width: 360px;
     }
   }
 }
@@ -128,6 +135,7 @@
   flex-direction: column;
 
   @include on-desktop {
+    max-width: 1136px;
     flex-direction: row;
     align-items: flex-start;
     gap: 64px;
