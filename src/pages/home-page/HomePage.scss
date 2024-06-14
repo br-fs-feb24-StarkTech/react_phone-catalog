@@ -1,8 +1,6 @@
 @import '../../assets/scss/variables.scss';
 
 .home-page {
-  @include pageGrid;
-
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -12,12 +10,15 @@
   gap: 0;
 
   @include on-tablet {
-    padding-inline: 32px;
+    padding: 32px 24px 64px;
   }
 
   @include on-desktop {
-    padding-top: 56px;
-    padding-bottom: 80px;
+    padding: 56px 32px 80px;
+  }
+
+  @media (min-width: 1400px) {
+    padding-inline: 152px;
   }
 
   &__title {
@@ -52,11 +53,6 @@
     @include on-desktop {
       margin-bottom: 80px;
     }
-  }
-
-  &__slider {
-    height: 440px;
-    background-color: $color-surface-2;
   }
 
   &__category {

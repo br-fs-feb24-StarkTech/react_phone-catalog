@@ -21,7 +21,6 @@
   }
 
   &__product {
-    padding: 0 8px;
     width: 212px;
     height: 439px;
 
@@ -38,8 +37,21 @@
 }
 
 .navigation {
+  display: flex;
+  justify-content: space-between;
+
   &__title {
     @include font-h2-mobile;
+
+    margin: 0;
+    width: 140px;
+    word-wrap: normal;
+
+    @include on-tablet {
+      @include font-h2-desktop;
+      width: 300px;
+      word-wrap: none;
+    }
   }
 }
 
