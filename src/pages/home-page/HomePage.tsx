@@ -31,7 +31,11 @@ export const HomePage = () => {
   return (
     <>
       {isLoading ? (
+<<<<<<< HEAD
         <SkeletonHome/>
+=======
+        <Loader />
+>>>>>>> 56039c772b88d67b3752c8ccf37b1f1001e6d55f
       ) : (
         <div className="home-page">
           <h1 className="home-page__title">Welcome to Nice Gadgets store!</h1>
