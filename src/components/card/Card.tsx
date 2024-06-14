@@ -17,7 +17,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
           <div className="cardbox-image">
             <img
               onClick={handleSelectProduct}
-              src={`/${product.image}`}
+              src={product.image}
               alt="img-phone"
               className="card__img"
             />

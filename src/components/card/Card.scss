@@ -5,6 +5,15 @@
 
   background-color: $color-surface-1;
   padding: 32px;
+  height: 439px;
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+  }
 
   display: flex;
   flex-direction: column;
@@ -31,7 +40,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 24px;
   }
 
   grid-column: span 4;
@@ -54,7 +62,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 24px;
   }
 
   &__img {
@@ -77,12 +84,11 @@
     }
 
     @include on-desktop {
-      height: 208px;
+      height: 196px;
     }
   }
 
   &infos-box {
-    margin-top: 8px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -110,9 +116,16 @@
   }
 
   &__description {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
     .description__text {
       display: flex;
       justify-content: space-between;
+      margin: 0;
 
       @include font-small-text-desktop;
       color: $color-secondary;
