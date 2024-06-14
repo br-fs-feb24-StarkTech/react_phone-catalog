@@ -122,6 +122,7 @@ const AccessoriesPage = () => {
               <ul className={`sortBy__list ${sortBy ? 'block' : ''}`}>
                 {sortOption.map(item => (
                   <li
+                    key={item.value}
                     className={`sortBy__item ${selectSortType === item.text ? 'active' : ''}`}
                     onClick={() => {
                       handleSortProduct2(item.value, item.text);
@@ -146,7 +147,8 @@ const AccessoriesPage = () => {
               <ul className={`pageBy__list ${pageBy ? 'block-page' : ''}`}>
                 {pageOption.map(item => (
                   <li
-                    className={`pageBy__item ${pageSize === item.value} ? 'active' : ''}`}
+                    key={item.value}
+                    className={`pageBy__item ${pageSize === item.value ? 'active' : ''}`}
                     onClick={() => fade(item.value)}
                   >
                     {item.value}

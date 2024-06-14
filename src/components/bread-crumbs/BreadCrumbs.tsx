@@ -2,6 +2,7 @@ import './BreadCrumbs.scss';
 import homeIcon from '/img/icons/home.svg';
 import arrowRight from '/img/icons/arrow-right.svg';
 import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
 
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.substring(1);
@@ -10,8 +11,6 @@ function capitalizeFirstLetter(string: string) {
 export const BreadCrumbs = () => {
   const location = useLocation();
   const stage = location.pathname.split('/');
-
-  console.log(stage[1]);
 
   return (
     <div className="breadcrumbs">
@@ -32,7 +31,7 @@ export const BreadCrumbs = () => {
         const lower = capitalizeFirstLetter(step);
 
         return (
-          <>
+          <React.Fragment key={index}>
             {index === stage.length - 1 ? (
               <span className="breadcrumbs__title">{lower}</span>
             ) : (
@@ -48,7 +47,7 @@ export const BreadCrumbs = () => {
             ) : (
               ''
             )}
-          </>
+          </React.Fragment>
         );
       })}
     </div>
