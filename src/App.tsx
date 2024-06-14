@@ -8,8 +8,8 @@ import { CartPage } from './pages/cart-page/CartPage';
 import './App.css';
 import { AppProvider } from './context/AppContext';
 import { ItemDetails } from './pages/item-details/ItemDetails';
-import { TabletsPage } from './pages/tablets-page/TabletsPage';
-import { AccessoriesPage } from './pages/accessories-page/AccessoriesPage';
+import TabletsPage from './pages/tablets-page/TabletsPage';
+import AccessoriesPage from './pages/accessories-page/AccessoriesPage';
 import { FavouritesPage } from './pages/favourites-page';
 
 export const App = () => (
