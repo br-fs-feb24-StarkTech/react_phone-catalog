@@ -6,11 +6,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ descriptions }) => {
     <div className="about">
       <h3 className="about__title">About</h3>
 
-      {descriptions.map(description => (
-        <div className="description about__description">
+      {descriptions.map((description, descriptionIndex) => (
+        <div key={descriptionIndex} className="description about__description">
           <div className="description__title">{description.title}</div>
-          {description.text.map(text => (
-            <div className="description__text">{text}</div>
+          {description.text.map((text, textIndex) => (
+            <div key={textIndex} className="description__text">
+              {text}
+            </div>
           ))}
         </div>
       ))}

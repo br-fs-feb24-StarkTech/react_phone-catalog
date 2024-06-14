@@ -16,7 +16,10 @@ export const PhotosBlock: React.FC<Props> = ({ images }) => {
     <div className="photos-block">
       <div className="list photos-block__list">
         {images?.map(image => (
-          <div className={`list__square ${selectedImage === image ? 'list__square--active' : ''} `}>
+          <div
+            key={image}
+            className={`list__square ${selectedImage === image ? 'list__square--active' : ''}`}
+          >
             <img
               className="list__image"
               src={`.././${image}`}
