@@ -39,7 +39,7 @@ export const HomePage = () => {
           />
         </div>
 
-        <div className="home-page__slider">HOT PRICES</div>
+        <div className="home-page__slider">Hot prices</div>
       </div>
     </>
   );

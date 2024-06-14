@@ -34,6 +34,29 @@
     margin-bottom: 24px;
   }
 
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+
+  &top-part {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &box-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
   &__img {
     width: 100%;
     object-fit: contain;
