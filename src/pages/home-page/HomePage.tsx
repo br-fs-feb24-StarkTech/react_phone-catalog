@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Category } from '../../components/category/Category';
 import { ProductType } from '../../types/ProductType';
-import { fetchProducts, fetchSliderProducts } from '../../utils/mockApi';
+import { fetchProducts } from '../../utils/mockApi';
 import { Banner } from '../../components/banner/Banner';
 import './HomePage.scss';
-import { ProductsSlider } from '../../components/product-slider/ProductSlider';
+import { HotPrices } from '../../components/hot-prices/HotPrices';
+import { NewModels } from '../../components/new-models/NewModels';
 
 export const HomePage = () => {
   const [productsList, setProductsList] = useState<ProductType[]>([]);
-  const [hotProducts, setHotProducts] = useState<ProductType[]>([]);
-  const [newModels, setNewModels] = useState<ProductType[]>([]);
 
   const phonesQuantity = productsList.filter(item => item.category === 'phones').length;
 
@@ -20,14 +19,6 @@ export const HomePage = () => {
   useEffect(() => {
     fetchProducts().then(data => {
       setProductsList(data);
-    });
-
-    fetchSliderProducts().then(data => {
-      setHotProducts(data);
-    });
-
-    fetchSliderProducts().then(data => {
-      setNewModels(data);
     });
   }, []);
 
@@ -41,7 +32,7 @@ export const HomePage = () => {
         </div>
 
         <div className="home-page__slider">
-          <ProductsSlider products={newModels} title={'Brand new models'} />
+          <NewModels />
         </div>
 
         <div className="home-page__category">
@@ -53,7 +44,7 @@ export const HomePage = () => {
         </div>
 
         <div className="home-page__slider">
-          <ProductsSlider products={hotProducts} title={'Hot Prices'} />
+          <HotPrices />
         </div>
       </div>
     </>
