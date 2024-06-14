@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
 import { ProductType } from '../../types/ProductType';
 import { useAppContext } from '../../context/AppContext';
-import Card from '../../components/card/Card';
+import { Card } from '../../components/card/Card';
 import './FavouritesPage.scss';
 
 export const FavouritesPage = () => {
