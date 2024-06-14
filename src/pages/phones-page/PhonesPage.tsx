@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/card/Card';
+import { Loader } from '../../components/loader';
 
 const DEFAULT_PAGE_SIZE = 16;
 
@@ -17,6 +18,7 @@ const PhonesPage = () => {
   const [sortBy, setSortBy] = useState(false);
   const [pageBy, setPageBy] = useState(false);
   const [selectSortType, setSelectSortType] = useState<string>();
+  const [loading, setLoading] = useState(false);
 
   const searchParams = useMemo(() => new URLSearchParams(location.search), []);
   const sortType = searchParams.get('sort') || 'year';
@@ -54,9 +56,12 @@ const PhonesPage = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
+
     fetchProducts().then(data => {
       setPhones(data.filter((product: ProductType) => product.category === 'phones'));
-    });
+    })
+      .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -100,14 +105,14 @@ const PhonesPage = () => {
 
   return (
     <>
-      <div className="products__container products container">
+      <div className="phones-page__container phones-page container">
         <BreadCrumbs />
-        <h1 className="products__title">Mobile phones</h1>
-        <p className="products__quantity">
-          <span className="products__quantityText">{phones.length} models</span>
+        <h1 className="phones-page__title">Mobile phones</h1>
+        <p className="phones-page__quantity">
+          <span className="phones-page__quantityText">{phones.length} models</span>
         </p>
 
-        <div className="products__filter filter">
+        <div className="phones-page__filter filter">
           <div className="filter_sortBy sortBy">
             <p className="sortBy__legend">Sort by</p>
             <button className="sortBy__select" onClick={handleSortBy}>
@@ -157,11 +162,15 @@ const PhonesPage = () => {
           </div>
         </div>
 
-        <ul className="products__list">
-          {currentPhones.map(product => {
-            return <Card key={product.id} product={product} />;
-          })}
-        </ul>
+        {loading && <Loader />}
+        {!loading && (
+          <ul className="phones-page__list">
+            {currentPhones.map(product => {
+              return <Card key={product.id} product={product} />;
+            })}
+          </ul>
+        )}
+
 
         <Pagination
           totalCount={phones.length}
