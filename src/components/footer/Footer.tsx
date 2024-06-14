@@ -1,6 +1,7 @@
 import '../../components/footer/Footer.scss';
 import logoIcon from '/img/icons/logo.svg';
-import arrowUp from '/img/icons/arrow-up.svg';
+
+import { BackToTopButton } from '../back-to-top-button/BackToTopButton';
 
 export const Footer = () => {
   return (
@@ -26,9 +27,7 @@ export const Footer = () => {
       <div className="top-button footer__top-button">
         <p className="top-button__text">Back to top</p>
 
-        <div className="top-button__button">
-          <img className="top-button__icon" src={arrowUp} alt="Back to top" />
-        </div>
+        <BackToTopButton />
       </div>
     </footer>
   );
