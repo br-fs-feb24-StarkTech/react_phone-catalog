@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/card/Card';
+import { SkeletonCard } from '../../components/skeleton-card/SkeletonCard';
 
 const DEFAULT_PAGE_SIZE = 16;
 
@@ -17,6 +18,7 @@ const PhonesPage = () => {
   const [sortBy, setSortBy] = useState(false);
   const [pageBy, setPageBy] = useState(false);
   const [selectSortType, setSelectSortType] = useState<string>();
+  const [skeleton, setSkeleton] = useState(false);
 
   const searchParams = useMemo(() => new URLSearchParams(location.search), []);
   const sortType = searchParams.get('sort') || 'year';
@@ -49,14 +51,27 @@ const PhonesPage = () => {
   };
 
   const fade = (value: number) => {
+    setSkeleton(true);
+
     setPageBy(!pageBy);
     setPageSize(Number(value));
+
+    setTimeout(() => {
+      setSkeleton(false);
+    }, 1000);
   };
 
   useEffect(() => {
-    fetchProducts().then(data => {
-      setPhones(data.filter((product: ProductType) => product.category === 'phones'));
-    });
+
+    setSkeleton(true);
+
+    fetchProducts()
+      .then(data => {
+        setPhones(data.filter((product: ProductType) => product.category === 'phones'));
+      })
+      .finally( () => {
+        setSkeleton(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -68,12 +83,17 @@ const PhonesPage = () => {
   }, [searchParams, sortOption]);
 
   const handleSortProduct2 = (value: string, text: string) => {
+    setSkeleton(true);
     setSelectSortType(text);
     setSortBy(false);
     searchParams.set('sort', value);
     history({
       search: searchParams.toString(),
     });
+
+    setTimeout(() => {
+      setSkeleton(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -160,9 +180,12 @@ const PhonesPage = () => {
         </div>
 
         <ul className="products__list">
-          {currentPhones.map(product => {
-            return <Card key={product.id} product={product} />;
-          })}
+          {skeleton ? <SkeletonCard /> : 
+            currentPhones.map(product => {
+              return <Card key={product.id} product={product} />;
+            })
+          }
+          
         </ul>
 
         <Pagination

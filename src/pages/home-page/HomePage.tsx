@@ -6,7 +6,7 @@ import { Banner } from '../../components/banner/Banner';
 import './HomePage.scss';
 import { HotPrices } from '../../components/hot-prices/HotPrices';
 import { NewModels } from '../../components/new-models/NewModels';
-import { Loader } from '../../components/loader/Loader';
+import { SkeletonHome } from '../../components/skeleton-home/SkeletonHome';
 
 export const HomePage = () => {
   const [productsList, setProductsList] = useState<ProductType[]>([]);
@@ -31,7 +31,7 @@ export const HomePage = () => {
   return (
     <>
       {isLoading ? (
-        <Loader />
+        <SkeletonHome />
       ) : (
         <div className="home-page">
           <h1 className="home-page__title">Welcome to Nice Gadgets store!</h1>

@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/card/Card';
+import { SkeletonCard } from '../../components/skeleton-card/SkeletonCard';
 
 const DEFAULT_PAGE_SIZE = 16;
 
@@ -17,6 +18,7 @@ const TabletsPage = () => {
   const [sortBy, setSortBy] = useState(false);
   const [pageBy, setPageBy] = useState(false);
   const [selectSortType, setSelectSortType] = useState<string>();
+  const [skeleton, setSkeleton] = useState(false);
 
   const searchParams = useMemo(() => new URLSearchParams(location.search), []);
   const sortType = searchParams.get('sort') || 'year';
@@ -49,14 +51,26 @@ const TabletsPage = () => {
   };
 
   const fade = (value: number) => {
+    setSkeleton(true);
+
     setPageBy(!pageBy);
     setPageSize(Number(value));
+
+    setTimeout(() => {
+      setSkeleton(false);
+    }, 1000);
   };
 
   useEffect(() => {
-    fetchProducts().then(data => {
-      setTablets(data.filter((product: ProductType) => product.category === 'tablets'));
-    });
+    setSkeleton(true);
+
+    fetchProducts()
+      .then(data => {
+        setTablets(data.filter((product: ProductType) => product.category === 'tablets'));
+      })
+      .finally( () => {
+        setSkeleton(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -68,12 +82,17 @@ const TabletsPage = () => {
   }, [searchParams, sortOption]);
 
   const handleSortProduct2 = (value: string, text: string) => {
+    setSkeleton(true);
     setSelectSortType(text);
     setSortBy(false);
     searchParams.set('sort', value);
     history({
       search: searchParams.toString(),
     });
+
+    setTimeout(() => {
+      setSkeleton(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -160,7 +179,8 @@ const TabletsPage = () => {
         </div>
 
         <ul className="products__list">
-          {currentTablets.map(product => {
+        {skeleton ? <SkeletonCard /> :
+          currentTablets.map(product => {
             return <Card key={product.id} product={product} />;
           })}
         </ul>
