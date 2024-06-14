@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { BackButton } from '../../components/back-button/BackButton';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
-import { ProductsSlider } from '../../components/product-slider/ProductSlider';
 import './ItemDetails.scss';
 import { useEffect, useState } from 'react';
 import { fetchProduct, fetchProducts } from '../../utils/mockApi';
@@ -11,11 +10,12 @@ import { AboutSection } from '../../components/about-section/AboutSection';
 import { TechSpecs } from '../../components/tech-specs/TechSpecs';
 import { ProductType } from '../../types/ProductType';
 import { ProductDetails } from '../../types/ProductDetails';
+import { RecommendedGoods } from '../../components/recommended-goods/RecommendedGoods';
 
 export const ItemDetails = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState<ProductDetails | null>(null);
-  const [products, setProducts] = useState<ProductType[]>([]);
+  const [, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
     fetchProduct().then(data => {
@@ -65,7 +65,7 @@ export const ItemDetails = () => {
         </div>
 
         <div className="item-details__other-products">
-          <ProductsSlider products={products} title={'You may also like'} />
+          <RecommendedGoods />
         </div>
       </div>
     );
