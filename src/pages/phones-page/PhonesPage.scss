@@ -5,11 +5,14 @@ body {
 }
 
 .phones-page {
-  margin-top: 24px;
+  
 
   &__container {
     padding-inline: 16px;
     min-height: 100vh;
+    max-width: 1136px;
+    margin: 24px auto 0;
+
 
     @include on-tablet {
       padding-inline: 24px;
@@ -19,23 +22,14 @@ body {
       padding-inline: 32px;
     }
 
-    @media (min-width: 1201px) {
-      padding-inline: 152px;
-    }
   }
 
   &__title {
     @include font-h1-mobile;
-    margin: 0;
-    vertical-align: middle;
     margin: 24px 0 8px 0;
 
     @include on-tablet {
       @include font-h1-desktop;
-      margin-top: 40px;
-    }
-
-    @include on-desktop {
       margin-top: 40px;
     }
   }
