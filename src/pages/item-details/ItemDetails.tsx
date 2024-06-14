@@ -60,7 +60,7 @@ export const ItemDetails = () => {
         </div>
 
         <div className="item-details__other-products">
-          <ProductsSlider products={products} title={'You may also like'} />
+          {/* <ProductsSlider products={products} title={'You may also like'} /> */}
         </div>
       </div>
     );
