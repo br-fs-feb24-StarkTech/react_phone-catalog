@@ -8,6 +8,14 @@ export const Card: React.FC<CardProps> = ({ product }) => {
 
   const handleSelectProduct = () => {
     navigate(`/products/${product.itemId}`);
+    scrollToTop();
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
