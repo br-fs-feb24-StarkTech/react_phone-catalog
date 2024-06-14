@@ -32,42 +32,45 @@ export const ItemDetails = () => {
     const { name, images, description } = product;
 
     return (
-      <div className="item-details">
-        <div className="item-details__bread-crumbs">
-          <BreadCrumbs />
-        </div>
+      <div className="item-details__container">
+        <div className="item-details">
+          <div className="item-details__bread-crumbs">
+            <BreadCrumbs />
+          </div>
 
-        <div className="item-details__back-button">
-          <BackButton />
-        </div>
+          <div className="item-details__back-button">
+            <BackButton />
+          </div>
 
-        <div className="product item-details__product">
-          <h2 className="product__name">{name}</h2>
+          <div className="product item-details__product">
+            <h2 className="product__name">{name}</h2>
 
-          <div className="display product__display">
-            <div className="display__images">
-              <PhotosBlock images={images} />
+            <div className="display product__display">
+              <div className="display__images">
+                <PhotosBlock images={images} />
+              </div>
+
+              <div className="display__card">
+                <Variants product={product} />
+              </div>
             </div>
+          </div>
 
-            <div className="display__card">
-              <Variants product={product} />
+          <div className="details item-details__details">
+            <div className="details__about">
+              <AboutSection descriptions={description} />
+            </div>
+            <div className="details__tech-specs">
+              <TechSpecs product={product} />
             </div>
           </div>
-        </div>
 
-        <div className="details item-details__details">
-          <div className="details__about">
-            <AboutSection descriptions={description} />
+          <div className="item-details__other-products">
+            <RecommendedGoods />
           </div>
-          <div className="details__tech-specs">
-            <TechSpecs product={product} />
-          </div>
-        </div>
-
-        <div className="item-details__other-products">
-          <RecommendedGoods />
         </div>
       </div>
+
     );
   } else {
     return <div className="product-not-found"></div>;
