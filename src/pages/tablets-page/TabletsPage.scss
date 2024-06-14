@@ -29,6 +29,10 @@ body {
     margin-top: 24px;
     vertical-align: middle;
 
+    @include on-tablet {
+      @include font-h1-desktop;
+    }
+
     @include on-desktop {
       margin-top: 40px;
     }
@@ -36,11 +40,11 @@ body {
 
   &__quantity {
     margin: 0;
+  }
 
-    &Text {
-      @include font-small-text-desktop;
-      color: $color-secondary;
-    }
+  &__Text {
+    @include font-body-text-desktop;
+    color: $color-secondary;
   }
 
   &__list {

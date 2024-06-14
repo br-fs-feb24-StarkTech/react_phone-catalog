@@ -15,6 +15,7 @@
     height: 32px;
     background-color: $color-surface-2;
     transition-duration: 300ms;
+    border: none;
 
     &:hover {
       background-color: $color-icons;
