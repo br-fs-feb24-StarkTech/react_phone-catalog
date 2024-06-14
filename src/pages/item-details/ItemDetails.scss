@@ -154,3 +154,12 @@
     }
   }
 }
+
+.product-not-found {
+  display: flex;
+  flex: 1;
+  background-image: url('/img/product-not-found.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

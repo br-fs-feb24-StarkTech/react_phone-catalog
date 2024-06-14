@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { BackButton } from '../../components/back-button/BackButton';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
-import { ProductsSlider } from '../../components/product-slider/ProductSlider';
 import './ItemDetails.scss';
 import { useEffect, useState } from 'react';
 import { ProductDetails } from '../../types/ProductDetails';
@@ -11,6 +10,7 @@ import { Variants } from '../../components/variants/Variants';
 import { AboutSection } from '../../components/about-section/AboutSection';
 import { TechSpecs } from '../../components/tech-specs/TechSpecs';
 import { ProductType } from '../../types/ProductType';
+import { ProductsSlider } from '../../components/product-slider/ProductSlider';
 
 export const ItemDetails = () => {
   const { productId } = useParams();
@@ -72,5 +72,7 @@ export const ItemDetails = () => {
         </div>
       </div>
     );
+  } else {
+    return <div className="product-not-found"></div>;
   }
 };
