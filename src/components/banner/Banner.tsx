@@ -1,14 +1,19 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 import './Banner.scss';
+import { Link } from 'react-router-dom';
 
 const carouselImages = [
   {
+    id: 1,
     desktop: '/img/banner-promo.png',
     mobile: '/img/banner-promo-mobile.png',
+    url: '/products/apple-iphone-14-128gb-midnight',
   },
   {
+    id: 2,
     desktop: '/img/banner-phones.png',
     mobile: '/img/banner-phones-mobile.png',
+    url: '/phones',
   },
 ];
 
@@ -129,13 +134,15 @@ export const Banner = () => {
         ></button>
 
         <div className="carousel__content" ref={carousel}>
-          {carouselImages.map((image, index) => (
-            <div key={index} className="carousel__item-box">
-              <img
-                src={isMobileView ? image.mobile : image.desktop}
-                alt=""
-                className="carousel__item-image"
-              />
+          {carouselImages.map((image) => (
+            <div key={image.id} className="carousel__item-box">
+              <Link to={image.url}>
+                <img
+                  src={isMobileView ? image.mobile : image.desktop}
+                  alt="banner"
+                  className="carousel__item-image"
+                />
+              </Link>
             </div>
           ))}
         </div>
