@@ -4,8 +4,6 @@ import { ProductType } from '../../types/ProductType';
 import { fetchProducts } from '../../utils/mockApi';
 import { Banner } from '../../components/banner/Banner';
 import './HomePage.scss';
-import { HotPrices } from '../../components/hot-prices/HotPrices';
-import { NewModels } from '../../components/new-models/NewModels';
 
 export const HomePage = () => {
   const [productsList, setProductsList] = useState<ProductType[]>([]);
@@ -31,9 +29,7 @@ export const HomePage = () => {
           <Banner />
         </div>
 
-        <div className="home-page__slider">
-          <NewModels />
-        </div>
+        <div className="home-page__slider">BRAND NEW MODELS</div>
 
         <div className="home-page__category">
           <Category
@@ -43,9 +39,7 @@ export const HomePage = () => {
           />
         </div>
 
-        <div className="home-page__slider">
-          <HotPrices />
-        </div>
+        <div className="home-page__slider">Hot prices</div>
       </div>
     </>
   );
