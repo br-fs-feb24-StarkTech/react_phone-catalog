@@ -14,11 +14,9 @@ import { TechSpecs } from '../../components/tech-specs/TechSpecs';
 export const ItemDetails = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState<ProductDetails | null>(null);
-
   useEffect(() => {
     fetchProduct().then(data => {
       const targetProduct = data.find((item: ProductDetails) => item.id === productId);
-
       if (targetProduct) {
         setProduct(targetProduct);
       }
@@ -62,9 +60,11 @@ export const ItemDetails = () => {
         </div>
 
         <div className="item-details__other-products">
-          {/* <ProductsSlider products={products} title={'You may also like'} /> */}
+          <ProductsSlider products={products} title={'You may also like'} />
         </div>
       </div>
     );
+  } else {
+    return <div className="product-not-found"></div>;
   }
 };
