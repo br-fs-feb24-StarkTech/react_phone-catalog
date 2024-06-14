@@ -1,19 +1,56 @@
 import './BreadCrumbs.scss';
 import homeIcon from '/img/icons/home.svg';
 import arrowRight from '/img/icons/arrow-right.svg';
+import { Link, useLocation } from 'react-router-dom';
+
+function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.substring(1);
+}
 
 export const BreadCrumbs = () => {
+  const location = useLocation();
+  const stage = location.pathname.split('/');
+
+  console.log(stage[1]);
+
   return (
     <div className="breadcrumbs">
-      <a href="#" className="breadcrumbs__item">
+      <Link to="/" className="breadcrumbs__item">
         <img src={homeIcon} alt="home-icon" className="breadcrumbs__icon--home" />
-      </a>
+      </Link>
 
-      <img src={arrowRight} alt="home-icon" className="breadcrumbs__icon" />
+      {stage.map((step, index) => {
+        const slice = stage[1] === 'products' ? 'phones' : stage[1];
+        let breadCrumbsLine = '';
 
-      <a href="#" className="breadcrumbs__title">
-        Phones
-      </a>
+        if (slice === 'phones') {
+          breadCrumbsLine = '../phones';
+        } else {
+          breadCrumbsLine = stage.slice(0, index + 1).join('/');
+        }
+
+        const lower = capitalizeFirstLetter(step);
+
+        return (
+          <>
+            {index === stage.length - 1 ? (
+              <span className="breadcrumbs__title">{lower}</span>
+            ) : (
+              <Link to={breadCrumbsLine} className="breadcrumbs__title active-bread">
+                {step === 'products' ? 'Phones' : lower}
+              </Link>
+            )}
+
+            {index !== stage.length - 1 ? (
+              <div className="breadcrumbs__item">
+                <img src={arrowRight} alt="home-icon" className="breadcrumbs__icon" />
+              </div>
+            ) : (
+              ''
+            )}
+          </>
+        );
+      })}
     </div>
   );
 };
