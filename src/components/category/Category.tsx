@@ -48,7 +48,7 @@ export const Category: React.FC<Props> = ({
                 <img src="./img/categories/accessories.png" alt="" className="items__img" />
               </div>
               <div className="items__descriptions">
-                <h4 className="items__description">Acessories</h4>
+                <h4 className="items__description">Accessories</h4>
                 <p className="items__models">{accessoriesQuantity} models</p>
               </div>
             </div>

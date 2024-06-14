@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // .Loader {
 //   display: flex;
 //   width: 100%;
@@ -43,3 +44,30 @@
   display: block; 
 }
 
+=======
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loaderContent {
+  border-radius: 50%;
+  width: 5em;
+  height: 5em;
+  margin: 1em auto;
+  border: 0.3em solid #ddd;
+  border-left-color: #000;
+  animation: load8 1.2s infinite linear;
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+>>>>>>> c44032d9fc9393793bcc83d7cd1a38dad9e7fa2f
