@@ -3,9 +3,7 @@ import { UsePaginationProps } from '../types/UsePaginationProps';
 
 const DOTS = '...';
 
-export const usePagination = ({ totalCount, pageSize, currentPage }: UsePaginationProps) => {
-  const totalPages = Math.ceil(totalCount / pageSize);
-
+export const usePagination = ({ totalPages, currentPage }: UsePaginationProps) => {
   const paginationRange = useMemo(() => {
     return Array.from({ length: totalPages }, (_, index) => index + 1);
   }, [totalPages]);

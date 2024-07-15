@@ -19,7 +19,7 @@ const PhonesPage = () => {
   const [pageBy, setPageBy] = useState(false);
   const [selectSortType, setSelectSortType] = useState<string>();
   const [skeleton, setSkeleton] = useState(false);
-
+  const [totalPages, setTotalPages] = useState(0);
   const searchParams = useMemo(() => new URLSearchParams(location.search), []);
   const sortType = searchParams.get('sort') || 'year';
   const query = searchParams.get('query') || '';
@@ -50,28 +50,22 @@ const PhonesPage = () => {
     setPageBy(!pageBy);
   };
 
-  const fade = (value: number) => {
-    setSkeleton(true);
-
+  const handlePageSizeChange = (value: number) => {
     setPageBy(!pageBy);
     setPageSize(Number(value));
-
-    setTimeout(() => {
-      setSkeleton(false);
-    }, 1000);
   };
 
   useEffect(() => {
     setSkeleton(true);
-
-    fetchProducts()
-      .then(data => {
-        setPhones(data.filter((product: ProductType) => product.category === 'phones'));
+    fetchProducts('phones', currentPage, pageSize)
+      .then(res => {
+        setTotalPages(res.data.totalPages);
+        setPhones(res.data.products);
       })
       .finally(() => {
         setSkeleton(false);
       });
-  }, []);
+  }, [currentPage, pageSize]);
 
   useEffect(() => {
     if (searchParams.get('sortType')) {
@@ -113,9 +107,6 @@ const PhonesPage = () => {
         setSortedPhones([...phones]);
     }
   }, [phones, sortType, query, lowerQuery]);
-
-  const startIndex = (currentPage - 1) * pageSize;
-  const currentPhones = sortedPhones.slice(startIndex, startIndex + pageSize);
 
   return (
     <>
@@ -168,7 +159,7 @@ const PhonesPage = () => {
                   <li
                     key={item.value}
                     className={`pageBy__item ${pageSize === item.value ? 'active' : ''}`}
-                    onClick={() => fade(item.value)}
+                    onClick={() => handlePageSizeChange(item.value)}
                   >
                     {item.value}
                   </li>
@@ -182,15 +173,14 @@ const PhonesPage = () => {
           {skeleton ? (
             <SkeletonCard />
           ) : (
-            currentPhones.map(product => {
+            sortedPhones.map(product => {
               return <Card key={product.id} product={product} />;
             })
           )}
         </ul>
 
         <Pagination
-          totalCount={phones.length}
-          pageSize={pageSize}
+          totalPages={totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />

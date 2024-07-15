@@ -19,7 +19,7 @@ const TabletsPage = () => {
   const [pageBy, setPageBy] = useState(false);
   const [selectSortType, setSelectSortType] = useState<string>();
   const [skeleton, setSkeleton] = useState(false);
-
+  const [totalPages, setTotalPages] = useState(0);
   const searchParams = useMemo(() => new URLSearchParams(location.search), []);
   const sortType = searchParams.get('sort') || 'year';
   const query = searchParams.get('query') || '';
@@ -50,28 +50,22 @@ const TabletsPage = () => {
     setPageBy(!pageBy);
   };
 
-  const fade = (value: number) => {
-    setSkeleton(true);
-
+  const handlePageSizeChange = (value: number) => {
     setPageBy(!pageBy);
     setPageSize(Number(value));
-
-    setTimeout(() => {
-      setSkeleton(false);
-    }, 1000);
   };
 
   useEffect(() => {
     setSkeleton(true);
-
-    fetchProducts()
-      .then(data => {
-        setTablets(data.filter((product: ProductType) => product.category === 'tablets'));
+    fetchProducts('tablets', currentPage, pageSize)
+      .then(res => {
+        setTotalPages(res.data.totalPages);
+        setTablets(res.data.products);
       })
       .finally(() => {
         setSkeleton(false);
       });
-  }, []);
+  }, [currentPage, pageSize]);
 
   useEffect(() => {
     if (searchParams.get('sortType')) {
@@ -113,9 +107,6 @@ const TabletsPage = () => {
         setSortedTablets([...tablets]);
     }
   }, [tablets, sortType, query, lowerQuery]);
-
-  const startIndex = (currentPage - 1) * pageSize;
-  const currentTablets = sortedTablets.slice(startIndex, startIndex + pageSize);
 
   return (
     <>
@@ -168,7 +159,7 @@ const TabletsPage = () => {
                   <li
                     key={item.value}
                     className={`pageBy__item ${pageSize === item.value ? 'active' : ''}`}
-                    onClick={() => fade(item.value)}
+                    onClick={() => handlePageSizeChange(item.value)}
                   >
                     {item.value}
                   </li>
@@ -182,15 +173,14 @@ const TabletsPage = () => {
           {skeleton ? (
             <SkeletonCard />
           ) : (
-            currentTablets.map(product => {
+            sortedTablets.map(product => {
               return <Card key={product.id} product={product} />;
             })
           )}
         </ul>
 
         <Pagination
-          totalCount={tablets.length}
-          pageSize={pageSize}
+          totalPages={totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
