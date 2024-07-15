@@ -7,8 +7,8 @@ export const NewModels = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
-    getNewProducts().then(product => setProducts(product));
-  }, [products]);
+    getNewProducts().then(products => setProducts(products));
+  }, []);
 
   return <ProductsSlider products={products} title="Brand new models" />;
 };

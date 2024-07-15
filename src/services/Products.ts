@@ -1,6 +1,9 @@
+import axios from 'axios';
 import { ProductType } from '../types/ProductType';
 import { ShuffledArray } from '../utils/shuffledArray';
 import { fetchProducts } from '../utils/mockApi';
+
+const BASE_URL = import.meta.env.API_URL;
 
 export const getAllProducts = async (): Promise<ProductType[]> => {
   return fetchProducts();
@@ -20,16 +23,9 @@ export const getHotPriceProducts = async () => {
   });
 };
 
-export const getNewProducts = async () => {
-  const response = await fetchProducts();
-  const latestYear = response.reduce(
-    (acc: number, product: ProductType) => Math.max(acc, product.year),
-    0,
-  );
-
-  return response
-    .filter((product: ProductType) => product.year === latestYear)
-    .sort((a: ProductType, b: ProductType) => b.fullPrice - a.fullPrice);
+export const getNewProducts = async (): Promise<ProductType[]> => {
+  const response = await axios.get<ProductType[]>(`${BASE_URL}}/phones/new-models`);
+  return response.data;
 };
 
 export const getSuggestedProducts = async () => {
