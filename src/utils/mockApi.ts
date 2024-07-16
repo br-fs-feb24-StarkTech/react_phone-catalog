@@ -1,11 +1,6 @@
-import phones from '../../public/api/phones.json';
-import tablets from '../../public/api/tablets.json';
-import accessories from '../../public/api/accessories.json';
 import { ProductDetails } from '../types/ProductDetails';
 import { ProductsResponse } from '../types/ProductsResponse';
 import axios from 'axios';
-
-const productsAll = [...tablets, ...phones, ...accessories];
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -19,10 +14,6 @@ export const fetchProducts = async (category: string, page: number, limit: numbe
   });
 };
 
-export const fetchProduct = async (): Promise<ProductDetails[]> => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(productsAll as ProductDetails[]);
-    }, 500);
-  });
+export const fetchProductDetails = async (productId?: string) => {
+  return await axios.get<ProductDetails>(`${BASE_URL}/products/${productId}`);
 };
