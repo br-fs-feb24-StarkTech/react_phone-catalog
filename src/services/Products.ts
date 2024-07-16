@@ -2,16 +2,6 @@ import { ProductType } from '../types/ProductType';
 import { ShuffledArray } from '../utils/shuffledArray';
 import { fetchProducts } from '../utils/mockApi';
 
-export const getAllProducts = async (): Promise<ProductType[]> => {
-  return fetchProducts();
-};
-
-export const getProductsByCategory = async (category: string) => {
-  const products = await fetchProducts();
-
-  return products.filter((product: ProductType) => product.category === category);
-};
-
 export const getHotPriceProducts = async () => {
   const response = await fetchProducts();
 
