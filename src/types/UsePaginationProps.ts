@@ -1,5 +1,4 @@
 export interface UsePaginationProps {
-  totalCount: number;
-  pageSize: number;
+  totalPages: number;
   currentPage: number;
 }

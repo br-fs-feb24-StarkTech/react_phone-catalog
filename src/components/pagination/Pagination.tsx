@@ -11,12 +11,11 @@ enum Direction {
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
-  totalCount,
-  pageSize,
+  totalPages,
   currentPage,
   onPageChange,
 }) => {
-  const { paginationRange, showingRange } = usePagination({ totalCount, pageSize, currentPage });
+  const { paginationRange, showingRange } = usePagination({ totalPages, currentPage });
 
   // Memoized handlePageChange function
   const handlePageChange = useCallback(
