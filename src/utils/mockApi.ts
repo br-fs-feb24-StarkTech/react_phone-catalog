@@ -6,10 +6,11 @@ import { ProductsResponse } from '../types/ProductsResponse';
 import axios from 'axios';
 
 const productsAll = [...tablets, ...phones, ...accessories];
-const API_URL = 'http://localhost:3005';
+
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const fetchProducts = async (category: string, page: number, limit: number) => {
-  return await axios.get<ProductsResponse>(`${API_URL}/products/`, {
+  return await axios.get<ProductsResponse>(`${BASE_URL}/products/`, {
     params: {
       category,
       page,
