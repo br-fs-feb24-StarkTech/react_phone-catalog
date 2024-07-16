@@ -2,7 +2,7 @@ import { ProductDetails } from '../types/ProductDetails';
 import { ProductsResponse } from '../types/ProductsResponse';
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = import.meta.env.API_URL;
 
 export const fetchProducts = async (category: string, page: number, limit: number) => {
   return await axios.get<ProductsResponse>(`${BASE_URL}/products/`, {
