@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { ProductType } from '../types/ProductType';
-import { ShuffledArray } from '../utils/shuffledArray';
-import { fetchProducts } from '../utils/mockApi';
+import { fetchProducts } from './mockApi';
 
 const BASE_URL = import.meta.env.API_URL;
 

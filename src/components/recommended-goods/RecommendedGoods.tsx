@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
-import { getSuggestedProducts } from '../../services/Products';
 import { ProductsSlider } from '../product-slider/ProductSlider';
+import { fetchRecommendedProducts } from '../../services/mockApi';
+import { RecommendedGoodsProps } from '../../types/RecommendedGoodsProps';
 
-export const RecommendedGoods = () => {
+export const RecommendedGoods: React.FC<RecommendedGoodsProps> = ({ productId }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
-    getSuggestedProducts().then(product => setProducts(product));
+    fetchRecommendedProducts(productId).then(res => setProducts(res.data));
   }, []);
 
   return <ProductsSlider products={products} title="You may also like" />;
