@@ -56,7 +56,7 @@ const LoginPage: React.FC = () => {
           <div className="toggle-panel toggle-right">
             <h1>
               Hello, <br />
-              👌NiceGadgets <br />
+              👌Nice Gadgets <br />
               friend!
             </h1>
             <p>Register with your personal details to use all of site features</p>
