@@ -16,11 +16,8 @@ export const getProductsByCategory = async (category: string) => {
 };
 
 export const getHotPriceProducts = async () => {
-  const response = await fetchProducts();
-
-  return response.sort((a: ProductType, b: ProductType) => {
-    return b.fullPrice - b.price - (a.fullPrice - a.price);
-  });
+  const response = await axios.get<ProductType[]>(`${BASE_URL}}/phones/discount-models`);
+  return response.data;
 };
 
 export const getNewProducts = async (): Promise<ProductType[]> => {
