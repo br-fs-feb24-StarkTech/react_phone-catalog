@@ -2,16 +2,17 @@
 
 .favorites-page {
   &__content {
-    padding-top: 24px;
-    padding-inline: 16px;
+    padding: 24px 16px 56px;
     min-width: 320px;
 
     @include on-tablet {
       padding-inline: 24px;
+      padding-bottom: 64px;
     }
 
     @include on-desktop {
       padding-inline: 32px;
+      padding-bottom: 80px;
     }
   }
 

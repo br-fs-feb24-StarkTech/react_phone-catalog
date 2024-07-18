@@ -7,11 +7,14 @@
   flex-direction: column;
   gap: 16px;
   padding: 24px;
-  height: 135px;
+  width: 288px;
+
+  @include on-tablet {
+    width: 590px;
+  }
 
   @include on-desktop {
-    width: 33%;
-    height: 165px;
+    height: 205px;
     gap: 24px;
   }
 
@@ -38,11 +41,13 @@
 
   &__line {
     border: 1px solid #3b3e4a;
+    margin-block: 16px;
   }
 
   &__button-checkout {
     display: flex;
     justify-content: center;
+    width: 100%;
     background-color: #905bff;
     align-items: center;
     text-decoration: none;

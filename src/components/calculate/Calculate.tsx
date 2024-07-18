@@ -33,12 +33,15 @@ export const Calculate: React.FC = () => {
           <div className="calculate__infos">
             <h2 className="calculate__price">${totalPrice.toLocaleString()}</h2>
             <p className="calculate__description">Total for {cartQuantity} items</p>
+
+            <div className="calculate__line"></div>
+
+            <button type="button" className="calculate__button-checkout" onClick={handleModal}>
+              Checkout
+            </button>
+
+            {modalStatus && <Modal />}
           </div>
-          <div className="calculate__line"></div>
-          <button type="button" className="calculate__button-checkout" onClick={handleModal}>
-            Checkout
-          </button>
-          {modalStatus && <Modal />}
         </div>
       ) : null}
     </>
