@@ -8,7 +8,7 @@ export const NewModels = () => {
 
   useEffect(() => {
     fetchNewProducts().then(product => setProducts(product));
-  }, [products]);
+  }, []);
 
   return <ProductsSlider products={products} title="Brand new models" />;
 };
