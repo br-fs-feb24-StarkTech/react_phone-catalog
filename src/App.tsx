@@ -11,6 +11,8 @@ import { ItemDetails } from './pages/item-details/ItemDetails';
 import TabletsPage from './pages/tablets-page/TabletsPage';
 import AccessoriesPage from './pages/accessories-page/AccessoriesPage';
 import { FavouritesPage } from './pages/favourites-page/FavouritesPage';
+import LoginPage from './pages/login-page/LoginPage';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export const App = () => (
   <AppProvider>
@@ -27,6 +29,7 @@ export const App = () => (
           <Route path="products/:productId" element={<ItemDetails />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </Router>
   </AppProvider>

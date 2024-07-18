@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Category } from '../../components/category/Category';
 import { ProductType } from '../../types/ProductType';
-import { fetchProducts } from '../../utils/mockApi';
+import { fetchProducts } from '../../services/mockApi';
 import { Banner } from '../../components/banner/Banner';
 import './HomePage.scss';
 import { HotPrices } from '../../components/hot-prices/HotPrices';
@@ -19,13 +19,18 @@ export const HomePage = () => {
   const accessoriesQuantity = productsList.filter(item => item.category === 'accessories').length;
 
   useEffect(() => {
-    fetchProducts()
-      .then(data => {
-        setProductsList(data);
-      })
-      .finally(() => {
+    const loadProducts = async () => {
+      try {
+        const response = await fetchProducts(1, 100);
+        setProductsList(response.data.products);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+
+    loadProducts();
   }, []);
 
   return (

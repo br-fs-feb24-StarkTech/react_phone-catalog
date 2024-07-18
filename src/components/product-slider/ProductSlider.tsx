@@ -7,21 +7,21 @@ import arrowLeft from '/img/icons/arrow-left-default.svg';
 import arrowRight from '/img/icons/arrow-right-default.svg';
 
 type Props = {
-  products: ProductType[];
+  products: ProductType[] | undefined;
   title: string;
   isHomePage?: boolean;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
+export const ProductsSlider: React.FC<Props> = ({ products = [], title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCardsCount, setVisibleCardsCount] = useState(3);
 
   const updateVisibleCardsCount = () => {
     const cardsPer640px = 2;
     const width = window.innerWidth;
-    const totalCardsPerWidth = (width / 640) * cardsPer640px;
+    const totalCardsPerWidth = Math.floor((width / 640) * cardsPer640px);
 
-    setVisibleCardsCount(totalCardsPerWidth);
+    setVisibleCardsCount(Math.max(1, totalCardsPerWidth));
   };
 
   useEffect(() => {
@@ -38,16 +38,22 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   };
 
   const handleNextClick = () => {
-    setCurrentIndex(prevIndex => Math.min(prevIndex + 1, products.length - visibleCardsCount));
+    setCurrentIndex(prevIndex =>
+      Math.min(prevIndex + 1, (products?.length ?? 0) - visibleCardsCount),
+    );
   };
 
   const isPrevDisabled = currentIndex === 0;
-  const isNextDisabled = currentIndex === products.length - visibleCardsCount;
+  const isNextDisabled = currentIndex === (products?.length ?? 0) - visibleCardsCount;
 
   const handlers = useSwipeable({
     onSwipedLeft: () => handleNextClick(),
     onSwipedRight: () => handlePrevClick(),
   });
+
+  if (!Array.isArray(products) || products.length === 0) {
+    return <div className="products-carousel">No products available</div>;
+  }
 
   return (
     <div className="products-carousel" {...handlers}>

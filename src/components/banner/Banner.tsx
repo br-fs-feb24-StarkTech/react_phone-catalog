@@ -2,17 +2,19 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import './Banner.scss';
 import { Link } from 'react-router-dom';
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const carouselImages = [
   {
     id: 1,
-    desktop: '/img/banner-promo.png',
-    mobile: '/img/banner-promo-mobile.png',
+    desktop: `${BASE_URL}/img/banner-promo.png`,
+    mobile: `${BASE_URL}/img/banner-promo-mobile.png`,
     url: '/products/apple-iphone-14-128gb-midnight',
   },
   {
     id: 2,
-    desktop: '/img/banner-phones.png',
-    mobile: '/img/banner-phones-mobile.png',
+    desktop: `${BASE_URL}/img/banner-phones.png`,
+    mobile: `${BASE_URL}/img/banner-phones-mobile.png`,
     url: '/phones',
   },
 ];

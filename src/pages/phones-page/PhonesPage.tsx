@@ -1,7 +1,7 @@
 import './PhonesPage.scss';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
 import { Pagination } from '../../components/pagination/Pagination';
-import { fetchProducts } from '../../utils/mockApi';
+import { fetchProducts } from '../../services/mockApi';
 import { useEffect, useMemo, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +54,7 @@ const PhonesPage = () => {
 
   useEffect(() => {
     setSkeleton(true);
-    fetchProducts('phones', currentPage, pageSize, sortValue)
+    fetchProducts(currentPage, pageSize, sortValue, 'phones')
       .then(res => {
         setTotalPages(res.data.totalPages);
         setPhones(res.data.products);

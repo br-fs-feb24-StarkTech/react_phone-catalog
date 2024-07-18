@@ -1,7 +1,7 @@
 import './TabletsPage.scss';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
 import { Pagination } from '../../components/pagination/Pagination';
-import { fetchProducts } from '../../utils/mockApi';
+import { fetchProducts } from '../../services/mockApi';
 import { useEffect, useMemo, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +54,7 @@ const TabletsPage = () => {
 
   useEffect(() => {
     setSkeleton(true);
-    fetchProducts('tablets', currentPage, pageSize, sortValue)
+    fetchProducts(currentPage, pageSize, sortValue, 'tablets')
       .then(res => {
         setTotalPages(res.data.totalPages);
         setTablets(res.data.products);
