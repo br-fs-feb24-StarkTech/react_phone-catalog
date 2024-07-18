@@ -3,7 +3,7 @@ import { ProductType } from '../types/ProductType';
 import { ShuffledArray } from '../utils/shuffledArray';
 import { fetchProducts } from '../utils/mockApi';
 
-const BASE_URL = import.meta.env.API_URL;
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const getAllProducts = async (): Promise<ProductType[]> => {
   return fetchProducts();
