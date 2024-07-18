@@ -17,10 +17,6 @@ body {
     @include on-desktop {
       padding-inline: 32px;
     }
-
-    @media (min-width: 1201px) {
-      padding-inline: 152px;
-    }
   }
 
   &__title {
@@ -58,6 +54,8 @@ body {
   &__filter {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 32px;
 
     .sortBy {
@@ -125,8 +123,8 @@ body {
         visibility: hidden;
         opacity: 0;
         transition:
-          opacity 1s ease,
-          visibility 0s ease 1s;
+          opacity 0.3s ease,
+          visibility 0s ease 0.3s;
 
         @include on-tablet {
           width: 185px;
@@ -137,7 +135,7 @@ body {
         visibility: visible;
         opacity: 1;
         transition:
-          opacity 1s ease,
+          opacity 0.3s ease,
           visibility 0s ease 0s;
       }
 
@@ -227,8 +225,8 @@ body {
         visibility: hidden;
         opacity: 0;
         transition:
-          opacity 1s ease,
-          visibility 0s ease 1s;
+          opacity 0.3s ease,
+          visibility 0s ease 0.3s;
 
         @include on-tablet {
           width: 135px;
@@ -239,7 +237,7 @@ body {
         visibility: visible;
         opacity: 1;
         transition:
-          opacity 1s ease,
+          opacity 0.3s ease,
           visibility 0s ease 0s;
       }
 
@@ -264,4 +262,54 @@ body {
       }
     }
   }
+}
+
+.filter {
+  &__dropdowns {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.search {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  @include font-small-text-desktop;
+  color: $color-secondary;
+
+  &__text {
+    margin-block: 12px;
+  }
+
+  &__input {
+    width: 200px;
+    height: 40px;
+    padding-inline: 10px;
+    border: none;
+    background-color: $color-surface-2;
+    background-clip: padding-box;
+    background-image: url('/img/icons/search.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+
+    @include font-small-text-desktop;
+
+    &::placeholder {
+      font-style: italic;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.text-error {
+  margin-block: 100px;
+  text-align: center;
+  @include font-h3-desktop;
 }

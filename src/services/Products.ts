@@ -15,12 +15,12 @@ export const getProductsByCategory = async (category: string) => {
 };
 
 export const getHotPriceProducts = async () => {
-  const response = await axios.get<ProductType[]>(`${BASE_URL}}/phones/discount-models`);
+  const response = await axios.get<ProductType[]>(`${BASE_URL}}/discount-models`);
   return response.data;
 };
 
 export const getNewProducts = async (): Promise<ProductType[]> => {
-  const response = await axios.get<ProductType[]>(`${BASE_URL}/products/new-models`);
+  const response = await axios.get<ProductType[]>(`${BASE_URL}/new-models`);
   return response.data;
 };
 

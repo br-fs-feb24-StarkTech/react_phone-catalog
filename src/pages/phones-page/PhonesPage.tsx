@@ -7,8 +7,6 @@ import { ProductType } from '../../types/ProductType';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../../components/card/Card';
 import { SkeletonCard } from '../../components/skeleton-card/SkeletonCard';
-import { SiTrueup } from 'react-icons/si';
-import { NewModels } from '../../components/new-models/NewModels';
 
 const DEFAULT_PAGE_SIZE = 16;
 
@@ -212,8 +210,6 @@ const PhonesPage = () => {
         {error ? (
           <>
             <p className="text-error">There is no products with the specified term</p>
-
-            <NewModels />
           </>
         ) : (
           <>
