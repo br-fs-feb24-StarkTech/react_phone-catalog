@@ -63,8 +63,7 @@ const PhonesPage = () => {
 
   const setupProducts = () => {
     setSkeleton(true);
-    setError(false);
-    fetchProducts(currentPage, pageSize, searchValue, 'phones')
+    fetchProducts(currentPage, pageSize, 'phones')
       .then(res => {
         setTotalPages(res.data.totalPages);
         setPhones(res.data.products);

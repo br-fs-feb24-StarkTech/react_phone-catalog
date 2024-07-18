@@ -63,8 +63,7 @@ const AccessoriesPage = () => {
 
   const setupProducts = () => {
     setSkeleton(true);
-    setError(false);
-    fetchProducts(currentPage, pageSize, searchValue, 'accessories')
+    fetchProducts(currentPage, pageSize, 'accessories')
       .then(res => {
         setTotalPages(res.data.totalPages);
         setAccessories(res.data.products);

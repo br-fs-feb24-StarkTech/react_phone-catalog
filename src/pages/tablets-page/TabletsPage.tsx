@@ -63,8 +63,7 @@ const TabletsPage = () => {
 
   const setupProducts = () => {
     setSkeleton(true);
-    setError(false);
-    fetchProducts(currentPage, pageSize, searchValue, 'tablets')
+    fetchProducts(currentPage, pageSize, 'tablets')
       .then(res => {
         setTotalPages(res.data.totalPages);
         setTablets(res.data.products);
