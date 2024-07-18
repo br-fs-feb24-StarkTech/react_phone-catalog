@@ -9,6 +9,7 @@ export const fetchProducts = async (
   page: number,
   limit: number,
   sort?: string,
+  search?: string,
   category?: string,
 ) => {
   return await axios.get<ProductsResponse>(`${BASE_URL}/products/`, {
@@ -17,6 +18,7 @@ export const fetchProducts = async (
       limit,
       sort,
       category,
+      search,
     },
   });
 };
