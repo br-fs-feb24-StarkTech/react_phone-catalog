@@ -12,7 +12,7 @@ import TabletsPage from './pages/tablets-page/TabletsPage';
 import AccessoriesPage from './pages/accessories-page/AccessoriesPage';
 import { FavouritesPage } from './pages/favourites-page/FavouritesPage';
 import LoginPage from './pages/login-page/LoginPage';
-//import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export const App = () => (
   <AppProvider>
