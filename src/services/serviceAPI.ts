@@ -8,7 +8,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 export const fetchProducts = async (
   page: number,
   limit: number,
-  sort: string,
+  sort?: string,
   category?: string,
 ) => {
   return await axios.get<ProductsResponse>(`${BASE_URL}/products/`, {
