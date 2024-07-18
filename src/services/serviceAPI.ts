@@ -22,3 +22,13 @@ export const fetchProductDetails = async (productId?: string) => {
 export const fetchRecommendedProducts = async (productId: string) => {
   return await axios.get<ProductType[]>(`${BASE_URL}/products/${productId}/recommended`);
 };
+
+export const fetchNewProducts = async (): Promise<ProductType[]> => {
+  const response = await axios.get<ProductType[]>(`${BASE_URL}/new-models`);
+  return response.data;
+};
+
+export const fetchHotPriceProducts = async () => {
+  const response = await axios.get<ProductType[]>(`${BASE_URL}/discount-models`);
+  return response.data;
+};

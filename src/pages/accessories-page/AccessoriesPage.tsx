@@ -1,7 +1,7 @@
 import './AccessoriesPage.scss';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
 import { Pagination } from '../../components/pagination/Pagination';
-import { fetchProducts } from '../../services/mockApi';
+import { fetchProducts } from '../../services/serviceAPI';
 import { useEffect, useMemo, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
 import { useNavigate } from 'react-router-dom';

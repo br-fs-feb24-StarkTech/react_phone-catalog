@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
 import { ProductsSlider } from '../product-slider/ProductSlider';
-import { fetchRecommendedProducts } from '../../services/mockApi';
+import { fetchRecommendedProducts } from '../../services/serviceAPI';
 import { RecommendedGoodsProps } from '../../types/RecommendedGoodsProps';
 
 export const RecommendedGoods: React.FC<RecommendedGoodsProps> = ({ productId }) => {

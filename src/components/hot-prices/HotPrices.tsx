@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { ProductType } from '../../types/ProductType';
-import { getHotPriceProducts } from '../../services/Products';
+import { fetchHotPriceProducts } from '../../services/serviceAPI';
 import { ProductsSlider } from '../product-slider/ProductSlider';
 
 export const HotPrices = () => {
-  const [products, setProduct] = useState<ProductType[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
-    getHotPriceProducts().then(product => setProduct(product));
+    fetchHotPriceProducts().then(product => setProducts(product));
   }, [products]);
 
   return <ProductsSlider products={products} title="Hot prices" />;
