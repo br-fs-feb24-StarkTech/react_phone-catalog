@@ -3,7 +3,7 @@ import { BackButton } from '../../components/back-button/BackButton';
 import { BreadCrumbs } from '../../components/bread-crumbs/BreadCrumbs';
 import './ItemDetails.scss';
 import { useEffect, useState } from 'react';
-import { fetchProductDetails } from '../../services/mockApi';
+import { fetchProductDetails } from '../../services/serviceAPI';
 import { PhotosBlock } from '../../components/photos-block/PhotosBlock';
 import { Variants } from '../../components/variants/Variants';
 import { AboutSection } from '../../components/about-section/AboutSection';
