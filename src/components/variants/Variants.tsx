@@ -52,7 +52,7 @@ export const Variants: React.FC<Props> = ({ product }) => {
 
       const productCategory = category || 'all';
 
-      fetchProducts(productCategory, 1, 10)
+      fetchProducts(1, 10, productCategory)
         .then((response: AxiosResponse<ProductsResponse>) => {
           const productsData = response.data;
           if (Array.isArray(productsData)) {

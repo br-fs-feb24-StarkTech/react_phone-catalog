@@ -57,7 +57,7 @@ const PhonesPage = () => {
 
   useEffect(() => {
     setSkeleton(true);
-    fetchProducts('phones', currentPage, pageSize)
+    fetchProducts(currentPage, pageSize, 'phones')
       .then(res => {
         setTotalPages(res.data.totalPages);
         setPhones(res.data.products);

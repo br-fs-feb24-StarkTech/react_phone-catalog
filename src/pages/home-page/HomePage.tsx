@@ -19,13 +19,18 @@ export const HomePage = () => {
   const accessoriesQuantity = productsList.filter(item => item.category === 'accessories').length;
 
   useEffect(() => {
-    fetchProducts()
-      .then(data => {
-        setProductsList(data);
-      })
-      .finally(() => {
+    const loadProducts = async () => {
+      try {
+        const response = await fetchProducts(1, 100);
+        setProductsList(response.data.products);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+
+    loadProducts();
   }, []);
 
   return (

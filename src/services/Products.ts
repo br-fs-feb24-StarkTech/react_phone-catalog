@@ -20,7 +20,7 @@ export const getHotPriceProducts = async () => {
 };
 
 export const getNewProducts = async (): Promise<ProductType[]> => {
-  const response = await axios.get<ProductType[]>(`${BASE_URL}}/phones/new-models`);
+  const response = await axios.get<ProductType[]>(`${BASE_URL}/products/new-models`);
   return response.data;
 };
 

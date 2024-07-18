@@ -5,12 +5,12 @@ import { ProductType } from '../types/ProductType';
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-export const fetchProducts = async (category: string, page: number, limit: number) => {
+export const fetchProducts = async (page: number, limit: number, category?: string) => {
   return await axios.get<ProductsResponse>(`${BASE_URL}/products/`, {
     params: {
-      category,
       page,
       limit,
+      category,
     },
   });
 };
