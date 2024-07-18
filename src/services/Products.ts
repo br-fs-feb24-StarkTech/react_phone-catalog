@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { ProductType } from '../types/ProductType';
-import { ShuffledArray } from '../utils/shuffledArray';
-import { fetchProducts } from '../utils/mockApi';
+import { fetchProducts } from './mockApi';
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -16,15 +15,12 @@ export const getProductsByCategory = async (category: string) => {
 };
 
 export const getHotPriceProducts = async () => {
-  const response = await fetchProducts();
-
-  return response.sort((a: ProductType, b: ProductType) => {
-    return b.fullPrice - b.price - (a.fullPrice - a.price);
-  });
+  const response = await axios.get<ProductType[]>(`${BASE_URL}}/phones/discount-models`);
+  return response.data;
 };
 
 export const getNewProducts = async (): Promise<ProductType[]> => {
-  const response = await axios.get<ProductType[]>(`${BASE_URL}}/phones/new-models`);
+  const response = await axios.get<ProductType[]>(`${BASE_URL}/products/new-models`);
   return response.data;
 };
 
