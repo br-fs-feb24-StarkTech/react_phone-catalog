@@ -28,7 +28,7 @@ export const App = () => (
           <Route path="favourites" element={<FavouritesPage />} />
           <Route path="products/:productId" element={<ItemDetails />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="login" element={<LoginPage />} />
         </Route>
       </Routes>
     </Router>
