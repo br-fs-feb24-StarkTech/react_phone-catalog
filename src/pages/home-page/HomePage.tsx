@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Category } from '../../components/category/Category';
 import { ProductType } from '../../types/ProductType';
-import { fetchProducts } from '../../services/mockApi';
+import { fetchProducts } from '../../services/serviceAPI';
 import { Banner } from '../../components/banner/Banner';
 import './HomePage.scss';
 import { HotPrices } from '../../components/hot-prices/HotPrices';
