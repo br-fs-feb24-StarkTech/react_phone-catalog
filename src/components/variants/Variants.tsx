@@ -6,6 +6,8 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { fetchProducts } from '../../services/mockApi';
 import { ProductType } from '../../types/ProductType';
 import { ActionButtons } from '../action-buttons/ActionButtons';
+import { AxiosResponse } from 'axios';
+import { ProductsResponse } from '../../types/ProductsResponse';
 
 type Props = {
   product: ProductDetails;
@@ -32,6 +34,7 @@ export const Variants: React.FC<Props> = ({ product }) => {
     resolution,
     processor,
     ram,
+    category,
   } = product;
 
   const [colors, setColors] = useState<string[]>([]);
@@ -47,14 +50,25 @@ export const Variants: React.FC<Props> = ({ product }) => {
       setColors(colorsAvailable);
       setCapacities(capacityAvailable);
 
-      fetchProducts().then(data => {
-        const targetProductType = data.find((item: ProductType) => item.itemId === product.id);
-        if (targetProductType) {
-          setProductAction(targetProductType);
-        }
-      });
+      const productCategory = category || 'all';
+
+      fetchProducts(productCategory, 1, 10)
+        .then((response: AxiosResponse<ProductsResponse>) => {
+          const productsData = response.data;
+          if (Array.isArray(productsData)) {
+            const targetProductType = productsData.find(
+              (item: ProductType) => item.itemId === product.id,
+            );
+            if (targetProductType) {
+              setProductAction(targetProductType);
+            }
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching products:', error);
+        });
     }
-  }, [capacity, capacityAvailable, color, colorsAvailable, product]);
+  }, [product, category, capacity, capacityAvailable, color, colorsAvailable]);
 
   return (
     <div className="variants">
