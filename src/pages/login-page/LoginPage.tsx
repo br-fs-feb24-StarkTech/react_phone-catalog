@@ -7,7 +7,7 @@ const LoginPage: React.FC = () => {
   const toggleActive = () => setIsActive(!isActive);
 
   return (
-    <div className='newBody'>
+    <div className="newBody">
       <div className={`container_login ${isActive ? 'active' : ''}`} id="container_login">
         <div className="form-container sign-up">
           <form>
@@ -57,7 +57,7 @@ const LoginPage: React.FC = () => {
             <div className="toggle-panel toggle-right">
               <h1>
                 Hello, <br />
-                👌Nice Gadgets <br />
+                Nice👌 Gadgets <br />
                 friend!
               </h1>
               <p>Register with your personal details to use all of site features</p>
