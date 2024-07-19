@@ -278,10 +278,11 @@ $header-height-desktop: 64px;
     margin-right: 20px;
 
     &-btn {
-      background-color: white;
+      background-color: var(--color-accent);
       padding: 10px;
       border-radius: 10px;
       text-decoration: none;
+      color: white;
     }
 
     &-btn:hover {
