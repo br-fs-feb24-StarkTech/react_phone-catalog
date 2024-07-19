@@ -13,7 +13,7 @@ export const DefaultLayout = () => {
 
   const changeTheme = () => {
     setLightTheme(!lightTheme);
-  }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,8 +27,8 @@ export const DefaultLayout = () => {
   }, [selectedMenu, setSelectedMenu]);
 
   return (
-    <div data-theme={lightTheme ? "light" : "dark"} className="app">
-      <Header lightTheme={lightTheme} changeTheme={changeTheme} checked={lightTheme}/>
+    <div data-theme={lightTheme ? 'light' : 'dark'} className="app">
+      <Header lightTheme={lightTheme} changeTheme={changeTheme} />
 
       {selectedMenu && <Sidebar />}
 
