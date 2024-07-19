@@ -9,12 +9,12 @@ export const Header: React.FC = () => {
   const { selectedNavItem, setSelectedMenu, selectedMenu } = useAppContext();
   const [cartCounter, setCartCounter] = useState(3);
   const [favoriteCounter, setFavoriteCounter] = useState(5);
-  const [login, setLogin] = useState(false);
+  const [login] = useState(false); //Adicionar setLogin oportunamente
 
   const { favorites, cart } = useAppContext();
   const handleMenuItemClick = useHandleMenuItemClick();
 
-  const logo = 'img/icons/logo.svg';
+  const logo = `${import.meta.env.VITE_API_URL}/img/icons/logo.svg`;
 
   useEffect(() => {
     setFavoriteCounter(favorites.length);
@@ -69,7 +69,7 @@ export const Header: React.FC = () => {
                 to="/login"
                 className={`right-part__login-btn ${login ? 'right-part__login-btn-active' : ''}`}
               >
-                  {login ? "Sair" : "Login"}
+                {login ? 'Exit' : 'Login'}
               </Link>
             </div>
             <div className="right-part__item-box">
