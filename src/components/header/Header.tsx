@@ -7,10 +7,9 @@ import { useHandleMenuItemClick } from '../../hooks/useHandleMenuItemClick';
 interface Props {
   lightTheme: boolean;
   changeTheme: () => void;
-  readonly checked: boolean | undefined;
 }
 
-export const Header: React.FC<Props> = ({ lightTheme, changeTheme, checked }) => {
+export const Header: React.FC<Props> = ({ lightTheme, changeTheme }) => {
   const { selectedNavItem, setSelectedMenu, selectedMenu } = useAppContext();
   const [cartCounter, setCartCounter] = useState(3);
   const [favoriteCounter, setFavoriteCounter] = useState(5);
@@ -18,15 +17,10 @@ export const Header: React.FC<Props> = ({ lightTheme, changeTheme, checked }) =>
 
   const { favorites, cart } = useAppContext();
   const handleMenuItemClick = useHandleMenuItemClick();
-  let logo = '';
 
-  if (lightTheme === true) {
-    logo = `${import.meta.env.VITE_API_URL}/img/icons/logo-light.svg`;
-    checked = true;
-  } else {
-    logo = `${import.meta.env.VITE_API_URL}/img/icons/logo.svg`;
-    checked = false;
-  }
+  const logo = lightTheme
+    ? `${import.meta.env.VITE_API_URL}/img/icons/logo-light.svg`
+    : `${import.meta.env.VITE_API_URL}/img/icons/logo.svg`;
 
   useEffect(() => {
     setFavoriteCounter(favorites.length);
@@ -77,7 +71,7 @@ export const Header: React.FC<Props> = ({ lightTheme, changeTheme, checked }) =>
 
           <div className="header__right-part right-part">
             <label className="switch">
-              <input type="checkbox" onClick={changeTheme} checked={checked} />
+              <input type="checkbox" checked={lightTheme} onChange={changeTheme} />
               <span className="slider round"></span>
             </label>
             <div className="right-part__login">
