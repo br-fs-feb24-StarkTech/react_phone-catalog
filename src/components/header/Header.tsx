@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 import { useAppContext } from '../../context/AppContext';
+import { useAuthContext } from '../../context/AuthContext';
 import { useHandleMenuItemClick } from '../../hooks/useHandleMenuItemClick';
 
 interface Props {
@@ -11,9 +12,9 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ lightTheme, changeTheme }) => {
   const { selectedNavItem, setSelectedMenu, selectedMenu } = useAppContext();
+  const { user, logout } = useAuthContext();
   const [cartCounter, setCartCounter] = useState(3);
   const [favoriteCounter, setFavoriteCounter] = useState(5);
-  const [login] = useState(false); //Adicionar setLogin oportunamente
 
   const { favorites, cart } = useAppContext();
   const handleMenuItemClick = useHandleMenuItemClick();
@@ -75,12 +76,16 @@ export const Header: React.FC<Props> = ({ lightTheme, changeTheme }) => {
               <span className="slider round"></span>
             </label>
             <div className="right-part__login">
-              <Link
-                to="/login"
-                className={`right-part__login-btn ${login ? 'right-part__login-btn-active' : ''}`}
-              >
-                {login ? 'Exit' : 'Login'}
-              </Link>
+              {user ? (
+                <div className="user-info">
+                  <span className="right-part__user-name">Hi, {user.name}</span>
+                  <button onClick={logout} className="right-part__login-btn">Logout</button>
+                </div>
+              ) : (
+                <Link to="/login" className="right-part__login-btn">
+                  Login
+                </Link>
+              )}
             </div>
             <div className="right-part__item-box">
               <Link
