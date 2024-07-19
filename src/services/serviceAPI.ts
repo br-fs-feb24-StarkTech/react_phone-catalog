@@ -8,6 +8,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 export const fetchProducts = async (
   page: number,
   limit: number,
+  sort?: string,
   search?: string,
   category?: string,
 ) => {
@@ -15,6 +16,7 @@ export const fetchProducts = async (
     params: {
       page,
       limit,
+      sort,
       category,
       search,
     },

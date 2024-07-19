@@ -12,20 +12,17 @@ const DEFAULT_PAGE_SIZE = 16;
 
 const PhonesPage = () => {
   const [phones, setPhones] = useState<ProductType[]>([]);
-  const [sortedPhones, setSortedPhones] = useState([...phones]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [sortBy, setSortBy] = useState(false);
   const [pageBy, setPageBy] = useState(false);
-  const [selectSortType, setSelectSortType] = useState<string>();
+  const [selectSortType, setSelectSortType] = useState<string>('Newest');
+  const [sortValue, setSortValue] = useState('year');
   const [skeleton, setSkeleton] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const [searchValue, setSearchValue] = useState('');
   const [error, setError] = useState(false);
   const searchParams = useMemo(() => new URLSearchParams(location.search), []);
-  const sortType = searchParams.get('sort') || 'year';
-  const query = searchParams.get('query') || '';
-  const lowerQuery = query.toLowerCase();
 
   const history = useNavigate();
 
@@ -64,7 +61,7 @@ const PhonesPage = () => {
   const setupProducts = () => {
     setSkeleton(true);
     setError(false);
-    fetchProducts(currentPage, pageSize, searchValue, 'phones')
+    fetchProducts(currentPage, pageSize, sortValue, searchValue, 'phones')
       .then(res => {
         setTotalPages(res.data.totalPages);
         setPhones(res.data.products);
@@ -79,7 +76,7 @@ const PhonesPage = () => {
 
   useEffect(() => {
     setupProducts();
-  }, [currentPage, pageSize]);
+  }, [currentPage, pageSize, sortValue]);
 
   const handleBlurSubmit = () => {
     setupProducts();
@@ -100,37 +97,14 @@ const PhonesPage = () => {
   }, [searchParams, sortOption]);
 
   const handleSortProduct2 = (value: string, text: string) => {
-    setSkeleton(true);
     setSelectSortType(text);
+    setSortValue(value);
     setSortBy(false);
     searchParams.set('sort', value);
     history({
       search: searchParams.toString(),
     });
-
-    setTimeout(() => {
-      setSkeleton(false);
-    }, 1000);
   };
-
-  useEffect(() => {
-    const pattern = new RegExp(query, 'i');
-    const result = phones.filter(item => pattern.test(item.name));
-
-    switch (sortType) {
-      case 'name':
-        setSortedPhones(result.sort((a, b) => a[sortType].localeCompare(b[sortType])));
-        break;
-      case 'year':
-        setSortedPhones(result.sort((a, b) => b[sortType] - a[sortType]));
-        break;
-      case 'price':
-        setSortedPhones(result.sort((a, b) => a[sortType] - b[sortType]));
-        break;
-      default:
-        setSortedPhones([...phones]);
-    }
-  }, [phones, sortType, query, lowerQuery]);
 
   return (
     <>
@@ -217,7 +191,7 @@ const PhonesPage = () => {
               {skeleton ? (
                 <SkeletonCard />
               ) : (
-                sortedPhones.map(product => {
+                phones.map(product => {
                   return <Card key={product.id} product={product} />;
                 })
               )}
