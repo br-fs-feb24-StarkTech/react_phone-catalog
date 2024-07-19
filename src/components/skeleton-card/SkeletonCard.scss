@@ -4,8 +4,8 @@
   .image,
   h2,
   p {
-    background: #4a4d58;
-    background: linear-gradient(110deg, #3b3e4a 8%, #4a4d58 18%, #3b3e4a 33%);
+    background: var(--color-icons);
+    background: linear-gradient(110deg, var(--color-elements) 8%, var(--color-icons) 18%, var(--color-elements) 33%);
     border-radius: 5px;
     background-size: 200% 100%;
     animation: 1.5s shine linear infinite;
@@ -19,10 +19,12 @@
 
   h2 {
     height: 30px;
+    margin-top: 15px;
   }
 
   p {
     height: 70px;
+    margin-top: 15px;
   }
 }
 

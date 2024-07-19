@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './LoginPage.scss';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+//import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const LoginPage: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
