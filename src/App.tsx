@@ -12,24 +12,27 @@ import TabletsPage from './pages/tablets-page/TabletsPage';
 import AccessoriesPage from './pages/accessories-page/AccessoriesPage';
 import { FavouritesPage } from './pages/favourites-page/FavouritesPage';
 import LoginPage from './pages/login-page/LoginPage';
+import { AuthProvider } from './context/AuthContext'; // Importar o AuthProvider
 
 export const App = () => (
-  <AppProvider>
-    <Router>
-      <Routes>
-        <Route path="/" element={<DefaultLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="home" element={<Navigate to="/" replace />} />
-          <Route path="phones" element={<PhonesPage />} />
-          <Route path="cart" element={<CartPage />} />
-          <Route path="tablets" element={<TabletsPage />} />
-          <Route path="accessories" element={<AccessoriesPage />} />
-          <Route path="favourites" element={<FavouritesPage />} />
-          <Route path="products/:productId" element={<ItemDetails />} />
-          <Route path="*" element={<PageNotFound />} />
-          <Route path="login" element={<LoginPage />} />
-        </Route>
-      </Routes>
-    </Router>
-  </AppProvider>
+  <AuthProvider>
+    <AppProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<DefaultLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="home" element={<Navigate to="/" replace />} />
+            <Route path="phones" element={<PhonesPage />} />
+            <Route path="cart" element={<CartPage />} />
+            <Route path="tablets" element={<TabletsPage />} />
+            <Route path="accessories" element={<AccessoriesPage />} />
+            <Route path="favourites" element={<FavouritesPage />} />
+            <Route path="products/:productId" element={<ItemDetails />} />
+            <Route path="*" element={<PageNotFound />} />
+            <Route path="login" element={<LoginPage />} />
+          </Route>
+        </Routes>
+      </Router>
+    </AppProvider>
+  </AuthProvider>
 );
