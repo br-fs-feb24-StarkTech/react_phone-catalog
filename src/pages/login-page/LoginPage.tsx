@@ -37,7 +37,7 @@ const LoginPage: React.FC = () => {
         login(data.token, { name: data.user.username });
         toast.success('Login bem-sucedido!', {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -49,7 +49,7 @@ const LoginPage: React.FC = () => {
         const errorData = await response.json();
         toast.error(errorData.error || 'Email ou senha inválidos.', {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -61,7 +61,7 @@ const LoginPage: React.FC = () => {
       console.error('Erro ao fazer login', error);
       toast.error('Ocorreu um erro inesperado. Por favor, tente novamente.', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -86,7 +86,7 @@ const LoginPage: React.FC = () => {
       if (response.ok) {
         toast.success('Registro bem-sucedido! Faça login para continuar.', {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -98,7 +98,7 @@ const LoginPage: React.FC = () => {
         const errorData = await response.json();
         toast.error(errorData.error || 'Erro ao registrar. Por favor, tente novamente.', {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -110,7 +110,7 @@ const LoginPage: React.FC = () => {
       console.error('Erro ao registrar', error);
       toast.error('Ocorreu um erro inesperado. Por favor, tente novamente.', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
