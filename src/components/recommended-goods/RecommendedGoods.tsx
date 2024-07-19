@@ -9,7 +9,7 @@ export const RecommendedGoods: React.FC<RecommendedGoodsProps> = ({ productId })
 
   useEffect(() => {
     fetchRecommendedProducts(productId).then(res => setProducts(res.data));
-  }, []);
+  }, [productId]);
 
   return <ProductsSlider products={products} title="You may also like" />;
 };
