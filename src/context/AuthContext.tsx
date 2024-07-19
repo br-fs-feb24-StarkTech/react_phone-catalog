@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useState, ReactNode } from 'react';
 
 type AuthContextType = {
   token: string | null;
@@ -7,21 +7,17 @@ type AuthContextType = {
   logout: () => void;
 };
 
-const AuthContext = createContext<AuthContextType>({
+export const AuthContext = createContext<AuthContextType>({
   token: null,
   user: null,
   login: () => {},
   logout: () => {},
 });
 
-export const useAuthContext = () => {
-  return useContext(AuthContext);
-};
-
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [token, setToken] = useState<string | null>(localStorage.getItem('token'));
   const [user, setUser] = useState<{ name: string } | null>(
-    JSON.parse(localStorage.getItem('user') || 'null')
+    JSON.parse(localStorage.getItem('user') || 'null'),
   );
 
   const login = (newToken: string, newUser: { name: string }) => {
@@ -39,8 +35,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   return (
-    <AuthContext.Provider value={{ token, user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ token, user, login, logout }}>{children}</AuthContext.Provider>
   );
 };

@@ -26,18 +26,18 @@ type AppContextType = {
 
 const AppContext = createContext<AppContextType>({
   favorites: [],
-  addToFavorites: () => { },
-  removeFromFavorites: () => { },
+  addToFavorites: () => {},
+  removeFromFavorites: () => {},
   cart: [],
-  addToCart: () => { },
-  removeFromCart: () => { },
-  updateCartQuantity: () => { },
+  addToCart: () => {},
+  removeFromCart: () => {},
+  updateCartQuantity: () => {},
   calculateTotalPrice: () => 0,
-  clearCart: () => { },
+  clearCart: () => {},
   selectedMenu: false,
-  setSelectedMenu: () => { },
+  setSelectedMenu: () => {},
   selectedNavItem: 'Home',
-  setSelectedNavItem: () => { },
+  setSelectedNavItem: () => {},
 });
 
 // eslint-disable-next-line react-refresh/only-export-components

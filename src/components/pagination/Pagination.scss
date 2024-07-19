@@ -74,16 +74,16 @@
   }
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   .pagination {
     &__button {
       background-color: var(--color-surface-1);
-      border: 1px solid #B4BDC3;
+      border: 1px solid #b4bdc3;
     }
 
     .numbers {
       &__page--active {
-        color: #FFFFFF;
+        color: #ffffff;
       }
     }
   }

@@ -80,7 +80,7 @@
 
   &__button-right {
     right: 0;
-    background-color:var(--color-surface-2);
+    background-color: var(--color-surface-2);
     background-image: url('/img/icons/arrow-right-default.svg');
     background-repeat: no-repeat;
     background-position: center;
@@ -103,10 +103,10 @@
   }
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   .carousel {
     &__button {
-      border: 1px solid #B4BDC3;
+      border: 1px solid #b4bdc3;
       background-color: var(--color-surface-1);
     }
 

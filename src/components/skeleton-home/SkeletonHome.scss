@@ -1,7 +1,12 @@
 .h1,
 .image {
   background: var(--color-icons);
-  background: linear-gradient(110deg, var(--color-elements) 8%, var(--color-icons) 18%, var(--color-elements) 33%);
+  background: linear-gradient(
+    110deg,
+    var(--color-elements) 8%,
+    var(--color-icons) 18%,
+    var(--color-elements) 33%
+  );
   border-radius: 5px;
   background-size: 200% 100%;
   animation: 1.5s shine linear infinite;

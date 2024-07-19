@@ -111,24 +111,23 @@
   }
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   .cart-item {
     border: 1px solid var(--color-elements);
   }
 
   .display__close {
-    color: #B4BDC3;
+    color: #b4bdc3;
   }
 
   .quantity {
     &__button {
       background-color: var(--color-black);
-      border:1px solid #B4BDC3;
+      border: 1px solid #b4bdc3;
 
       &--disabled {
         border: 1px solid var(--color-elements);
       }
     }
   }
-  
 }

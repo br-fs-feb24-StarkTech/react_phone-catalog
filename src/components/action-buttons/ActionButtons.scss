@@ -46,9 +46,8 @@
   }
 }
 
-[data-theme="light"] {
-  .actions-button{
-
+[data-theme='light'] {
+  .actions-button {
     &__add-to-cart {
       color: var(--color-surface-1);
 
@@ -59,19 +58,19 @@
 
       &--active {
         background-color: inherit;
-        color: #27AE60;
+        color: #27ae60;
         border: 1px solid var(--color-surface-2);
       }
     }
 
     &__favourite {
       background-color: var(--color-surface-1);
-      border: 1px solid #B4BDC3;
+      border: 1px solid #b4bdc3;
       background-image: url(/img/icons/favourites-counter-heart-like-light.svg);
 
       &--filled {
         background-image: url(/img//icons/favourites-filled-heart-like.svg);
       }
     }
-  } 
+  }
 }

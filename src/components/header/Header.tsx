@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 import { useAppContext } from '../../context/AppContext';
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuthContext } from '../../context/useAuthContext';
 import { useHandleMenuItemClick } from '../../hooks/useHandleMenuItemClick';
 
 interface Props {
@@ -79,7 +79,9 @@ export const Header: React.FC<Props> = ({ lightTheme, changeTheme }) => {
               {user ? (
                 <div className="user-info">
                   <span className="right-part__user-name">Hi, {user.name}</span>
-                  <button onClick={logout} className="right-part__login-btn">Logout</button>
+                  <button onClick={logout} className="right-part__login-btn">
+                    Logout
+                  </button>
                 </div>
               ) : (
                 <Link to="/login" className="right-part__login-btn">

@@ -6,5 +6,5 @@ export const SkeletonProduct = () => {
       <div className="skeleton__image"></div>
       <div className="skeleton__image"></div>
     </div>
-  )
-}
+  );
+};

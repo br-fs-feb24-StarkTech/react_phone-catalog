@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './LoginPage.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuthContext } from '../../context/useAuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
@@ -35,20 +35,20 @@ const LoginPage: React.FC = () => {
       if (response.ok) {
         const data = await response.json();
         login(data.token, { name: data.user.username });
-        toast.success('Login bem-sucedido!', {
-          position: "top-right",
+        toast.success('Login successful!', {
+          position: 'top-right',
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          onClose: () => navigate('/home')
+          onClose: () => navigate('/home'),
         });
       } else {
         const errorData = await response.json();
-        toast.error(errorData.error || 'Email ou senha inválidos.', {
-          position: "top-right",
+        toast.error(errorData.error || 'Email or password invalid.', {
+          position: 'top-right',
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -58,9 +58,9 @@ const LoginPage: React.FC = () => {
         });
       }
     } catch (error) {
-      console.error('Erro ao fazer login', error);
-      toast.error('Ocorreu um erro inesperado. Por favor, tente novamente.', {
-        position: "top-right",
+      console.error('Error login in', error);
+      toast.error('Unexpected error. Please, try again.', {
+        position: 'top-right',
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -84,20 +84,20 @@ const LoginPage: React.FC = () => {
       });
 
       if (response.ok) {
-        toast.success('Registro bem-sucedido! Faça login para continuar.', {
-          position: "top-right",
+        toast.success('Register successful! Please login to continue.', {
+          position: 'top-right',
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          onClose: () => setIsActive(false)
+          onClose: () => setIsActive(false),
         });
       } else {
         const errorData = await response.json();
-        toast.error(errorData.error || 'Erro ao registrar. Por favor, tente novamente.', {
-          position: "top-right",
+        toast.error(errorData.error || 'Failed registering. Please, try again.', {
+          position: 'top-right',
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -107,9 +107,9 @@ const LoginPage: React.FC = () => {
         });
       }
     } catch (error) {
-      console.error('Erro ao registrar', error);
-      toast.error('Ocorreu um erro inesperado. Por favor, tente novamente.', {
-        position: "top-right",
+      console.error('Error registering', error);
+      toast.error('Unexpected error. Please, try again.', {
+        position: 'top-right',
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -139,19 +139,19 @@ const LoginPage: React.FC = () => {
               type="text"
               placeholder="Name"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={e => setUsername(e.target.value)}
             />
             <input
               type="email"
               placeholder="Email"
               value={registerEmail}
-              onChange={(e) => setRegisterEmail(e.target.value)}
+              onChange={e => setRegisterEmail(e.target.value)}
             />
             <input
               type="password"
               placeholder="Password"
               value={registerPassword}
-              onChange={(e) => setRegisterPassword(e.target.value)}
+              onChange={e => setRegisterPassword(e.target.value)}
             />
             <button>Register</button>
           </form>
@@ -172,13 +172,13 @@ const LoginPage: React.FC = () => {
               type="email"
               placeholder="Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
             />
             <input
               type="password"
               placeholder="Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
             />
             <a href="#">Forget Your Password?</a>
             <button>Sign In</button>

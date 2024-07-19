@@ -1,14 +1,15 @@
 @import '../../assets/scss/variables.scss';
 
-.skeleton{
+.skeleton {
   display: flex;
   flex-direction: row;
   width: 100%;
   gap: 10px;
 
-  &__title, &__image {
-    background: #4A4D58;
-    background: linear-gradient(110deg, #3B3E4A 8%, #4A4D58 18%, #3B3E4A 33%);
+  &__title,
+  &__image {
+    background: #4a4d58;
+    background: linear-gradient(110deg, #3b3e4a 8%, #4a4d58 18%, #3b3e4a 33%);
     border-radius: 5px;
     background-size: 200% 100%;
     animation: 1.5s shine linear infinite;
