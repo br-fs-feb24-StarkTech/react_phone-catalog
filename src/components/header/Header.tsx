@@ -1,11 +1,16 @@
-// src/components/Header.tsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 import { useAppContext } from '../../context/AppContext';
 import { useHandleMenuItemClick } from '../../hooks/useHandleMenuItemClick';
 
-export const Header: React.FC = () => {
+interface Props {
+  lightTheme: boolean;
+  changeTheme: () => void;
+  readonly checked: boolean | undefined;
+}
+
+export const Header: React.FC<Props> = ({ lightTheme, changeTheme, checked }) => {
   const { selectedNavItem, setSelectedMenu, selectedMenu } = useAppContext();
   const [cartCounter, setCartCounter] = useState(3);
   const [favoriteCounter, setFavoriteCounter] = useState(5);
@@ -13,8 +18,15 @@ export const Header: React.FC = () => {
 
   const { favorites, cart } = useAppContext();
   const handleMenuItemClick = useHandleMenuItemClick();
+  let logo = "";
 
-  const logo = `${import.meta.env.VITE_API_URL}/img/icons/logo.svg`;
+  if (lightTheme === true) {
+    logo = `${import.meta.env.VITE_API_URL}/img/icons/logo-light.svg`;
+    checked = true;
+  } else {
+    logo = `${import.meta.env.VITE_API_URL}/img/icons/logo.svg`;
+    checked = false;
+  }
 
   useEffect(() => {
     setFavoriteCounter(favorites.length);
@@ -64,6 +76,10 @@ export const Header: React.FC = () => {
           </div>
 
           <div className="header__right-part right-part">
+            <label className="switch">
+              <input type="checkbox" onClick={changeTheme} checked={checked}/>
+              <span className="slider round"></span>
+            </label>
             <div className="right-part__login">
               <Link
                 to="/login"

@@ -27,7 +27,7 @@
 
   &__description {
     @include font-h3-desktop;
-    color: $color-surface-1;
+    color: var(--color-surface-1);
   }
 }
 

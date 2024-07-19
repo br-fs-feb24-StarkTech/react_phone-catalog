@@ -14,7 +14,7 @@
 
   &__title {
     @include font-small-text-desktop;
-    color: $color-secondary;
+    color: var(--color-secondary);
     text-decoration: none;
   }
 

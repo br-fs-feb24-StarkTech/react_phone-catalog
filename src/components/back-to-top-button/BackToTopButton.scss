@@ -3,7 +3,7 @@
 .back-to-top {
   width: 32px;
   height: 32px;
-  background-color: $color-surface-2;
+  background-color: var(--color-surface-2);
   border: none;
   display: flex;
   justify-content: center;
@@ -18,7 +18,7 @@
   }
 
   &:hover {
-    background-color: $color-icons;
+    background-color: var(--color-icons);
     transition-duration: 300ms;
     cursor: pointer;
   }

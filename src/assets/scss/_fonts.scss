@@ -23,7 +23,7 @@ $font-regular: 'Mont-Regular';
   font-size: 48px;
   line-height: 56px;
   letter-spacing: -0.01em;
-  color: $color-white;
+  color: var(--color-white);
 }
 
 @mixin font-h2-desktop {
@@ -32,7 +32,7 @@ $font-regular: 'Mont-Regular';
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
-  color: $color-white;
+  color: var(--color-white);
 }
 
 @mixin font-h3-desktop {
@@ -41,7 +41,7 @@ $font-regular: 'Mont-Regular';
   font-size: 22px;
   line-height: 31px;
   letter-spacing: 0;
-  color: $color-white;
+  color: var(--color-white);
 }
 
 @mixin font-h4-desktop {
@@ -50,7 +50,7 @@ $font-regular: 'Mont-Regular';
   font-size: 20px;
   line-height: 26px;
   letter-spacing: 0;
-  color: $color-white;
+  color: var(--color-white);
 }
 
 @mixin font-uppercase-desktop {
@@ -60,7 +60,7 @@ $font-regular: 'Mont-Regular';
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 0.04em;
-  color: $color-white;
+  color: var(--color-white);
 }
 
 @mixin font-buttons-desktop {
@@ -69,7 +69,7 @@ $font-regular: 'Mont-Regular';
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;
-  color: $color-white;
+  color: var(--color-white);
 }
 
 @mixin font-body-text-desktop {
@@ -78,7 +78,7 @@ $font-regular: 'Mont-Regular';
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;
-  color: $color-white;
+  color: var(--color-white);
 }
 
 @mixin font-small-text-desktop {
@@ -87,7 +87,7 @@ $font-regular: 'Mont-Regular';
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 0;
-  color: $color-white;
+  color: var(--color-white);
 }
 
 @mixin font-h1-mobile {
@@ -96,7 +96,7 @@ $font-regular: 'Mont-Regular';
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
-  color: $color-white;
+  color: var(--color-white);
 }
 
 @mixin font-h2-mobile {
@@ -105,7 +105,7 @@ $font-regular: 'Mont-Regular';
   font-size: 22px;
   line-height: 31px;
   letter-spacing: 0;
-  color: $color-white;
+  color: var(--color-white);
 }
 
 @mixin font-h3-mobile {
@@ -114,7 +114,7 @@ $font-regular: 'Mont-Regular';
   font-size: 20px;
   line-height: 26px;
   letter-spacing: 0;
-  color: $color-white;
+  color: var(--color-white);
 }
 
 @mixin font-h4-mobile {
@@ -123,5 +123,5 @@ $font-regular: 'Mont-Regular';
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0;
-  color: $color-white;
+  color: var(--color-white);
 }

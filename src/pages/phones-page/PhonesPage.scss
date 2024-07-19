@@ -1,9 +1,5 @@
 @import '../../assets/scss/variables.scss';
 
-body {
-  background-color: $color-black;
-}
-
 .products {
   margin-top: 24px;
   margin-bottom: 64px;
@@ -45,7 +41,7 @@ body {
 
   &__Text {
     @include font-body-text-desktop;
-    color: $color-secondary;
+    color: var(--color-secondary);
   }
 
   &__list {
@@ -63,9 +59,8 @@ body {
   &__filter {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
     margin-top: 32px;
+    gap: 16px;
 
     .sortBy {
       display: flex;
@@ -73,7 +68,7 @@ body {
 
       &__legend {
         @include font-small-text-desktop;
-        color: $color-secondary;
+        color: var(--color-secondary);
         margin-block: 12px;
       }
 
@@ -81,13 +76,13 @@ body {
         display: flex;
         align-items: center;
         height: 40px;
-        background-color: $color-surface-2;
+        background-color: var(--color-surface-2);
         color: #f1f2f9;
         justify-content: space-between;
         padding-inline: 12px;
         border: 0;
         width: 142px;
-        border: 1px solid $color-surface-2;
+        border: 1px solid var(--color-surface-2);
 
         @include on-tablet {
           width: 187px;
@@ -156,16 +151,16 @@ body {
         align-items: center;
 
         &:hover {
-          background-color: $color-surface-2;
+          background-color: var(--color-surface-2);
           color: #f1f2f9;
         }
 
         @include font-buttons-desktop;
-        color: $color-secondary;
+        color: var(--color-secondary);
       }
 
       .active {
-        background-color: $color-surface-2;
+        background-color: var(--color-surface-2);
         color: #f1f2f9;
       }
     }
@@ -177,20 +172,20 @@ body {
       &__legend {
         margin-block: 12px;
         @include font-small-text-desktop;
-        color: $color-secondary;
+        color: var(--color-secondary);
       }
 
       &__select {
         display: flex;
         align-items: center;
         height: 40px;
-        background-color: $color-surface-2;
+        background-color: var(--color-surface-2);
         color: #f1f2f9;
         justify-content: space-between;
         padding-inline: 12px;
         border: 0;
         width: 130px;
-        border: 1px solid $color-surface-2;
+        border: 1px solid var(--color-surface-2);
 
         @include on-tablet {
           width: 136px;
@@ -259,21 +254,72 @@ body {
         align-items: center;
 
         &:hover {
-          background-color: $color-surface-2;
+          background-color: var(--color-surface-2);
           color: #f1f2f9;
         }
 
         @include font-buttons-desktop;
-        color: $color-secondary;
+        color: var(--color-secondary);
       }
 
       .active {
-        background-color: $color-surface-2;
+        background-color: var(--color-surface-2);
         color: #f1f2f9;
       }
     }
   }
 }
+
+[data-theme="light"] {
+  .products {
+    &__filter {
+      .sortBy{
+        &__select {
+          background-color: var(--color-surface-1);
+        }
+
+        &__list {
+          background-color: var(--color-surface-1);
+        }
+
+        .active {
+          background-color: inherit;
+          color: #89939A;
+        }
+
+        &__item {
+          &:hover {
+            background-color: #FAFBFC;
+            color: #313237;
+          }
+        }
+      }
+
+      .pageBy{
+        &__select {
+          background-color: var(--color-surface-1);
+        }
+
+        &__list {
+          background-color: var(--color-surface-1);
+        }
+
+        .active {
+          background-color: inherit;
+          color: #89939A;
+        }
+
+        &__item {
+          &:hover {
+            background-color: #FAFBFC;
+            color: #313237;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 .filter {
   &__dropdowns {
@@ -290,7 +336,7 @@ body {
   flex-direction: column;
 
   @include font-small-text-desktop;
-  color: $color-secondary;
+  color: var(--color-secondary);
 
   &__text {
     margin-block: 12px;
@@ -301,7 +347,7 @@ body {
     height: 40px;
     padding-inline: 10px;
     border: none;
-    background-color: $color-surface-2;
+    background-color: var(--color-surface-2);
     background-clip: padding-box;
     background-image: url('/img/icons/search.svg');
     background-repeat: no-repeat;

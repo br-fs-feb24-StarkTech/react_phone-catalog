@@ -1,11 +1,28 @@
-$color-secondary: #75767f;
-$color-icons: #4a4d58;
-$color-elements: #3b3e4a;
-$color-surface-2: #323542;
-$color-surface-1: #161827;
-$color-black: #0f1121;
-$color-white: #f1f2f9;
-$color-accent: #905bff;
-$color-accent-hover: #a378ff;
 $color-green: #27ae60;
 $color-red: #eb5757;
+
+:root {
+  --color-black: #0f1121;
+  --color-white: #f1f2f9;
+  --color-surface-2: #323542;
+  --color-surface-1: #161827;
+  --color-accent: #905bff;
+  --color-elements:#3b3e4a;
+  --color-primary: #FFFFFF;
+  --color-accent-hover: #a378ff;
+  --color-icons: #4a4d58;
+  --color-secondary: #75767f;
+}
+
+[data-theme="light"] {
+  --color-black: #FFFFFF;
+  --color-white: #313237;
+  --color-surface-2: #E2E6E9;
+  --color-surface-1: #FFFFFF;
+  --color-accent: #313237;
+  --color-elements: #E2E6E9;
+  --color-primary: #313237;
+  --color-accent-hover: #313237;
+  --color-icons: #FAFBFC;
+  --color-secondary: #75767f;
+}

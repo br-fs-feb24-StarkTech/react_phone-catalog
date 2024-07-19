@@ -1,9 +1,5 @@
 @import '../../assets/scss/variables.scss';
 
-body {
-  background-color: $color-black;
-}
-
 .products {
   margin-top: 24px;
   margin-bottom: 64px;
@@ -21,6 +17,10 @@ body {
 
     @include on-desktop {
       padding-inline: 32px;
+    }
+
+    @media (min-width: 1201px) {
+      padding-inline: 152px;
     }
   }
 
@@ -45,7 +45,7 @@ body {
 
   &__Text {
     @include font-body-text-desktop;
-    color: $color-secondary;
+    color: var(--color-secondary);
   }
 
   &__list {
@@ -63,8 +63,6 @@ body {
   &__filter {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
     margin-top: 32px;
 
     .sortBy {
@@ -73,20 +71,20 @@ body {
 
       &__legend {
         @include font-small-text-desktop;
-        color: $color-secondary;
+        color: var(--color-secondary);
       }
 
       &__select {
         display: flex;
         align-items: center;
         height: 40px;
-        background-color: $color-surface-2;
+        background-color: var(--color-surface-2);
         color: #f1f2f9;
         justify-content: space-between;
         padding-inline: 12px;
         border: 0;
         width: 142px;
-        border: 1px solid $color-surface-2;
+        border: 1px solid var(--color-surface-2);
 
         @include on-tablet {
           width: 187px;
@@ -132,8 +130,8 @@ body {
         visibility: hidden;
         opacity: 0;
         transition:
-          opacity 0.3s ease,
-          visibility 0s ease 0.3s;
+          opacity 1s ease,
+          visibility 0s ease 1s;
 
         @include on-tablet {
           width: 185px;
@@ -144,7 +142,7 @@ body {
         visibility: visible;
         opacity: 1;
         transition:
-          opacity 0.3s ease,
+          opacity 1s ease,
           visibility 0s ease 0s;
       }
 
@@ -155,16 +153,16 @@ body {
         align-items: center;
 
         &:hover {
-          background-color: $color-surface-2;
+          background-color: var(--color-surface-2);
           color: #f1f2f9;
         }
 
         @include font-buttons-desktop;
-        color: $color-secondary;
+        color: var(--color-secondary);
       }
 
       .active {
-        background-color: $color-surface-2;
+        background-color: var(--color-surface-2);
         color: #f1f2f9;
       }
     }
@@ -175,20 +173,20 @@ body {
 
       &__legend {
         @include font-small-text-desktop;
-        color: $color-secondary;
+        color: var(--color-secondary);
       }
 
       &__select {
         display: flex;
         align-items: center;
         height: 40px;
-        background-color: $color-surface-2;
+        background-color: var(--color-surface-2);
         color: #f1f2f9;
         justify-content: space-between;
         padding-inline: 12px;
         border: 0;
         width: 130px;
-        border: 1px solid $color-surface-2;
+        border: 1px solid var(--color-surface-2);
 
         @include on-tablet {
           width: 136px;
@@ -234,8 +232,8 @@ body {
         visibility: hidden;
         opacity: 0;
         transition:
-          opacity 0.3s ease,
-          visibility 0s ease 0.3s;
+          opacity 1s ease,
+          visibility 0s ease 1s;
 
         @include on-tablet {
           width: 135px;
@@ -246,7 +244,7 @@ body {
         visibility: visible;
         opacity: 1;
         transition:
-          opacity 0.3s ease,
+          opacity 1s ease,
           visibility 0s ease 0s;
       }
 
@@ -257,21 +255,22 @@ body {
         align-items: center;
 
         &:hover {
-          background-color: $color-surface-2;
+          background-color: var(--color-surface-2);
           color: #f1f2f9;
         }
 
         @include font-buttons-desktop;
-        color: $color-secondary;
+        color: var(--color-secondary);
       }
 
       .active {
-        background-color: $color-surface-2;
+        background-color: var(--color-surface-2);
         color: #f1f2f9;
       }
     }
   }
 }
+
 
 .filter {
   &__dropdowns {
@@ -288,7 +287,7 @@ body {
   flex-direction: column;
 
   @include font-small-text-desktop;
-  color: $color-secondary;
+  color: var(--color-secondary);
 
   &__text {
     margin-block: 12px;
@@ -299,7 +298,7 @@ body {
     height: 40px;
     padding-inline: 10px;
     border: none;
-    background-color: $color-surface-2;
+    background-color: var(--color-surface-2);
     background-clip: padding-box;
     background-image: url('/img/icons/search.svg');
     background-repeat: no-repeat;

@@ -67,23 +67,36 @@
     box-sizing: border-box;
     width: 32px;
     height: 32px;
-    background-color: $color-surface-2;
+    background-color: var(--color-surface-2);
     transition-duration: 300ms;
     border: 0;
 
     &:hover {
       transition-duration: 300ms;
-      background-color: $color-icons;
+      background-color: var(--color-icons);
       cursor: pointer;
     }
 
     &--disabled {
       background-color: transparent;
-      border: 1px solid $color-elements;
+      border: 1px solid var(--color-elements);
 
       &:hover {
         background-color: transparent;
         cursor: default;
+      }
+    }
+  }
+}
+
+[data-theme="light"] {
+  .directions {
+    &__button {
+      background-color: var(--color-surface-1);
+      border: 1px solid#B4BDC3;
+
+      &--disabled {
+        border: 1px solid#E2E6E9;
       }
     }
   }

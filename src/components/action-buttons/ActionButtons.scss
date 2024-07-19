@@ -10,13 +10,13 @@
     @include font-buttons-desktop;
 
     width: 100%;
-    background-color: $color-accent;
+    background-color: var(--color-accent);
     border: none;
-    color: $color-white;
+    color: var(--color-white);
     cursor: pointer;
 
     &:hover {
-      background-color: $color-accent-hover;
+      background-color: var(--color-accent-hover);
     }
 
     &:focus {
@@ -24,7 +24,7 @@
     }
 
     &--active {
-      background-color: $color-surface-2;
+      background-color: var(--color-surface-2);
     }
   }
 
@@ -35,13 +35,43 @@
     background-image: url(/img/icons/favourites-heart-like.svg);
     background-repeat: no-repeat;
     background-position: center;
-    background-color: $color-surface-2;
+    background-color: var(--color-surface-2);
     cursor: pointer;
 
     &--filled {
-      background-image: url(/img//icons/favourites-filled-heart-like.svg);
+      background-image: url(/img/icons/favourites-filled-heart-like.svg);
       background-repeat: no-repeat;
       background-position: center;
     }
   }
+}
+
+[data-theme="light"] {
+  .actions-button{
+
+    &__add-to-cart {
+      color: var(--color-surface-1);
+
+      &:hover {
+        background-color: var(--color-accent);
+        box-shadow: 0px 3px 13px 0px #17203166;
+      }
+
+      &--active {
+        background-color: inherit;
+        color: #27AE60;
+        border: 1px solid var(--color-surface-2);
+      }
+    }
+
+    &__favourite {
+      background-color: var(--color-surface-1);
+      border: 1px solid #B4BDC3;
+      background-image: url(/img/icons/favourites-counter-heart-like-light.svg);
+
+      &--filled {
+        background-image: url(/img//icons/favourites-filled-heart-like.svg);
+      }
+    }
+  } 
 }

@@ -65,7 +65,7 @@
 
     &__models {
       @include font-body-text-desktop;
-      color: $color-surface-2;
+      color: var(--color-surface-2);
       margin: 0;
     }
   }
