@@ -294,6 +294,11 @@ $header-height-desktop: 64px;
     }
   }
 
+  &__user-name {
+    text-transform: none;
+    margin-right: 12px;
+  }
+
   &__icon--favorite {
     display: none;
 
