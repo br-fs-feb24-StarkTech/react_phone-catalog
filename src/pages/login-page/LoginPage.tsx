@@ -6,7 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
-
 const LoginPage: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
 
@@ -14,6 +13,10 @@ const LoginPage: React.FC = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
+
   const { login } = useAuthContext();
   const navigate = useNavigate();
 
@@ -40,10 +43,11 @@ const LoginPage: React.FC = () => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          onClose: () => navigate('/home') // Redireciona para '/home' quando o Toast fechar
+          onClose: () => navigate('/home')
         });
       } else {
-        toast.error('Email ou senha inválidos.', {
+        const errorData = await response.json();
+        toast.error(errorData.error || 'Email ou senha inválidos.', {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -67,12 +71,60 @@ const LoginPage: React.FC = () => {
     }
   };
 
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email: registerEmail, password: registerPassword }),
+      });
+
+      if (response.ok) {
+        toast.success('Registro bem-sucedido! Faça login para continuar.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          onClose: () => setIsActive(false)
+        });
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.error || 'Erro ao registrar. Por favor, tente novamente.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    } catch (error) {
+      console.error('Erro ao registrar', error);
+      toast.error('Ocorreu um erro inesperado. Por favor, tente novamente.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
 
   return (
     <div className="newBody">
       <div className={`container_login ${isActive ? 'active' : ''}`} id="container_login">
         <div className="form-container sign-up">
-          <form>
+          <form onSubmit={handleRegister}>
             <h1>Create Account</h1>
             <div className="social-icons">
               <a href="#" className="icon">
@@ -83,14 +135,29 @@ const LoginPage: React.FC = () => {
               </a>
             </div>
             <span>or use your email for registration</span>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input
+              type="text"
+              placeholder="Name"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={registerEmail}
+              onChange={(e) => setRegisterEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={registerPassword}
+              onChange={(e) => setRegisterPassword(e.target.value)}
+            />
             <button>Register</button>
           </form>
         </div>
         <div className="form-container sign-in">
-          <form  onSubmit={handleLogin}>
+          <form onSubmit={handleLogin}>
             <h1>Sign In</h1>
             <div className="social-icons">
               <a href="#" className="icon">
@@ -104,14 +171,14 @@ const LoginPage: React.FC = () => {
             <input
               type="email"
               placeholder="Email"
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
               placeholder="Password"
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <a href="#">Forget Your Password?</a>
             <button>Sign In</button>
