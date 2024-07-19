@@ -9,6 +9,7 @@ export const Header: React.FC = () => {
   const { selectedNavItem, setSelectedMenu, selectedMenu } = useAppContext();
   const [cartCounter, setCartCounter] = useState(3);
   const [favoriteCounter, setFavoriteCounter] = useState(5);
+  const [login, setLogin] = useState(false);
 
   const { favorites, cart } = useAppContext();
   const handleMenuItemClick = useHandleMenuItemClick();
@@ -63,6 +64,14 @@ export const Header: React.FC = () => {
           </div>
 
           <div className="header__right-part right-part">
+            <div className="right-part__login">
+              <Link
+                to="/login"
+                className={`right-part__login-btn ${login ? 'right-part__login-btn-active' : ''}`}
+              >
+                  {login ? "Sair" : "Login"}
+              </Link>
+            </div>
             <div className="right-part__item-box">
               <Link
                 to="/favourites"
