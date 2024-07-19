@@ -18,7 +18,7 @@ export const Header: React.FC<Props> = ({ lightTheme, changeTheme, checked }) =>
 
   const { favorites, cart } = useAppContext();
   const handleMenuItemClick = useHandleMenuItemClick();
-  let logo = "";
+  let logo = '';
 
   if (lightTheme === true) {
     logo = `${import.meta.env.VITE_API_URL}/img/icons/logo-light.svg`;
@@ -77,7 +77,7 @@ export const Header: React.FC<Props> = ({ lightTheme, changeTheme, checked }) =>
 
           <div className="header__right-part right-part">
             <label className="switch">
-              <input type="checkbox" onClick={changeTheme} checked={checked}/>
+              <input type="checkbox" onClick={changeTheme} checked={checked} />
               <span className="slider round"></span>
             </label>
             <div className="right-part__login">
