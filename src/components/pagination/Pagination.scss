@@ -13,19 +13,19 @@
     box-sizing: border-box;
     width: 32px;
     height: 32px;
-    background-color: $color-surface-2;
+    background-color: var(--color-surface-2);
     transition-duration: 300ms;
     border: none;
 
     &:hover {
-      background-color: $color-icons;
+      background-color: var(--color-icons);
       transition-duration: 300ms;
       cursor: pointer;
     }
 
     &--disabled {
       background-color: transparent;
-      border: 1px solid $color-elements;
+      border: 1px solid var(--color-elements);
 
       &:hover {
         background-color: transparent;
@@ -42,12 +42,12 @@
     flex-direction: row;
     list-style: none;
     gap: 8px;
-    color: $color-white;
+    color: var(--color-white);
 
     &__page {
       width: 32px;
       height: 32px;
-      background-color: $color-surface-1;
+      background-color: var(--color-surface-1);
 
       display: flex;
       justify-content: center;
@@ -55,11 +55,11 @@
       transition-duration: 300ms;
 
       &--active {
-        background-color: $color-accent-hover;
+        background-color: var(--color-accent-hover);
       }
 
       &:hover {
-        background-color: $color-elements;
+        background-color: var(--color-elements);
         transition-duration: 300ms;
       }
     }
@@ -70,6 +70,21 @@
       display: flex;
       justify-content: center;
       align-items: end;
+    }
+  }
+}
+
+[data-theme="light"] {
+  .pagination {
+    &__button {
+      background-color: var(--color-surface-1);
+      border: 1px solid #B4BDC3;
+    }
+
+    .numbers {
+      &__page--active {
+        color: #FFFFFF;
+      }
     }
   }
 }

@@ -5,9 +5,15 @@ import { Header } from '../components/header/Header';
 import { Footer } from '../components/footer/Footer';
 import { useAppContext } from '../context/AppContext';
 import { Sidebar } from '../components/sidebar/';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export const DefaultLayout = () => {
   const { selectedMenu, setSelectedMenu } = useAppContext();
+  const [lightTheme, setLightTheme] = useLocalStorage('lightTheme', false);
+
+  const changeTheme = () => {
+    setLightTheme(!lightTheme);
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,8 +27,8 @@ export const DefaultLayout = () => {
   }, [selectedMenu, setSelectedMenu]);
 
   return (
-    <div className="app">
-      <Header />
+    <div data-theme={lightTheme ? "light" : "dark"} className="app">
+      <Header lightTheme={lightTheme} changeTheme={changeTheme} checked={lightTheme}/>
 
       {selectedMenu && <Sidebar />}
 

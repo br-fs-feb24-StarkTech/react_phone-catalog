@@ -72,7 +72,7 @@
 
   &__button-left {
     left: 0;
-    background-color: $color-surface-2;
+    background-color: var(--color-surface-2);
     background-image: url('/img/icons/arrow-left-default.svg');
     background-repeat: no-repeat;
     background-position: center;
@@ -80,7 +80,7 @@
 
   &__button-right {
     right: 0;
-    background-color: $color-surface-2;
+    background-color:var(--color-surface-2);
     background-image: url('/img/icons/arrow-right-default.svg');
     background-repeat: no-repeat;
     background-position: center;
@@ -94,11 +94,28 @@
 }
 
 .dot {
-  background-color: $color-elements;
+  background-color: var(--color-elements);
   width: 14px;
   height: 4px;
 
   &.dot--active {
     background-color: white;
+  }
+}
+
+[data-theme="light"] {
+  .carousel {
+    &__button {
+      border: 1px solid #B4BDC3;
+      background-color: var(--color-surface-1);
+    }
+
+    &__button-left {
+      background-image: url('/img/icons/arrow-left-default-light.svg');
+    }
+
+    &__button-right {
+      background-image: url('/img/icons/arrow-right-default-light.svg');
+    }
   }
 }

@@ -27,7 +27,7 @@
 
   &__counter {
     @include font-body-text-desktop;
-    color: $color-secondary;
+    color: var(--color-secondary);
     margin-bottom: 32px;
 
     @include on-tablet {

@@ -5,15 +5,28 @@ import './Header.scss';
 import { useAppContext } from '../../context/AppContext';
 import { useHandleMenuItemClick } from '../../hooks/useHandleMenuItemClick';
 
-export const Header: React.FC = () => {
+interface Props {
+  lightTheme: boolean;
+  changeTheme: () => void;
+  readonly checked: boolean | undefined;
+}
+
+export const Header: React.FC<Props> = ({ lightTheme, changeTheme, checked }) => {
   const { selectedNavItem, setSelectedMenu, selectedMenu } = useAppContext();
   const [cartCounter, setCartCounter] = useState(3);
   const [favoriteCounter, setFavoriteCounter] = useState(5);
 
   const { favorites, cart } = useAppContext();
   const handleMenuItemClick = useHandleMenuItemClick();
+  let logo = "";
 
-  const logo = 'img/icons/logo.svg';
+  if (lightTheme === true) {
+    logo = 'img/icons/logo-light.svg';
+    checked = true;
+  } else {
+    logo = 'img/icons/logo.svg';
+    checked = false;
+  }
 
   useEffect(() => {
     setFavoriteCounter(favorites.length);
@@ -63,6 +76,10 @@ export const Header: React.FC = () => {
           </div>
 
           <div className="header__right-part right-part">
+            <label className="switch">
+              <input type="checkbox" onClick={changeTheme} checked={checked}/>
+              <span className="slider round"></span>
+            </label>
             <div className="right-part__item-box">
               <Link
                 to="/favourites"

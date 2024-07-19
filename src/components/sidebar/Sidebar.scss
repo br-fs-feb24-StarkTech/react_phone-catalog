@@ -10,7 +10,7 @@ $header-height-desktop: 64px;
   width: 100%;
   padding-top: 24px;
 
-  background-color: $color-black;
+  background-color: var(--color-black);
   font-weight: 700;
   text-transform: uppercase;
 
@@ -61,14 +61,14 @@ $header-height-desktop: 64px;
   &__link {
     position: relative;
 
-    color: $color-secondary;
+    color: var(--color-secondary);
     text-decoration: none;
 
     transition: color 0.3s;
     padding-bottom: 8px;
 
     @include font-uppercase-desktop;
-    color: $color-secondary;
+    color: var(--color-secondary);
 
     &::after {
       content: '';
@@ -80,7 +80,7 @@ $header-height-desktop: 64px;
       width: 0;
       height: 4px;
 
-      background-color: $color-white;
+      background-color: var(--color-white);
       margin-bottom: 1px;
 
       transition:
@@ -105,7 +105,7 @@ $header-height-desktop: 64px;
 }
 
 .is-active {
-  color: $color-white;
+  color: var(--color-white);
 
   &::after {
     width: 100%;
@@ -134,7 +134,7 @@ $header-height-desktop: 64px;
 
 .bottom-part {
   width: 100%;
-  border-top: 1px solid $color-surface-2;
+  border-top: 1px solid var(--color-surface-2);
 
   &__item-box {
     width: 50%;
@@ -145,7 +145,7 @@ $header-height-desktop: 64px;
     justify-content: center;
     align-items: center;
 
-    box-shadow: -1px 0 0 0 $color-surface-2;
+    box-shadow: -1px 0 0 0 var(--color-surface-2);
   }
 
   &__icon {
@@ -171,7 +171,7 @@ $header-height-desktop: 64px;
       width: 0;
       height: 4px;
 
-      background-color: $color-white;
+      background-color: var(--color-white);
       margin-bottom: 1px;
 
       transition:
@@ -243,10 +243,10 @@ $header-height-desktop: 64px;
     height: 12px;
 
     border-radius: 50%;
-    border: 1px solid $color-black;
+    border: 1px solid var(--color-black);
 
     background-color: $color-red;
-    color: $color-white;
+    color: var(--color-white);
 
     display: flex;
     align-items: center;
@@ -278,10 +278,10 @@ $header-height-desktop: 64px;
     height: 12px;
 
     border-radius: 50%;
-    border: 1px solid $color-black;
+    border: 1px solid var(--color-black);
 
     background-color: $color-red;
-    color: $color-white;
+    color: var(--color-white);
 
     display: flex;
     align-items: center;
