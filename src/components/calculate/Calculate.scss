@@ -48,7 +48,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: #905bff;
+    background-color: var(--color-accent);
     align-items: center;
     text-decoration: none;
     border: none;
@@ -61,5 +61,6 @@
     }
 
     @include font-buttons-desktop;
+    color: white;
   }
 }
