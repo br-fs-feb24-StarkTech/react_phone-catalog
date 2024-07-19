@@ -3,7 +3,8 @@ import { ProductsResponse } from '../types/ProductsResponse';
 import axios from 'axios';
 import { ProductType } from '../types/ProductType';
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+//const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = "http://localhost:3005";
 
 export const fetchProducts = async (
   page: number,
