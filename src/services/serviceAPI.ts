@@ -42,7 +42,7 @@ export const fetchHotPriceProducts = async () => {
   return response.data;
 };
 
-export const fetchFavorites = async (user: string) => {
+export const fetchFavorites = async (user: number) => {
   return await axios.get(`${BASE_URL}/favorites/${user}`);
 };
 

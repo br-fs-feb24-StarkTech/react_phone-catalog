@@ -14,7 +14,7 @@ type AppContextType = {
   ids: number[];
   favoritesUser: (userId: string | null) => void;
   addToFavorites: (productId: number, product: ProductType) => void;
-  removeFromFavorites: (userId: number, productId: number) => void;
+  removeFromFavorites: (userId: string | null, productId: number) => void;
   cart: CartItemProps[];
   addToCart: (product: ProductType) => void;
   removeFromCart: (productId: number) => void;

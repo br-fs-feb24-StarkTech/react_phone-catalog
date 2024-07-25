@@ -12,7 +12,6 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ lightTheme, changeTheme }) => {
   const { selectedNavItem, setSelectedMenu, selectedMenu, ids, favoritesUser } = useAppContext();
-  const { token } = useAuthContext();
   const { user, logout } = useAuthContext();
   const [cartCounter, setCartCounter] = useState(3);
   const [favoriteCounter, setFavoriteCounter] = useState(5);
@@ -25,7 +24,7 @@ export const Header: React.FC<Props> = ({ lightTheme, changeTheme }) => {
     : `${import.meta.env.VITE_API_URL}/img/icons/logo.svg`;
 
     useEffect(() => {
-      favoritesUser(token);
+      favoritesUser(userId);
       setFavoriteCounter(favorites.length);
       setCartCounter(cart.length);
       console.log(ids);

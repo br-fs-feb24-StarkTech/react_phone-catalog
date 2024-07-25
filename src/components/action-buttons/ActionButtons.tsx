@@ -13,7 +13,6 @@ export const ActionButtons: React.FC<Props> = ({ product }) => {
     useAppContext();
   const [isFavourited, setIsFavourited] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
-  const userId = 5;
 
   useEffect(() => {
     setIsFavourited(ids.some(favProduct => favProduct === product.id));
