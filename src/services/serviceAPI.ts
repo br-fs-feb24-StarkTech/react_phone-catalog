@@ -4,8 +4,8 @@ import axios from 'axios';
 import { ProductType } from '../types/ProductType';
 import { Favorites } from '../types/Favorites';
 
-//const BASE_URL = import.meta.env.VITE_API_URL;
-const BASE_URL = "http://localhost:3005"
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 export const fetchProducts = async (
   page: number,
   limit: number,
