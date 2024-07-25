@@ -9,22 +9,22 @@ type Props = {
 };
 
 export const ActionButtons: React.FC<Props> = ({ product }) => {
-  const { addToFavorites, removeFromFavorites, favorites, cart, addToCart, removeFromCart } =
+  const { addToFavorites, removeFromFavorites, cart, addToCart, removeFromCart, ids } =
     useAppContext();
   const [isFavourited, setIsFavourited] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
 
   useEffect(() => {
-    setIsFavourited(favorites.some(favProduct => favProduct.id === product.id));
+    setIsFavourited(ids.some(favProduct => favProduct === product.id));
     setIsInCart(cart.some(cartItem => cartItem.product.id === product.id));
-  }, [cart, favorites, product.id]);
+  }, [cart, product.id, ids]);
 
   const handleFavoriteClick = useCallback(() => {
     if (isFavourited) {
-      removeFromFavorites(product.id);
+      removeFromFavorites(userId, product.id);
       setIsFavourited(false);
     } else {
-      addToFavorites(product);
+      addToFavorites(product.id, product);
       setIsFavourited(true);
     }
   }, [isFavourited, product, addToFavorites, removeFromFavorites]);

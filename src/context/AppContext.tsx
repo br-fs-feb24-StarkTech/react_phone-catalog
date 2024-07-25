@@ -3,6 +3,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 import { CartItemProps } from '../types/CartItemProps';
 import { ProductType } from '../types/ProductType';
 import { AuthProvider } from './AuthContext';
+import { deleteFavoritesUser, fetchFavorites, postFavoritesUser } from '../services/serviceAPI';
 
 type Props = {
   children: React.ReactNode;
@@ -10,8 +11,10 @@ type Props = {
 
 type AppContextType = {
   favorites: ProductType[];
-  addToFavorites: (product: ProductType) => void;
-  removeFromFavorites: (productId: number) => void;
+  ids: number[];
+  favoritesUser: (userId: string | null) => void;
+  addToFavorites: (productId: number, product: ProductType) => void;
+  removeFromFavorites: (userId: string | null, productId: number) => void;
   cart: CartItemProps[];
   addToCart: (product: ProductType) => void;
   removeFromCart: (productId: number) => void;
@@ -26,6 +29,8 @@ type AppContextType = {
 
 const AppContext = createContext<AppContextType>({
   favorites: [],
+  ids: [],
+  favoritesUser: () => {},
   addToFavorites: () => {},
   removeFromFavorites: () => {},
   cart: [],
@@ -46,25 +51,63 @@ export const useAppContext = () => {
 };
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
-  const [favorites, setFavorites] = useLocalStorage<ProductType[]>('favorites', []);
+  const [favorites, setFavorites] = useState<ProductType[]>([]);
   const [cart, setCart] = useLocalStorage<CartItemProps[]>('cart', []);
   const [selectedMenu, setSelectedMenu] = useState<boolean>(false);
   const [selectedNavItem, setSelectedNavItem] = useState('Home');
+  const [ids, setIds] = useState<number[]>([]);
+  const idsFav:number[] = [];
+  const [loadFav, setLoadFav] = useState(true);
+
+  const favoritesUser = useCallback(
+    (tokenId: string | null) => {
+      if (loadFav === true) {
+        tokenId !== null ?
+        fetchFavorites(tokenId)
+          .then(res => {
+            setFavorites(res.data);
+            setLoadFav(false);
+          })
+          .catch(function (error) {
+            console.log(error);
+          }) : {};
+      }
+
+      favorites.map(x => postDetails(x));
+
+        function postDetails(post: ProductType) {
+          const { id } = post;
+          idsFav.push(id);
+        }
+
+        setIds(idsFav);
+    },
+    [loadFav, idsFav],
+  );
 
   const addToFavorites = useCallback(
-    (product: ProductType) => {
+    (productId: number, product: ProductType) => {
+
+      const params = {
+        userId: 5,
+        productId: productId
+      }
+
+      postFavoritesUser(params);
       setFavorites((prevFavorites: ProductType[]) => [...prevFavorites, product]);
     },
     [setFavorites],
   );
 
   const removeFromFavorites = useCallback(
-    (productId: number) => {
+    (userId: number, productId: number) => {
+      deleteFavoritesUser(userId, productId)
       setFavorites((prevFavorites: ProductType[]) =>
         prevFavorites.filter(product => product.id !== productId),
       );
     },
-    [setFavorites],
+
+    [setFavorites, favorites],
   );
 
   const addToCart = useCallback(
@@ -115,6 +158,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       <AppContext.Provider
         value={{
           favorites,
+          ids,
+          favoritesUser,
           addToFavorites,
           removeFromFavorites,
           cart,

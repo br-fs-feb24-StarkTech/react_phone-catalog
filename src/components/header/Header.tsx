@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ lightTheme, changeTheme }) => {
-  const { selectedNavItem, setSelectedMenu, selectedMenu } = useAppContext();
+  const { selectedNavItem, setSelectedMenu, selectedMenu, ids, favoritesUser } = useAppContext();
   const { user, logout } = useAuthContext();
   const [cartCounter, setCartCounter] = useState(3);
   const [favoriteCounter, setFavoriteCounter] = useState(5);
@@ -23,10 +23,13 @@ export const Header: React.FC<Props> = ({ lightTheme, changeTheme }) => {
     ? `${import.meta.env.VITE_API_URL}/img/icons/logo-light.svg`
     : `${import.meta.env.VITE_API_URL}/img/icons/logo.svg`;
 
-  useEffect(() => {
-    setFavoriteCounter(favorites.length);
-    setCartCounter(cart.length);
-  }, [favorites, cart]);
+    useEffect(() => {
+      favoritesUser(userId);
+      setFavoriteCounter(favorites.length);
+      setCartCounter(cart.length);
+      console.log(ids);
+      return;
+    }, [cartCounter, setFavoriteCounter, favorites]);
 
   const handleExitMenu = () => {
     setSelectedMenu(false);
