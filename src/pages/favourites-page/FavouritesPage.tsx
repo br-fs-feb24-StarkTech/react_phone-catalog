@@ -14,7 +14,8 @@ export const FavouritesPage = () => {
   }, [favorites]);
 
   return (
-    <div className="favorites-page">
+    <div className="favorite
+    s-page">
       <div className="container">
         <div className="favorites-page__content content">
           <BreadCrumbs />
